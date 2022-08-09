@@ -1,2 +1,2 @@
-# build_test
-test hugo + blogdown
+# build
+hugo + blogdown
