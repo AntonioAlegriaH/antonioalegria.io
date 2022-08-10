@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Hello Friend NG</title>
-    <link>https://melodious-chimera-146a77.netlify.app/categories/</link>
-    <description>Recent content in Categories on Hello Friend NG</description>
+    <title>Categories on Antonio Alegría</title>
+    <link>https://antonioalegria.io/categories/</link>
+    <description>Recent content in Categories on Antonio Alegría</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 01 Dec 2020 21:13:14 -0500</lastBuildDate><atom:link href="https://melodious-chimera-146a77.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Dec 2020 21:13:14 -0500</lastBuildDate><atom:link href="https://antonioalegria.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R</title>
-      <link>https://melodious-chimera-146a77.netlify.app/categories/r/</link>
+      <link>https://antonioalegria.io/categories/r/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://melodious-chimera-146a77.netlify.app/categories/r/</guid>
+      <guid>https://antonioalegria.io/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Development</title>
-      <link>https://melodious-chimera-146a77.netlify.app/categories/development/</link>
+      <link>https://antonioalegria.io/categories/development/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://melodious-chimera-146a77.netlify.app/categories/development/</guid>
+      <guid>https://antonioalegria.io/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>https://melodious-chimera-146a77.netlify.app/categories/golang/</link>
+      <link>https://antonioalegria.io/categories/golang/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://melodious-chimera-146a77.netlify.app/categories/golang/</guid>
+      <guid>https://antonioalegria.io/categories/golang/</guid>
       <description></description>
     </item>
     

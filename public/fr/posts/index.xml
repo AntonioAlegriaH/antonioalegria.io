@@ -1,20 +1,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Posts on Hello Friend NG</title>
-        <link>https://melodious-chimera-146a77.netlify.app/fr/posts/</link>
-        <description>Recent content in Posts on Hello Friend NG</description>
+        <title>Posts on Antonio Alegría</title>
+        <link>https://antonioalegria.io/fr/posts/</link>
+        <description>Recent content in Posts on Antonio Alegría</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
         <lastBuildDate>Sun, 28 Sep 2014 00:00:00 +0000</lastBuildDate>
-        <atom:link href="https://melodious-chimera-146a77.netlify.app/fr/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://antonioalegria.io/fr/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Création d&#39;un nouveau thème</title>
-            <link>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/09/cr%C3%A9ation-dun-nouveau-th%C3%A8me/</link>
+            <link>https://antonioalegria.io/fr/posts/2014/09/cr%C3%A9ation-dun-nouveau-th%C3%A8me/</link>
             <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
             
-            <guid>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/09/cr%C3%A9ation-dun-nouveau-th%C3%A8me/</guid>
+            <guid>https://antonioalegria.io/fr/posts/2014/09/cr%C3%A9ation-dun-nouveau-th%C3%A8me/</guid>
             <description>Introduction Ce tutoriel vous montrera comment créer un thème simple pour Hugo. Je suppose que vous êtes familier avec HTML, la ligne de commande bash, et que vous êtes à l&amp;rsquo;aise avec Markdown pour formater le contenu. Je vais expliquer comment Hugo utilise des modèles et comment vous pouvez organiser vos modèles pour créer un thème. Je ne couvrirai pas l&amp;rsquo;utilisation de CSS pour styliser votre thème.
 Nous allons commencer par créer un nouveau site avec un modèle très basique.</description>
             <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
@@ -675,9 +675,9 @@ $ cat public/index.html
 &lt;html&gt;
 &lt;body&gt;
 
-    &lt;h1&gt;&lt;a href=&#34;https://melodious-chimera-146a77.netlify.app/post/second/&#34;&gt;second&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1&gt;&lt;a href=&#34;https://antonioalegria.io/post/second/&#34;&gt;second&lt;/a&gt;&lt;/h1&gt;
 
-    &lt;h1&gt;&lt;a href=&#34;https://melodious-chimera-146a77.netlify.app/post/premier/&#34;&gt;premier&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1&gt;&lt;a href=&#34;https://antonioalegria.io/post/premier/&#34;&gt;premier&lt;/a&gt;&lt;/h1&gt;
 
 &lt;/body&gt;
 &lt;/html&gt;
@@ -870,10 +870,10 @@ $ vi themes/zafta/layouts/_default/single.html
         
         <item>
             <title>Débuter avec Hugo</title>
-            <link>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/04/d%C3%A9buter-avec-hugo/</link>
+            <link>https://antonioalegria.io/fr/posts/2014/04/d%C3%A9buter-avec-hugo/</link>
             <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
             
-            <guid>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/04/d%C3%A9buter-avec-hugo/</guid>
+            <guid>https://antonioalegria.io/fr/posts/2014/04/d%C3%A9buter-avec-hugo/</guid>
             <description>&lt;h2 id=&#34;étape-1-installer-hugo&#34;&gt;Étape 1. Installer Hugo&lt;/h2&gt;
 &lt;p&gt;Allez sur la page de téléchargements de
 &lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;hugo&lt;/a&gt; et téléchargez la version
@@ -881,7 +881,7 @@ appropriée à votre système d&amp;rsquo;exploitation et votre architecture.&lt
 &lt;p&gt;Sauvegardez le fichier téléchargé à un endroit précis, afin de l&amp;rsquo;utiliser dans
 l&amp;rsquo;étape suivante.&lt;/p&gt;
 &lt;p&gt;Des informations plus complètes sont disponibles sur la page
-&lt;a href=&#34;https://melodious-chimera-146a77.netlify.app/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;</description>
+&lt;a href=&#34;https://antonioalegria.io/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;</description>
             <content type="html"><![CDATA[<h2 id="étape-1-installer-hugo">Étape 1. Installer Hugo</h2>
 <p>Allez sur la page de téléchargements de
 <a href="https://github.com/spf13/hugo/releases">hugo</a> et téléchargez la version
@@ -952,10 +952,10 @@ créativité fluide sans avoir à attendre de longues compilations.</p>
         
         <item>
             <title>Introduction aux modèles (Hu)go</title>
-            <link>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/04/introduction-aux-mod%C3%A8les-hugo/</link>
+            <link>https://antonioalegria.io/fr/posts/2014/04/introduction-aux-mod%C3%A8les-hugo/</link>
             <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
             
-            <guid>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/04/introduction-aux-mod%C3%A8les-hugo/</guid>
+            <guid>https://antonioalegria.io/fr/posts/2014/04/introduction-aux-mod%C3%A8les-hugo/</guid>
             <description>Hugo utilise l&amp;rsquo;excellente librairie go html/template pour son moteur de modèles. c&amp;rsquo;est un moteur extrêmement léger qui offre un très petit nombre de fonctions logiques. À notre expérience, c&amp;rsquo;est juste ce qu&amp;rsquo;il faut pour créer un bon site web statique. Si vous avez déjà utilisé d&amp;rsquo;autre moteurs de modèles pour différents langages ou frameworks, vous allez retrouver beaucoup de similitudes avec les modèles go.
 Ce document est une introduction sur l&amp;rsquo;utilisation de Go templates.</description>
             <content type="html"><![CDATA[<p>Hugo utilise l&rsquo;excellente librairie <a href="http://golang.org/">go</a> <a href="http://golang.org/pkg/html/template/">html/template</a> pour
@@ -1184,7 +1184,7 @@ de le chercher dans votre modèle.</p>
 modifiera le contexte et passera le bloc si la variable est absente :</p>
 <pre tabindex="0"><code>{{with .Site.Params.TwitterUser}}&lt;span class=&#34;twitter&#34;&gt;
 &lt;a href=&#34;https://twitter.com/{{.}}&#34; rel=&#34;author&#34;&gt;
-&lt;img src=&#34;https://melodious-chimera-146a77.netlify.app/images/twitter.png&#34; width=&#34;48&#34; height=&#34;48&#34; title=&#34;Twitter: {{.}}&#34;
+&lt;img src=&#34;https://antonioalegria.io/images/twitter.png&#34; width=&#34;48&#34; height=&#34;48&#34; title=&#34;Twitter: {{.}}&#34;
  alt=&#34;Twitter&#34;&gt;&lt;/a&gt;
 &lt;/span&gt;{{end}}
 </code></pre><p>Enfin, si vous souhaitez extraire des &ldquo;constantes magiques&rdquo; de vos mises en
@@ -1200,10 +1200,10 @@ page, vous pouvez le faire comme dans l&rsquo;exemple suivant :</p>
         
         <item>
             <title>Migrer vers Hugo depuis Jekyll</title>
-            <link>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/03/migrer-vers-hugo-depuis-jekyll/</link>
+            <link>https://antonioalegria.io/fr/posts/2014/03/migrer-vers-hugo-depuis-jekyll/</link>
             <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
             
-            <guid>https://melodious-chimera-146a77.netlify.app/fr/posts/2014/03/migrer-vers-hugo-depuis-jekyll/</guid>
+            <guid>https://antonioalegria.io/fr/posts/2014/03/migrer-vers-hugo-depuis-jekyll/</guid>
             <description>&lt;h2 id=&#34;déplacez-le-contenu-statique-vers-static&#34;&gt;Déplacez le contenu statique vers &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Jekyll a une règle comme quoi tout répertoire qui ne commence pas par &lt;code&gt;_&lt;/code&gt; sera
 copié tel-quel dans le répertoire &lt;code&gt;_site&lt;/code&gt;. Hugo garde tout le contenu statique
