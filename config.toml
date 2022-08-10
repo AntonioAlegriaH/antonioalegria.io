@@ -3,6 +3,7 @@ title   = "Antonio Alegría"
 languageCode = "en-us"
 theme = "hugo-theme-hello-friend-ng"
 
+
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
 
@@ -10,7 +11,7 @@ paginate  = 10
 rssLimit  = 10  # Maximum number of items in the RSS feed.
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
 
-  googleAnalytics = "G-R771WPM5VD"
+googleAnalytics = "G-R771WPM5VD"
 # disqusShortname = ""
 
 archetypeDir = "archetypes"
@@ -61,7 +62,6 @@ disableHugoGeneratorInject = false
   homeSubtitle = "Contacto"
 
 
-
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
   # gitUrl = ""
 
@@ -86,16 +86,37 @@ disableHugoGeneratorInject = false
   defaultTheme = "light"
   themeColor = "#252627"
   
-  footerLeft = "Powered by <a href=\"http://gohugo.io\">Hugo</a>"
+   # Images settings
+  # Icons, backgrounds and avatars folders are placed in theme's static/images folder.
+  # You may place your images in corresponding folders and then set only filenames below to
+  # change page's appearance
+
+
+  
+  
+[params.footer]
+    trademark = true
+    rss = true
+    copyright = true
+    author = true
+
+    topText = []
+#    bottomText = [
+#      "Powered by <a href=\"http://gohugo.io\">Hugo</a>",
+#      "Made with &#10084; by <a href=\"https://github.com/rhazdon\">Djordje Atlialp</a>"
+#    ]
+
   
   # Colors for favicons
-  [params.favicon.color]
-    mask = "#252627"
-    msapplication = "#252627"
-    theme = "#252627"
+[params.favicon.color]
+    mask = "#1b1c1d"
+    msapplication = "#1b1c1d"
+    theme = "#1b1c1d"
+
+
 
   [params.logo]
-    logoText     = " /inicio/"
+    logoText     = " /start/"
     logoHomeLink = "/"
     # Set true to remove the logo cursor entirely.
     # logoCursorDisabled = false
