@@ -1,0 +1,50 @@
+---
+title: test project
+author: R package build
+date: '2022-08-10'
+slug: test-project
+categories:
+  - R
+tags: []
+comments: no
+images: ~
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/leaflet/leaflet.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/leaflet/leaflet.js"></script>
+<link href="{{< blogdown/postref >}}index_files/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/proj4/proj4.min.js"></script>
+<script src="{{< blogdown/postref >}}index_files/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="{{< blogdown/postref >}}index_files/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/leaflet-binding/leaflet.js"></script>
+<script src="{{< blogdown/postref >}}index_files/leaflet-providers/leaflet-providers_1.9.0.js"></script>
+<script src="{{< blogdown/postref >}}index_files/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
+
+
+<div id="header-1" class="section level2">
+<h2>Header 1</h2>
+<pre class="r"><code>library(ggplot2)
+library(magrittr)
+
+
+ggplot(mtcars, aes(x = mpg, y = cyl))+
+  geom_point()+
+  theme_minimal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="header-2" class="section level3">
+<h3>Header 2</h3>
+<p>Este es un ejemplo de como se vería el mapa</p>
+<pre class="r"><code>library(leaflet)
+
+m &lt;- leaflet() %&gt;% setView(lng = -71.0589, lat = 42.3601, zoom = 12)
+m %&gt;% addProviderTiles(providers$CartoDB.Positron)</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[42.3601,-71.0589],12,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="header-1-1" class="section level1">
+<h1>Header 1</h1>
+</div>
