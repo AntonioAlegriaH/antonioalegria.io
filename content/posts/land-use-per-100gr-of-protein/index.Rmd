@@ -1,0 +1,86 @@
+---
+title: Land Use Per 100gr of Protein
+author: R package build
+date: '2022-04-04'
+slug: land-use-per-100gr-of-protein
+categories:
+  - R
+  - dataviz
+  - infographic
+tags:
+  - dataviz
+  - barplot
+draft: yes
+toc: no
+images: ~
+---
+
+# Land Use per 100gr of Animal Protein
+
+```{r, echo=FALSE,warning=FALSE,collapse=TRUE}
+library(tidyverse)
+library(scales)
+theme_set(theme_minimal(base_size = 15))
+cols <- c("#BC4B51", "#dda15e", "#8CB369")
+# https://coolors.co/palette/8cb369-f4e285-f4a259-5b8e7d-bc4b51
+# https://ourworldindata.org/land-use
+data <- read_csv("land-use-protein-poore.csv") 
+
+
+
+
+
+plot_land_use <- data %>% 
+  ggplot(aes(fct_reorder(Entity, `Land use per 100g protein (Poore & Nemecek, 2018)`),
+             `Land use per 100g protein (Poore & Nemecek, 2018)`, fill = Type )) +
+  geom_col()+
+  coord_flip()+
+  labs(title = "Land use per 100 grams of protein",
+       subtitle = "Animal products are the biggest part to the whole land footprint, across a range of food types",
+       x = "",
+       y = "Land use is measured in meters squared (m²)",
+       caption = "Research - Poore & Nemecek, 2018
+Chart - @elmedicobrujo")+
+  theme(text = element_text(color = "#333333"),
+        plot.title.position = "plot",
+        plot.title = element_text(size = 25,face = "bold"),
+        plot.subtitle = element_text(size = 11,face = "italic",
+                                     margin=margin(0,0,.5,0,
+                                                   unit = "cm")),
+        plot.caption = element_text(size = 9,face = "italic",
+                                    margin=margin(2,0,0,0,
+                                                  unit = "cm")),
+        axis.text.x = element_text(size = 10, hjust = 0 ),
+        axis.title = element_text(size = 11, hjust = .14 ),
+        panel.spacing = unit(3, "cm"),
+        legend.box.margin = margin(t = 0,  # Top margin
+                                   r = 0,  # Right margin
+                                   b = -0.5,  # Bottom margin
+                                   l = 0,  # Left margin
+                                   unit = "cm"),
+        legend.position = "top",
+        legend.text = element_text(size = 10),
+        legend.justification = 1,
+        legend.title = element_blank(),
+        legend.key.width = unit(1,"cm"),
+        legend.key.height = unit(.2,"cm"),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank(),
+        plot.background = element_rect(fill = "#edf2f4", 
+                                       colour = "#fefae0"),
+        plot.margin = margin(t = 1,  # Top margin
+                             r = 1,  # Right margin
+                             b = 1,  # Bottom margin
+                             l = 1,  # Left margin
+                             unit = "cm")
+        )+
+  scale_y_continuous(labels = label_number_si(unit = "m²"))+
+  scale_fill_manual(values = cols)
+
+plot_land_use
+
+
+
+
+```
+
