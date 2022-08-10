@@ -17,7 +17,7 @@ images: ~
 
 ## Animal based products use too much land!!!
 
-```{r, echo=FALSE,warning=FALSE,collapse=TRUE, fig.height=10, fig.width=7}
+```{r, echo=FALSE,message = FALSE, warning=FALSE,collapse=TRUE, fig.height=10, fig.width=7}
 library(tidyverse)
 library(scales)
 theme_set(theme_minimal(base_size = 15))
