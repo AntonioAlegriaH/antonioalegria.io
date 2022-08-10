@@ -15,9 +15,9 @@ toc: no
 images: ~
 ---
 
-# Land Use per 100gr of Animal Protein
+## Animal based products use too much land!!!
 
-```{r, echo=FALSE,warning=FALSE,collapse=TRUE}
+```{r, echo=FALSE,warning=FALSE,collapse=TRUE, fig.height=10, fig.width=7}
 library(tidyverse)
 library(scales)
 theme_set(theme_minimal(base_size = 15))
@@ -40,7 +40,7 @@ plot_land_use <- data %>%
        x = "",
        y = "Land use is measured in meters squared (m²)",
        caption = "Research - Poore & Nemecek, 2018
-Chart - @elmedicobrujo")+
+Chart - antonioalegria.io")+
   theme(text = element_text(color = "#333333"),
         plot.title.position = "plot",
         plot.title = element_text(size = 25,face = "bold"),

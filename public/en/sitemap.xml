@@ -2,34 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://antonioalegria.io/posts/2014/09/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://antonioalegria.io/fr/posts/2014/09/cr%C3%A9ation-dun-nouveau-th%C3%A8me/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://antonioalegria.io/posts/2014/09/creating-a-new-theme/"
-                />
-  </url><url>
-    <loc>https://antonioalegria.io/posts/2014/03/migrate-to-hugo-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://antonioalegria.io/fr/posts/2014/03/migrer-vers-hugo-depuis-jekyll/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://antonioalegria.io/posts/2014/03/migrate-to-hugo-from-jekyll/"
-                />
-  </url><url>
     <loc>https://antonioalegria.io/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -42,7 +16,7 @@
                 />
   </url><url>
     <loc>https://antonioalegria.io/categories/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -54,6 +28,15 @@
                 href="https://antonioalegria.io/categories/"
                 />
   </url><url>
+    <loc>https://antonioalegria.io/projects/</loc>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/categories/r/</loc>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/projects/test-project/</loc>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
@@ -61,19 +44,6 @@
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/posts/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://antonioalegria.io/fr/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://antonioalegria.io/posts/"
-                />
-  </url><url>
-    <loc>https://antonioalegria.io/categories/r/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/tags/r-markdown/</loc>
@@ -95,11 +65,10 @@
                 href="https://antonioalegria.io/tags/"
                 />
   </url><url>
-    <loc>https://antonioalegria.io/series/hugo-101/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://antonioalegria.io/about/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/series/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -110,58 +79,5 @@
                 hreflang="en"
                 href="https://antonioalegria.io/series/"
                 />
-  </url><url>
-    <loc>https://antonioalegria.io/about/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/posts/2014/04/hugo-template-primer/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://antonioalegria.io/fr/posts/2014/04/introduction-aux-mod%C3%A8les-hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://antonioalegria.io/posts/2014/04/hugo-template-primer/"
-                />
-  </url><url>
-    <loc>https://antonioalegria.io/tags/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/categories/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/posts/2014/04/getting-started-with-hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://antonioalegria.io/fr/posts/2014/04/d%C3%A9buter-avec-hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://antonioalegria.io/posts/2014/04/getting-started-with-hugo/"
-                />
-  </url><url>
-    <loc>https://antonioalegria.io/tags/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/tags/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/categories/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/tags/hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/tags/templates/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/tags/themes/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
 </urlset>

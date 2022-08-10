@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 01 Dec 2020 21:13:14 -0500</lastBuildDate><atom:link href="https://antonioalegria.io/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://antonioalegria.io/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>test project</title>
+      <link>https://antonioalegria.io/projects/test-project/</link>
+      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://antonioalegria.io/projects/test-project/</guid>
+      <description> Header 1 library(ggplot2) library(magrittr) ggplot(mtcars, aes(x = mpg, y = cyl))+ geom_point()+ theme_minimal() Header 2 Este es un ejemplo de como se vería el mapa
+library(leaflet) m &amp;lt;- leaflet() %&amp;gt;% setView(lng = -71.0589, lat = 42.3601, zoom = 12) m %&amp;gt;% addProviderTiles(providers$CartoDB.Positron) Header 1 </description>
+    </item>
+    
     <item>
       <title>Hello R Markdown</title>
       <link>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</link>
