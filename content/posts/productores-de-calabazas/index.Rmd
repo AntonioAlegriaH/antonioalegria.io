@@ -1,0 +1,91 @@
+---
+title: Productores de calabazas gigantes
+author: R package build
+date: '2021-10-21'
+slug: productores-de-calabazas
+categories:
+  - dataviz
+  - infographic
+  - tidytuesday
+tags:
+  - lineplot
+  - dataviz
+  - tidytuesday
+toc: no
+images: ~
+---
+# Giant Pumpkins
+
+The Great Pumpkin Commonwealth's (GPC) mission cultivates the hobby of growing giant pumpkins throughout the world by establishing standards and regulations that ensure quality of fruit, fairness of competition, recognition of achievement, fellowship and education for all participating growers and weigh-off sites.
+
+
+```{r include=FALSE}
+
+pacman::p_load(tidyverse,
+               skimr,
+               lubridate,
+               ggtext,
+               scales, 
+               ggstream, # para steamgraphs
+              geofacet,
+         #    tidytuesdayR, 
+               install = F)
+
+theme_set(theme_minimal(base_size = 14))
+pumpkins_df <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-19/pumpkins.csv')
+
+pumpkins_df[ , 15:16] <- str_split_fixed(pumpkins_df$id, pattern = "-",2) 
+ 
+pumpkins_df_split <- pumpkins_df %>% 
+  rename(year =V1)  %>% # renombrar las variables que acabamos de crear
+  rename(type =V2 ) %>% # x2
+  select(!id) %>% 
+  select(year,type, everything()) #moverlas al inicio
+
+pumpkins_Country_Year <- pumpkins_df_split %>% 
+  group_by(year) %>% 
+  filter(!str_detect(country, "Entries"), 
+         !country == "Unknown country") %>% #eliminar observaciones que contengan Entries
+  count(country)
+
+```
+
+
+```{r message=FALSE, warning=FALSE, echo=FALSE,fig.height=9, fig.width=13}
+pumpkins_plot <- pumpkins_Country_Year %>% 
+#  filter(country != "United States") %>% 
+  ggplot(aes(year, n, group = country))+
+  geom_area(fill = "#E76F51",
+            alpha = .5)+
+  geom_line(colour = "#E76F51",
+            size=1.2)+
+  geom_point(colour = "#2A9D8F",  
+             shape = 21, 
+             fill = "white")+
+  facet_wrap(vars(country))+
+  labs(title = "<b style = 'font-size:23pt;color:#264653;font-face:bold'>Principales productores de</b> <b style = 'font-size:28pt;color:#E76F51;font-face:bold'>calabazas gigantes a nivel mundial</b>",
+       x = "Años",
+       y = "Producción Anual",
+       caption = "Data source: http://www.bigpumpkins.com/
+                     Chart - antonioalegria.io"
+        )+
+  theme(text = element_text(colour = "#264653"),
+        plot.margin = margin(2, 2, 2, 2, "cm"),
+        plot.background = element_rect(fill = "#ECCE83"),
+        plot.title.position = "plot",
+        plot.title = element_markdown(family = "American Typewriter",margin=margin(b=30)),
+        plot.caption.position = "panel" ,
+        plot.caption = element_text(hjust = 0),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank(),
+        axis.line = element_line(colour = "#264653"),
+        axis.text = element_text(size = 7),
+        axis.title.y = element_text(face=1,hjust = 1,family = "American Typewriter"),
+        axis.title.x = element_text(face=1,hjust = 1,family = "American Typewriter"),
+        strip.text = element_text(size=13, colour = "#264653",family = "American Typewriter")
+        )+
+      scale_x_discrete(breaks = c(2013,2015,2017,2019,2021))
+
+pumpkins_plot
+```
+

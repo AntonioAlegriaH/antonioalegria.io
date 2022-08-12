@@ -17,5 +17,32 @@
       <description></description>
     </item>
     
+    <item>
+      <title>dataviz</title>
+      <link>https://antonioalegria.io/categories/dataviz/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://antonioalegria.io/categories/dataviz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>infographic</title>
+      <link>https://antonioalegria.io/categories/infographic/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://antonioalegria.io/categories/infographic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tidytuesday</title>
+      <link>https://antonioalegria.io/categories/tidytuesday/</link>
+      <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://antonioalegria.io/categories/tidytuesday/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

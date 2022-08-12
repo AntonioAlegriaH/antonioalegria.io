@@ -37,23 +37,23 @@
     <loc>https://antonioalegria.io/projects/test-project/</loc>
     <lastmod>2022-08-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://antonioalegria.io/tags/dataviz/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/tags/plot/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://antonioalegria.io/categories/dataviz/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/categories/infographic/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/tags/lineplot/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/posts/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/tags/r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/tags/regression/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/tags/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -64,6 +64,36 @@
                 hreflang="en"
                 href="https://antonioalegria.io/tags/"
                 />
+  </url><url>
+    <loc>https://antonioalegria.io/posts/2022/04/the-twilight-effect-on-baby-names/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/tags/barplot/</loc>
+    <lastmod>2022-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/posts/2022/04/land-use-per-100gr-of-protein/</loc>
+    <lastmod>2022-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/posts/2021/10/productores-de-calabazas/</loc>
+    <lastmod>2021-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/tags/tidytuesday/</loc>
+    <lastmod>2021-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/categories/tidytuesday/</loc>
+    <lastmod>2021-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</loc>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/tags/plot/</loc>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/tags/r-markdown/</loc>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/tags/regression/</loc>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>

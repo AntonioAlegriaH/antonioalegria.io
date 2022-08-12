@@ -1,0 +1,116 @@
+---
+title: The Twilight Effect on Baby Names
+author: R package build
+date: '2022-04-05'
+slug: the-twilight-efect-on-baby-names
+categories:
+  - dataviz
+  - infographic
+  - R
+tags:
+  - dataviz
+  - lineplot
+toc: no
+images: ~
+---
+
+## The increase is only apparent on babies named Isabella. 
+
+Day 3 of the #30DayChartChallenge 📅 Historical! 
+
+
+```{r echo=FALSE, fig.height=9, fig.width=11, message=FALSE, warning=FALSE, collapse=TRUE}
+library(babynames)
+library(ggplot2)
+library(dplyr)
+library(magrittr)
+
+theme_set(theme_minimal(base_size = 15, base_family = "Highway Gothic Narrow"))
+cols_ts <- c("#2c283e", "#b24d83", "#a2887c")
+#https://coolors.co/palettes/popular/twilight
+#https://coolors.co/9eadc8
+
+
+
+data_twilight <- babynames::babynames %>% 
+  filter(name %in% c("Isabella", "Bella", 
+                     "Jacob", "Edward")) %>%
+  mutate(name = if_else(name %in% c('Isabella', 'Bella'), 'Isabella (Bella)', name)
+         ) %>% 
+  group_by(year, name) %>% 
+  summarise(total = sum(n)) 
+
+
+
+twilight_plot <- data_twilight %>% 
+  ggplot(aes(year, total, fill = name ))+
+  geom_rect(aes(xmin=2005,
+                xmax = 2006,
+                ymin = 0,
+                ymax = 40000), fill = '#184633', alpha = 0.1)+
+  geom_area(position = position_dodge(width = 0.1),alpha = 0.5 )+
+  geom_line(aes(colour = name),
+            lwd = 1,      # Width of the line
+            linetype = 1,
+            show.legend = F)+
+  
+  annotate("text", x = 1900, y = 30050, hjust = 0, size = 5,vjust = 0,
+           fontface = "bold",colour = "#333333",
+           family= theme_get()$text[["family"]],
+           label = "The film was released
+theatrically on November 21, 2008",) +
+  annotate(
+    geom = "curve", x = 1930, xend = 2005, y = 33500, yend = 40000, 
+    curvature = -.19, arrow = arrow(length = unit(2, "mm")),colour = "#184633"
+  ) +
+  scale_fill_manual(values = cols_ts)+
+  scale_color_manual(values = cols_ts)+
+  labs(title = "Twilight Saga and Baby Names",
+       subtitle = "Historical Effect: Isabella appears to gain popularity after the book and movie release (although it was pretty popular before).",
+       x = "Year of Birth",
+       y = "Babies born with that name",
+       caption = "Source: {babynames}
+       Chart - antonioalegria.io")+
+  theme(text = element_text(color = "#333333"),
+        plot.title.position = "plot",
+        plot.title = element_text(size = 60, colour = "#333333",
+                                  face = "bold",
+                                  
+                                  ),
+        plot.subtitle = element_text(margin=margin(0,0,3,0,
+                                                   unit = "cm")),
+        plot.caption = element_text(size = 9,face = "italic",
+                                    margin=margin(2,0,0,0,
+                                                  unit = "cm")),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_line(colour = "#C7D0E0",),
+        panel.spacing.x=unit(0.5, "cm"),
+        plot.background = element_rect(fill = "#D5DBE7", 
+                                       colour = "#fefae0" ),
+        plot.margin = margin(t = 1,  # Top margin
+                             r = 2,  # Right margin
+                             b = 1,  # Bottom margin
+                             l = 2,  # Left margin
+                             unit = "cm"),
+        axis.title.x = element_text(hjust = .5),
+        axis.title.y = element_text(hjust = 0.5, size = 15),
+        legend.position="top",
+        legend.justification = 0,
+        legend.title = element_blank(),
+        legend.text = element_text(),
+        legend.key.width = unit(2, "cm"),
+        legend.key.height = unit(.2,"cm"),
+        legend.box.margin = margin(t = 0,  # Top margin
+                                   r = 0,  # Right margin
+                                   b = -1,  # Bottom margin
+                                   l = 0,  # Left margin
+                                   unit = "cm")
+        
+  )+
+  coord_cartesian(clip = "on")
+
+
+twilight_plot  
+```
+
