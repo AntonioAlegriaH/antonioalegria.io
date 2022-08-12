@@ -54,14 +54,14 @@
         </item>
         
         <item>
-            <title>Productores de calabazas</title>
-            <link>https://antonioalegria.io/posts/2021/10/productores-de-calabazas/</link>
+            <title>Productores de calabazas gigantes</title>
+            <link>https://antonioalegria.io/posts/2021/10/productores-de-calabazas-gigantes/</link>
             <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
             
-            <guid>https://antonioalegria.io/posts/2021/10/productores-de-calabazas/</guid>
+            <guid>https://antonioalegria.io/posts/2021/10/productores-de-calabazas-gigantes/</guid>
             <description>Giant Pumpkins The Great Pumpkin Commonwealth’s (GPC) mission cultivates the hobby of growing giant pumpkins throughout the world by establishing standards and regulations that ensure quality of fruit, fairness of competition, recognition of achievement, fellowship and education for all participating growers and weigh-off sites.</description>
             <content type="html"><![CDATA[
-<script src="https://antonioalegria.io/posts/2021/10/productores-de-calabazas/index_files/header-attrs/header-attrs.js"></script>
+<script src="https://antonioalegria.io/posts/2021/10/productores-de-calabazas-gigantes/index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 
@@ -70,62 +70,51 @@
 <div id="giant-pumpkins" class="section level1">
 <h1>Giant Pumpkins</h1>
 <p>The Great Pumpkin Commonwealth’s (GPC) mission cultivates the hobby of growing giant pumpkins throughout the world by establishing standards and regulations that ensure quality of fruit, fairness of competition, recognition of achievement, fellowship and education for all participating growers and weigh-off sites.</p>
-<p><img src="https://antonioalegria.io/posts/2021/10/productores-de-calabazas/index_files/figure-html/unnamed-chunk-2-1.png" width="1056" /></p>
+<p><img src="https://antonioalegria.io/posts/2021/10/productores-de-calabazas-gigantes/index_files/figure-html/unnamed-chunk-2-1.png" width="1248" /></p>
 </div>
 ]]></content>
         </item>
         
         <item>
-            <title>Hello R Markdown</title>
-            <link>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</link>
-            <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+            <title>Registered Nurses in the United States</title>
+            <link>https://antonioalegria.io/posts/2021/10/registered-nurses-in-the-united-states/</link>
+            <pubDate>Tue, 05 Oct 2021 00:00:00 +0000</pubDate>
             
-            <guid>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</guid>
-            <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+            <guid>https://antonioalegria.io/posts/2021/10/registered-nurses-in-the-united-states/</guid>
+            <description>The data comes from Data.World</description>
             <content type="html"><![CDATA[
-<script src="https://antonioalegria.io/posts/2020/12/hello-r-markdown/index_files/header-attrs/header-attrs.js"></script>
+<script src="https://antonioalegria.io/posts/2021/10/registered-nurses-in-the-united-states/index_files/header-attrs/header-attrs.js"></script>
 
+<div id="TOC">
 
-<div id="r-markdown" class="section level1">
-<h1>R Markdown</h1>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932</code></pre>
 </div>
-<div id="including-plots" class="section level1">
-<h1>Including Plots</h1>
-<p>You can also embed plots. See Figure <a href="#fig:pie">1</a> for example:</p>
-<pre class="r"><code>par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&#39;Sky&#39;, &#39;Sunny side of pyramid&#39;, &#39;Shady side of pyramid&#39;),
-  col = c(&#39;#0292D8&#39;, &#39;#F7EA39&#39;, &#39;#C4B632&#39;),
-  init.angle = -50, border = NA
-)</code></pre>
-<div class="figure"><span style="display:block;" id="fig:pie"></span>
-<img src="https://antonioalegria.io/posts/2020/12/hello-r-markdown/index_files/figure-html/pie-1.png" alt="A fancy pie chart." width="672" />
-<p class="caption">
-Figure 1: A fancy pie chart.
-</p>
+
+<div id="section" class="section level1">
+<h1></h1>
+<p>The data comes from Data.World</p>
+<p><img src="https://antonioalegria.io/posts/2021/10/registered-nurses-in-the-united-states/index_files/figure-html/unnamed-chunk-2-1.png" width="1632" /></p>
 </div>
+]]></content>
+        </item>
+        
+        <item>
+            <title>The Rolling Stones Billboard Greatest Hits</title>
+            <link>https://antonioalegria.io/posts/2021/09/the-rolling-stones-billboard-greatest-hits/</link>
+            <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://antonioalegria.io/posts/2021/09/the-rolling-stones-billboard-greatest-hits/</guid>
+            <description>Peaks Position The Billboard Hot 100 is the music industry standard record chart in the United States for songs, published weekly by Billboard magazine. Chart rankings are based on sales (physical and digital), radio play, and online streaming in the United States.</description>
+            <content type="html"><![CDATA[
+<script src="https://antonioalegria.io/posts/2021/09/the-rolling-stones-billboard-greatest-hits/index_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+
+</div>
+
+<div id="peaks-position" class="section level1">
+<h1>Peaks Position</h1>
+<p>The Billboard Hot 100 is the music industry standard record chart in the United States for songs, published weekly by Billboard magazine. Chart rankings are based on sales (physical and digital), radio play, and online streaming in the United States.</p>
+<p><img src="https://antonioalegria.io/posts/2021/09/the-rolling-stones-billboard-greatest-hits/index_files/figure-html/unnamed-chunk-2-1.png" width="864" /></p>
 </div>
 ]]></content>
         </item>

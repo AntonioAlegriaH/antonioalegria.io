@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://antonioalegria.io/</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://antonioalegria.io/categories/</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -27,15 +27,6 @@
                 hreflang="en"
                 href="https://antonioalegria.io/categories/"
                 />
-  </url><url>
-    <loc>https://antonioalegria.io/projects/</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/categories/r/</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/projects/test-project/</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/tags/dataviz/</loc>
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
@@ -50,6 +41,9 @@
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/posts/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/categories/r/</loc>
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/tags/</loc>
@@ -74,7 +68,7 @@
     <loc>https://antonioalegria.io/posts/2022/04/land-use-per-100gr-of-protein/</loc>
     <lastmod>2022-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/posts/2021/10/productores-de-calabazas/</loc>
+    <loc>https://antonioalegria.io/posts/2021/10/productores-de-calabazas-gigantes/</loc>
     <lastmod>2021-10-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/tags/tidytuesday/</loc>
@@ -83,19 +77,19 @@
     <loc>https://antonioalegria.io/categories/tidytuesday/</loc>
     <lastmod>2021-10-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://antonioalegria.io/posts/2021/10/registered-nurses-in-the-united-states/</loc>
+    <lastmod>2021-10-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/tags/plot/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://antonioalegria.io/tags/ridgeplot/</loc>
+    <lastmod>2021-09-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/tags/r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://antonioalegria.io/tags/regression/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://antonioalegria.io/posts/2021/09/the-rolling-stones-billboard-greatest-hits/</loc>
+    <lastmod>2021-09-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/about/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/projects/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/series/</loc>

@@ -1,0 +1,87 @@
+---
+title: Registered Nurses in the United States
+author: Antonio Alegría
+date: '2021-10-05'
+slug: registered-nurses
+categories:
+  - dataviz
+  - infographic
+  - R
+  - tidytuesday
+tags:
+  - dataviz
+  - lineplot
+  - tidytuesday
+toc: no
+images: ~
+---
+
+# 
+
+The data comes from Data.World
+```{r include=FALSE}
+pacman::p_load(tidyverse,
+               skimr,
+               lubridate,
+               ggtext,
+               scales,
+               geofacet,
+#               tidytuesdayR, 
+               install = F)
+
+df_nurses <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-05/nurses.csv')
+
+theme_set(theme_minimal(base_size = 14))
+
+df_nurses_parsed <- df_nurses %>% 
+  mutate(Year_Parsed = lubridate::ymd(df_nurses$Year, truncated = 2L)) %>% 
+  select(!Year)
+
+Enfermeres_totales_anual_estado <- df_nurses_parsed %>% 
+  replace(is.na(.), 0) %>%  #Reemplazar na's por ceros.  
+  group_by(Year_Parsed, State) %>% # Agrupar la tabla por Año
+  summarise(Suma_total = sum(`Total Employed RN`), n = n()) #Hacer el conteo 
+
+```
+
+```{r message=FALSE, warning=FALSE, echo=FALSE,fig.height=14, fig.width=17}
+
+geo_facet_test <- Enfermeres_totales_anual_estado %>% 
+  ggplot(aes(Year_Parsed, Suma_total)) +
+  geom_line(size = 1, colour = "#23395B") +
+  geom_point(size = 1,colour = "#05A8AA", shape= 21, fill = "white")+
+  geom_area(fill = 4,
+            alpha = 0.5
+            # Line color
+            
+  )+
+  labs(title = "El registro de Enfermras y Enfermeros es de <b style = 'font-size:25pt;color:#E55812;font-face:bold'>3 Millones Actualmente</b>",
+       subtitle = "Histórico de Estados Unidos y sus territorios 1998-2020",
+       y = "Registros",
+       x= "Es importante analizar el crecimiento de está profesión teniendo en cuenta \nel incremento salaríal por estado. \nNo es lo mismo ejercer esta profesión en California que en alguna de las Dakotas",
+       caption = "Data source: World.Data
+       Chart - antonioalegria.io")+
+  theme(text = element_text(family = "Avenir Next",colour = "#161925"),
+        plot.margin = margin(2, 2, 2, 2, "cm"),
+        plot.title.position = "plot",
+        plot.title = element_markdown(face = "bold", size = 26),
+        plot.subtitle = element_text(size = 21),
+        panel.grid.major  = element_blank(), 
+        axis.line = element_line(colour = "grey"),
+        # panel.border = element_rect(colour = "grey",fill=NA),
+        plot.caption = element_text(size = 7),
+        axis.text = element_text(size = 12, colour = "#161925"),
+        axis.text.x = element_text(angle = 30, size = 7),
+        axis.text.y = element_text(size = 8),
+        axis.title.x = element_text(hjust = 0, size = 12)
+  )+  
+  scale_x_date(breaks = as.Date(c("2000-01-01",
+                                  "2010-01-01",
+                                  '2020-01-01')),
+               date_labels = "%Y")+
+  scale_y_continuous(labels = comma)+
+  facet_geo(~State)
+geo_facet_test
+
+```
+

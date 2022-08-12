@@ -7,17 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://antonioalegria.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>test project</title>
-      <link>https://antonioalegria.io/projects/test-project/</link>
-      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://antonioalegria.io/projects/test-project/</guid>
-      <description> Header 1 library(ggplot2) library(magrittr) ggplot(mtcars, aes(x = mpg, y = cyl))+ geom_point()+ theme_minimal() Header 2 Este es un ejemplo de como se vería el mapa
-library(leaflet) m &amp;lt;- leaflet() %&amp;gt;% setView(lng = -71.0589, lat = 42.3601, zoom = 12) m %&amp;gt;% addProviderTiles(providers$CartoDB.Positron) Header 1 </description>
-    </item>
-    
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://antonioalegria.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Twilight Effect on Baby Names</title>
       <link>https://antonioalegria.io/posts/2022/04/the-twilight-effect-on-baby-names/</link>
@@ -37,23 +27,30 @@ library(leaflet) m &amp;lt;- leaflet() %&amp;gt;% setView(lng = -71.0589, lat = 
     </item>
     
     <item>
-      <title>Productores de calabazas</title>
-      <link>https://antonioalegria.io/posts/2021/10/productores-de-calabazas/</link>
+      <title>Productores de calabazas gigantes</title>
+      <link>https://antonioalegria.io/posts/2021/10/productores-de-calabazas-gigantes/</link>
       <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://antonioalegria.io/posts/2021/10/productores-de-calabazas/</guid>
+      <guid>https://antonioalegria.io/posts/2021/10/productores-de-calabazas-gigantes/</guid>
       <description>Giant Pumpkins The Great Pumpkin Commonwealth’s (GPC) mission cultivates the hobby of growing giant pumpkins throughout the world by establishing standards and regulations that ensure quality of fruit, fairness of competition, recognition of achievement, fellowship and education for all participating growers and weigh-off sites.</description>
     </item>
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      <title>Registered Nurses in the United States</title>
+      <link>https://antonioalegria.io/posts/2021/10/registered-nurses-in-the-united-states/</link>
+      <pubDate>Tue, 05 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://antonioalegria.io/posts/2020/12/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>https://antonioalegria.io/posts/2021/10/registered-nurses-in-the-united-states/</guid>
+      <description>The data comes from Data.World</description>
+    </item>
+    
+    <item>
+      <title>The Rolling Stones Billboard Greatest Hits</title>
+      <link>https://antonioalegria.io/posts/2021/09/the-rolling-stones-billboard-greatest-hits/</link>
+      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://antonioalegria.io/posts/2021/09/the-rolling-stones-billboard-greatest-hits/</guid>
+      <description>Peaks Position The Billboard Hot 100 is the music industry standard record chart in the United States for songs, published weekly by Billboard magazine. Chart rankings are based on sales (physical and digital), radio play, and online streaming in the United States.</description>
     </item>
     
     <item>
@@ -62,9 +59,17 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>https://antonioalegria.io/about/</guid>
-      <description>Hugo is the world’s fastest framework for building websites. It is written in Go.
-It makes use of a variety of open source projects including:
-https://github.com/russross/blackfriday https://github.com/alecthomas/chroma https://github.com/muesli/smartcrop https://github.com/spf13/cobra https://github.com/spf13/viper Learn more and contribute on GitHub.</description>
+      <description>Psicólogo experimental y analista de la conducta, ha dirigido investigaciones conductuales y neurofisiológicas para campañas presidenciales y de gobierno en España, Argentina, Guatemala, Bolivia, Estados Unidos y México. Se ha especializado en la optimización de mensajes y contenidos multimedia que buscan transmitir un mensaje a audiencias target. También ha desarrollado técnicas estadísticas para la predicción del voto a partir de encuestas basales y de tracking diario. Su trabajo e investigaciones lo han hecho acreedor de diversos premios y reconocimientos gracias a la implementación de tecnología conductual como una de las formas más precisas para ganar una elección.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://antonioalegria.io/projects/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://antonioalegria.io/projects/</guid>
+      <description>En este blog encontrarás:
+Infografías dateras Tutoriales y tips (TBD) Análisis random de cosas muy random Siempre disponible, excepto cuando no, por este medio.</description>
     </item>
     
   </channel>

@@ -1,6 +1,6 @@
 ---
 title: The Twilight Effect on Baby Names
-author: R package build
+author: Antonio Alegría
 date: '2022-04-05'
 slug: the-twilight-efect-on-baby-names
 categories:
