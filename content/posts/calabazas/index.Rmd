@@ -1,6 +1,6 @@
 ---
 title: Registered Nurses in the United States
-author: R package build
+author: Antonio Alegría
 date: '2021-10-05'
 slug: registered-nurses
 categories:

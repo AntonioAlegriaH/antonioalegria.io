@@ -1,6 +1,6 @@
 ---
 title: Productores de calabazas gigantes
-author: R package build
+author: Antonio Alegría
 date: '2021-10-21'
 slug: productores-de-calabazas
 categories:
