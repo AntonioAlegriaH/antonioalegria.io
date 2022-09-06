@@ -1,0 +1,284 @@
+---
+title: American Migration During Covid19
+author: Antonio Alegría
+date: '2022-08-31'
+slug: american-migration-during-covid19
+categories:
+  - infographic
+  - dataviz
+  - R
+tags:
+  - barplot
+  - maps
+toc: no
+images: ~
+math: true
+---
+```{css, echo=FALSE}
+
+
+img {
+  border-radius: 20px;
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+  margin: 0 5px;
+  max-width: 100%;
+}
+
+
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+pacman::p_load(dplyr,
+               sf,
+               ggplot2,
+               magrittr,
+               readxl,
+               stringr,
+               maps,
+               mapproj,
+               forcats,
+               tools,
+               DT,
+               patchwork
+                 )
+```
+
+## Contexto
+
+Durante la pandemia de COVID-19 existieron muchos movimientos de personas en USA. 
+existen muchas hipótesis que darían explicación a estas mudanzas:
+
+* Movimiento a lugares más baratos. 
+* Migración a estados con tasas bajas de impuestos
+* Planeación familiar
+* Un incremento en empresas que adoptaron esquemas de trabajo remoto
+
+Cualquiera que fuese una razón, lo cierto es que el movimiento de personas se podría afectar el panorama electoral a corto y largo plazo. 
+
+## Data source: 
+
+Trabajaremos con datos de estimación anual de residentes del [U.S. Census Bureau: us census vintage 2021](https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-cities-and-towns.html) para calcular el **porcentaje de cambio poblacional de cada estado durante el periodo: 2020 - 2021** 
+
+
+
+*Source: U.S. Census Bureau*
+
+*Release Date: May 2022*
+
+```{r warning=FALSE, message=FALSE, include=FALSE}
+data <-  readxl::read_xlsx("data/SUB-IP-EST2021-POP.xlsx")
+data_cleannames <- data %>% 
+  rename(geographic_area = "table with row headers in column A and column headers in rows 3 through 4 (leading dots indicate sub-parts)",
+         estimate_base_april_2020 = "...2",
+         population_estimate_july_2020 = "...3",
+         population_estimate_july_2021 = "...4") %>% 
+  slice(4:n()) %>% 
+  mutate(population_estimate_july_2020=as.numeric(population_estimate_july_2020))
+
+data_cleannames[ , 5:6] <- str_split_fixed(data_cleannames$geographic_area, 
+                                    pattern = ",",
+                                    n = 2)  
+# Separate State from town and cities. Because some genius put them togheter
+
+data_ready <- data_cleannames %>% 
+  rename(city_town = "V1",
+         state = "V2")%>% 
+  select(!(geographic_area:estimate_base_april_2020)) %>% 
+  select(state, city_town, everything()) %>% 
+  slice(1:19494)
+  
+data_ready$state <- 
+  str_trim(data_ready$state)
+
+```
+
+
+
+
+```{r warning=FALSE, message=FALSE, echo=FALSE}
+# Calculo de porcentaje de cambio
+data_perc_change <- data_ready %>% 
+  mutate(perc_change = ((population_estimate_july_2021-population_estimate_july_2020)/population_estimate_july_2020*100)
+         ) 
+data_perc_change$perc_change <- round(data_perc_change$perc_change, 1)
+
+
+datatable(data_perc_change, 
+          options = list(
+            columnDefs = list(list(className = 'dt-center', targets=c(3:5))),
+            pageLength = 5,
+            lengthMenu = c(1, 1000, 2000, 3899),
+            initComplete = JS("function(settings, json) {",
+                            "$(this.api().table().header()).css({'color': '#fff'});",
+                            "}"
+              )
+          )
+        )
+
+
+
+```
+
+```{r warning=FALSE, message=FALSE, include=FALSE}
+# From {map} extract polygons 
+us_states <- map_data("state")
+
+# Left join dataset
+data_states_perc_change <- data_perc_change %>% 
+  group_by(state) %>% 
+  summarise(sum_total_2020 = sum(population_estimate_july_2020),
+            sum_total_2021 = sum(population_estimate_july_2021)) %>% 
+  mutate(perc_change = ((sum_total_2021-sum_total_2020)/sum_total_2020*100)
+         ) 
+data_states_perc_change$perc_change <- round(data_states_perc_change$perc_change, 1)
+data_states_perc_change$state <- tolower(data_states_perc_change$state)
+
+# Left Join from two datasets
+data_states_perc_change_joined <- us_states %>% 
+  left_join(data_states_perc_change, by=c("region"="state")) 
+
+
+```
+
+
+```{r warning=FALSE, message=FALSE, include=FALSE}
+# palette: https://coolors.co/1d3557-e63946-ffffff-2a4d14-317b22
+
+
+### State level Calculus 
+
+#* Insert Data from census 
+#* Group Data by state and summarise
+#* Calculate percent change and do some cleaning
+#* Left Join from two datasets
+#* Build map
+
+map_perc_change <- data_states_perc_change_joined %>% 
+ggplot(aes(x=long,y=lat,group=group, fill=perc_change)) +
+  geom_polygon(color = "gray90", size = 0.1) +
+  #coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+  coord_map(projection = "albers", lat0 = 45, lat1 = 55) +
+  labs(title = "¿Qué estados han ganado o perdido más habitantes?",
+       subtitle = "Estimaciones Anuales: April, 2020 - July, 2021")+
+  #scale_fill_continuous(type = "gradient")+
+  #scale_fill_gradient2(low = "red", high = "blue", mid = "white")+
+  #scale_fill_gradient2(low = "grey90", high = "firebrick4", mid = "white",
+   #                    name = "Porcentaje de cambio poblacional:",
+    #                   labels = scales::percent_format(scale = 1))+
+  
+  scale_fill_gradient2(low = "#1d3557", high = "#e63946", mid = "white",
+                       name = "Porcentaje de cambio poblacional:",
+                       labels = scales::percent_format(scale = 1),
+                        )+
+  #scale_fill_brewer("Oranges")+
+  #scale_fill_distiller(palette = "RdPu", direction = 1)+
+  theme(plot.title.position = "plot",
+        plot.title = element_text(size = 36, margin=margin(t = 30,
+                                                           b=10
+                                                           ),
+                                  colour = "#212529",
+                                  hjust = .5),
+        plot.subtitle = element_text(colour = "#333333",
+                                     size = 20,
+                                     lineheight = 20,
+                                     margin=margin(b=50),
+                                     hjust = .5),
+        axis.line=element_blank(),
+        axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title=element_blank(),
+        panel.background=element_blank(),
+        panel.border=element_blank(),
+        panel.grid=element_blank(),
+        legend.position="top",
+        legend.key.height = unit(.8, "lines"),
+        legend.key.width = unit(9, "lines"),
+        legend.title = element_text(colour = "#212529"),
+        legend.background = element_rect(fill = "#CFDDD4", colour = "#CFDDD4"),
+        text = element_text(family = "Roboto Medium", size = 18))+
+  guides(fill = guide_colorsteps(title.position = "top",
+                                 title.hjust = .5, label.hjust = .5))
+
+
+map_perc_change
+#-----------------------------------
+# Chart Bar: porcentaje de cambio poblacional 
+
+#* Filter some data
+#* Clean names
+#* Build Plot 
+
+
+data_states_change <-  data_states_perc_change %>% 
+  filter(!state %in% c("village of islands village, florida", "moore county metropolitan government, tennessee" )) 
+
+data_states_change$state <-  toTitleCase(data_states_change$state)
+  
+
+
+plot_states_change <- data_states_change %>% 
+  ggplot(aes(fct_reorder(state, perc_change),perc_change, fill = perc_change))+
+  geom_col(color = "gray90", size = 0.1)+
+  geom_text(aes(label = round(perc_change, 1),
+                angle = 0,
+                hjust = ifelse(perc_change < 0, 1.25, -0.25),
+                vjust = 0.5),
+            size = 3,
+            color = "#444444") +
+  coord_flip()+
+  theme_minimal()+
+  labs(title = "",
+       subtitle = "",
+       x = "",
+       y = "",
+       caption = "Source: U.S. Census Bureau 
+       chart: antonioalegria.io")+
+  theme(#plot.title.position = "plot",
+        plot.title = element_blank(),
+        plot.subtitle = element_blank(),
+        plot.caption = element_text(colour = "#444444"),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.spacing.x  = unit(10, "cm"),
+        axis.line.x = element_line(colour = "#444444"),
+        text = element_text(family = "Roboto Medium", size = 15),
+        legend.position = "none",
+        #legend.position = "top",
+        #legend.text = element_text(color = "#444444"),
+        #legend.title = element_text(color = "#444444"),
+        #legend.key.height = unit(.5, "lines"),
+        #legend.key.width = unit(5, "lines"),
+        axis.text.y = element_text(),
+        axis.text = element_text(size = 15)  
+        )+
+  scale_y_continuous(labels = scales::percent_format(scale = 1))+
+  scale_fill_gradient2(low = "#1d3557", high = "#e63946", mid = "white",
+                       name = "Porcentaje de cambio poblacional:",
+                       labels = scales::percent_format(scale = 1))
+
+
+  #guides(fill = guide_colorsteps(title.position = "top",
+   #                              title.hjust = .5, label.hjust = .5,)
+
+plot_states_change
+```
+
+# Data Viz
+
+```{r fig.height=20, fig.width=13, echo=FALSE}
+layout <- "
+AAAAAA#
+AAAAAA#
+#BBBB##
+#BBBB##
+#BBBB##
+"
+
+(map_perc_change / plot_states_change)+plot_layout(design = layout ) & theme(plot.background = element_rect(fill = "#CFDDD4", colour = "#F3F7F4" ))
+  
+```
+

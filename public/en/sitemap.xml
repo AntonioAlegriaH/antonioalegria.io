@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://antonioalegria.io/posts/2022/08/american-migration-during-covid19/</loc>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://antonioalegria.io/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -15,8 +18,11 @@
                 href="https://antonioalegria.io/"
                 />
   </url><url>
+    <loc>https://antonioalegria.io/tags/barplot/</loc>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://antonioalegria.io/categories/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -28,26 +34,23 @@
                 href="https://antonioalegria.io/categories/"
                 />
   </url><url>
-    <loc>https://antonioalegria.io/tags/dataviz/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://antonioalegria.io/categories/dataviz/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/categories/infographic/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/tags/lineplot/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <loc>https://antonioalegria.io/tags/maps/</loc>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/posts/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/categories/r/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/tags/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -59,11 +62,14 @@
                 href="https://antonioalegria.io/tags/"
                 />
   </url><url>
-    <loc>https://antonioalegria.io/posts/2022/04/the-twilight-effect-on-baby-names/</loc>
+    <loc>https://antonioalegria.io/tags/dataviz/</loc>
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://antonioalegria.io/tags/barplot/</loc>
-    <lastmod>2022-04-04T00:00:00+00:00</lastmod>
+    <loc>https://antonioalegria.io/tags/lineplot/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://antonioalegria.io/posts/2022/04/the-twilight-effect-on-baby-names/</loc>
+    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://antonioalegria.io/posts/2022/04/land-use-per-100gr-of-protein/</loc>
     <lastmod>2022-04-04T00:00:00+00:00</lastmod>

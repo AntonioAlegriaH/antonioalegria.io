@@ -1,0 +1,16 @@
+---
+title: American Migration During Covid19
+author: Antonio Alegría
+date: '2022-08-31'
+slug: american-migration-during-covid19
+categories:
+  - infographic
+  - dataviz
+  - R
+tags:
+  - barplot
+  - maps
+toc: no
+images: ~
+---
+
