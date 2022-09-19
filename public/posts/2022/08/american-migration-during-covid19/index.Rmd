@@ -14,6 +14,7 @@ toc: no
 images: ~
 math: true
 ---
+
 ```{css, echo=FALSE}
 
 
@@ -29,7 +30,6 @@ img {
 
 ```
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 pacman::p_load(dplyr,
@@ -43,31 +43,38 @@ pacman::p_load(dplyr,
                forcats,
                tools,
                DT,
-               patchwork
+               patchwork,
+               jsonlite
                  )
 ```
 
-## Contexto
+## Contexto Histórico 
 
-Durante la pandemia de COVID-19 existieron muchos movimientos de personas en USA. 
-existen muchas hipótesis que darían explicación a estas mudanzas:
+Una consecuencia directa del COVID-19 fue el movimiento migracional de personas en USA, existen muchas hipótesis que podrían dar una explicación a estas mudanzas repentinas:
 
-* Movimiento a lugares más baratos. 
-* Migración a estados con tasas bajas de impuestos
-* Planeación familiar
-* Un incremento en empresas que adoptaron esquemas de trabajo remoto
+-   Migrar a lugares donde la vivienda es mas barata
+-   Migración a estados con tasas bajas de impuestos
+-   Planeación familiar
+-   El incremento de trabajos remotos que permite un mejor balance de vida.
 
-Cualquiera que fuese una razón, lo cierto es que el movimiento de personas se podría afectar el panorama electoral a corto y largo plazo. 
+Sin embargo, más allá de cualquier hipótesis, lo cierto es que el movimiento de personas tendrá un efecto en el futuro de la distribución territorial del voto.
 
-## Data source: 
+## Data source:
 
-Trabajaremos con datos de estimación anual de residentes del [U.S. Census Bureau: us census vintage 2021](https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-cities-and-towns.html) para calcular el **porcentaje de cambio poblacional de cada estado durante el periodo: 2020 - 2021** 
-
-
+Se trabajó con los datos de estimación anual de residentes del [U.S. Census Bureau: us census vintage 2021](https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-cities-and-towns.html) para calcular el **porcentaje de cambio poblacional de cada estado durante el periodo: 2020 - 2021** y analizar como las personas se han reubicado durante el último año.
 
 *Source: U.S. Census Bureau*
-
 *Release Date: May 2022*
+
+## Cambios de 2020 a 2021
+
+Abajo se incluye una tabla con los resultados de todas las ciudades y su respectivo cambio poblacional.
+
+**Porcentajes positivos indican que la ciudad ganó habitantes respecto a 2020**
+
+**Porcentajes negativos indican que la ciudad perdió habitantes respecto a 2020**
+
+<br>
 
 ```{r warning=FALSE, message=FALSE, include=FALSE}
 data <-  readxl::read_xlsx("data/SUB-IP-EST2021-POP.xlsx")
@@ -96,9 +103,6 @@ data_ready$state <-
 
 ```
 
-
-
-
 ```{r warning=FALSE, message=FALSE, echo=FALSE}
 # Calculo de porcentaje de cambio
 data_perc_change <- data_ready %>% 
@@ -109,15 +113,18 @@ data_perc_change$perc_change <- round(data_perc_change$perc_change, 1)
 
 datatable(data_perc_change, 
           options = list(
+            initComplete = JS(
+              "function(settings, json) {",
+              "$(this.api().table().header()).css({'background-color': '#000',
+              'color': '#fff'});",
+              "}"),
             columnDefs = list(list(className = 'dt-center', targets=c(3:5))),
             pageLength = 5,
-            lengthMenu = c(1, 1000, 2000, 3899),
-            initComplete = JS("function(settings, json) {",
-                            "$(this.api().table().header()).css({'color': '#fff'});",
-                            "}"
-              )
+            lengthMenu = c(1, 1000, 2000, 3899)
+            )
           )
-        )
+        
+        
 
 
 
@@ -141,9 +148,7 @@ data_states_perc_change$state <- tolower(data_states_perc_change$state)
 data_states_perc_change_joined <- us_states %>% 
   left_join(data_states_perc_change, by=c("region"="state")) 
 
-
 ```
-
 
 ```{r warning=FALSE, message=FALSE, include=FALSE}
 # palette: https://coolors.co/1d3557-e63946-ffffff-2a4d14-317b22
@@ -267,7 +272,33 @@ plot_states_change <- data_states_change %>%
 plot_states_change
 ```
 
-# Data Viz
+# Mapeando los movimientos
+
+Una gráfica dice más que mil palabras. A continuación se presenta un contexto más amplio, donde se visualiza el porcentaje de cambio por cada estado:
+
+```{=html}
+<style>
+      .multicolortext {
+        background-image: linear-gradient(to left, #e63946,#1d3557);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: large;
+        font-weight: bold; 
+        text-align: center;
+      }
+
+    </style>
+```
+</head>
+  <body>
+    <p>
+      <center>
+      [ Azul: Menos Personas ----- Rojo: Más Personas ]{.multicolortext}
+      </center>
+    </p>
+</body>
 
 ```{r fig.height=20, fig.width=13, echo=FALSE}
 layout <- "
@@ -282,3 +313,7 @@ AAAAAA#
   
 ```
 
+<br>
+
+La migración parece ir de las costas hacía el centro, ciudades como <b style="color:#1d3557">New York</b> y el <b style="color:#1d3557">District of Columbia</b> perdiendo la mayor cantidad de personas, e <b style="color:#e63946"> Idaho</b> el estado que ha recibido la mayor migración durante todo el año. 
+Estos indicadores son solo el resultado de algo que podría repercutir a corto y largo plazo los eventos políticos que están a la vuelta de la esquina.❏

@@ -4,7 +4,7 @@ aliases:
 - about-hugo
 - contact
 author:
-  name: Hugo Authors
+  name: Antonio Alegría
 date: "2014-04-09"
 title: About
 ---
