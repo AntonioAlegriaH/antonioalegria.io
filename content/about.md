@@ -15,8 +15,8 @@ Su trabajo e investigaciones lo han hecho acreedor de diversos premios y reconoc
 
 En este blog encontrarás:
 
-* Infografías dateras
-* Tutoriales y tips (TBD)
+* Infographics y DataViz
+* Tutoriales y tips 
 * Análisis random de cosas muy random
 
 Siempre disponible, excepto cuando no, [por este medio](mailto:antonioalegriah@gmail.com).
