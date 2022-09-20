@@ -279,11 +279,14 @@ REPEATAG %>%
 
 ##  ¿Preferiría entonces haber votado por Sandra Torres?
 
-B6. Mencionó que votó por Alejandro Giammatei, y que si hoy hubiera elecciones votaría no votaría nuevamente por él, ¿preferiría entonces haber votado por Sandra Torres?
+B6. Mencionó que votó por Alejandro Giammatei, y que si hoy hubiera elecciones no votaría nuevamente por él, ¿preferiría entonces haber votado por Sandra Torres?
 
 
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
-VOTESANDRA <- VariablePercent(myDF = data, myCol = B6)
+
+data_st <- data %>% 
+  filter(B4 == "Alejandro Giammattei (VAMOS)")
+VOTESANDRA <- VariablePercent(myDF = data_st, myCol = B6)
 kable (VOTESANDRA)
 VOTESANDRA %>% 
   ggplot(aes(fct_reorder(Option, percent), percent))+
@@ -371,7 +374,11 @@ text_df_n3 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
 B7. Mencionó que votó por Sandra Torres, ¿si hoy hubiera elecciones votaría nuevamente por Sandra Torres para ser Presidente de Guatemala?
 
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
-REPEATVOTE <- VariablePercent(myDF = data, myCol = B7)
+
+data_st_2 <- data %>% 
+  filter(B4 == "Sandra Torres (UNE)")
+
+REPEATVOTE <- VariablePercent(myDF = data_st_2, myCol = B7)
 kable (REPEATVOTE)
 REPEATVOTE %>% ggplot(aes(fct_reorder(Option, percent), percent))+
   geom_col(fill = "#219EBC")+
