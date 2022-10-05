@@ -7,16 +7,47 @@ h1   {color: white;
 	  font-family: helvetica;
 	  font-size: 500%;
 	  text-align:center;
-	  background: linear-gradient(to right, #642b73, #c6426e);
-	  border: 2px solid powderblue;  
 	  margin: 100px;}
 p    {color: red;}
+
+
+
+.spinner {
+  background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));
+  width: 1000px;
+  height: 1000px;
+  animation: spinning82341 1.7s linear infinite;
+  text-align: center;
+  border-radius: 500px;
+  filter: blur(1px);
+  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+}
+
+.spinner1 {
+  background-color: rgb(36, 36, 36);
+  width: 1000px;
+  height: 1000px;
+  border-radius: 500px;
+  filter: blur(100px);
+}
+
+@keyframes spinning82341 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 </style>
 </head>
 <body>
 
-<h1>DataViz</h1>
+<h1>Soon...</h1>
 <p></p>
+  <center> 
+  <div class="spinner">
+    <div class="spinner1"></div>
+  </div> 
+</center>
 
 </body>
 </html>
