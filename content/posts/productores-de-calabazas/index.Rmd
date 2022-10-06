@@ -14,11 +14,40 @@ tags:
 toc: no
 images: ~
 ---
+
+```{css plot styles, echo = FALSE}
+
+img {
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
+}
+
+img:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  border-radious 20px;
+  z-index:1;
+}
+
+img:active {
+  transform: translateY(-1px);
+}
+
+```
+
+
 # Giant Pumpkins
 
 The Great Pumpkin Commonwealth's (GPC) mission cultivates the hobby of growing giant pumpkins throughout the world by establishing standards and regulations that ensure quality of fruit, fairness of competition, recognition of achievement, fellowship and education for all participating growers and weigh-off sites.
 
-
+<br>
+<br>
 ```{r include=FALSE}
 
 pacman::p_load(tidyverse,
@@ -89,3 +118,5 @@ pumpkins_plot <- pumpkins_Country_Year %>%
 pumpkins_plot
 ```
 
+<br>
+<br>
