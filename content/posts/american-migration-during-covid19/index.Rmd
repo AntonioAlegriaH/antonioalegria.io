@@ -30,7 +30,7 @@ img {
 
 img:hover {
   opacity: 1;
-  transform: scale(1.3);
+  transform: scale(1.1);
   border-radious 20px;
   z-index:1;
 }
