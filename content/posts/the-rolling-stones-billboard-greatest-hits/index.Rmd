@@ -16,10 +16,38 @@ toc: no
 images: ~
 ---
 
+```{css plot styles, echo = FALSE}
+
+img {
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
+}
+
+img:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  border-radious 20px;
+  z-index:1;
+}
+
+img:active {
+  transform: translateY(-1px);
+}
+
+```
+
+
 # Peaks Position 
 
 
 The Billboard Hot 100 is the music industry standard record chart in the United States for songs, published weekly by Billboard magazine. Chart rankings are based on sales (physical and digital), radio play, and online streaming in the United States.
+
 
 
 
@@ -91,6 +119,10 @@ rs_plot <- billboard_TRS |>
 
 ```
 
+
+
+<br>
+<br>
 ```{r message=FALSE, warning=FALSE, echo=FALSE,fig.height=10, fig.width=9}
 
 rs_plot +
@@ -101,3 +133,5 @@ inset_element(p = my_image,
 
 ```
 
+<br>
+<br>
