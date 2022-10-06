@@ -34,16 +34,27 @@ Migrar a lugares donde la vivienda es mas barata Migración a estados con tasas 
 
 <style type="text/css">
 
-
 img {
-  border-radius: 20px;
-  background: #e0e0e0;
-  box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
-  margin: 0 5px;
-  max-width: 100%;
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
 }
 
+img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  border-radious 20px;
+  z-index:1;
+}
+
+img:active {
+  transform: translateY(-1px);
+}
 
 </style>
 <div id="contexto-histórico" class="section level2">
@@ -96,8 +107,11 @@ img {
 </center>
 </p>
 </body>
-<p><img src="https://antonioalegria.io/posts/2022/08/american-migration-during-covid19/index_files/figure-html/unnamed-chunk-6-1.png" width="1248" /></p>
-<p><br></p>
+<p><br>
+<br>
+<img src="https://antonioalegria.io/posts/2022/08/american-migration-during-covid19/index_files/figure-html/unnamed-chunk-6-1.png" width="1248" />
+<br>
+<br></p>
 <p>La migración parece ir de las costas hacía el centro, ciudades como <b style="color:#1d3557">New York</b> y el <b style="color:#1d3557">District of Columbia</b> perdiendo la mayor cantidad de personas, e <b style="color:#e63946"> Idaho</b> el estado que ha recibido la mayor migración durante todo el año.
 Estos indicadores son solo el resultado de algo que podría repercutir a corto y largo plazo los eventos políticos que están a la vuelta de la esquina.❏</p>
 </div>

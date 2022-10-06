@@ -279,11 +279,14 @@ REPEATAG %>%
 
 ##  ¿Preferiría entonces haber votado por Sandra Torres?
 
-B6. Mencionó que votó por Alejandro Giammatei, y que si hoy hubiera elecciones votaría no votaría nuevamente por él, ¿preferiría entonces haber votado por Sandra Torres?
+B6. Mencionó que votó por Alejandro Giammatei, y que si hoy hubiera elecciones no votaría nuevamente por él, ¿preferiría entonces haber votado por Sandra Torres?
 
 
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
-VOTESANDRA <- VariablePercent(myDF = data, myCol = B6)
+
+data_st <- data %>% 
+  filter(B4 == "Alejandro Giammattei (VAMOS)")
+VOTESANDRA <- VariablePercent(myDF = data_st, myCol = B6)
 kable (VOTESANDRA)
 VOTESANDRA %>% 
   ggplot(aes(fct_reorder(Option, percent), percent))+
@@ -371,7 +374,11 @@ text_df_n3 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
 B7. Mencionó que votó por Sandra Torres, ¿si hoy hubiera elecciones votaría nuevamente por Sandra Torres para ser Presidente de Guatemala?
 
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
-REPEATVOTE <- VariablePercent(myDF = data, myCol = B7)
+
+data_st_2 <- data %>% 
+  filter(B4 == "Sandra Torres (UNE)")
+
+REPEATVOTE <- VariablePercent(myDF = data_st_2, myCol = B7)
 kable (REPEATVOTE)
 REPEATVOTE %>% ggplot(aes(fct_reorder(Option, percent), percent))+
   geom_col(fill = "#219EBC")+
@@ -392,8 +399,7 @@ REPEATVOTE %>% ggplot(aes(fct_reorder(Option, percent), percent))+
 
 ##  Razón por la que no votaría nuevamente por Sandra Torres
 
-B7. Mencionó que votó por Sandra Torres, ¿si hoy hubiera elecciones votaría nuevamente por Sandra Torres para ser Presidente de Guatemala?
-
+B8. ¿Cuál es la principal razón por la que votaría nuevamente por Sandra Torres?
 
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
  
@@ -909,8 +915,8 @@ OPINION_8 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
 ## Pedro Brolo
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
 OPINION_9 <- VariablePercent(myDF = data, myCol = B12_9)
-kable (KNOWLEDGE_9)
-KNOWLEDGE_9 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
+kable (OPINION_9)
+OPINION_9 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
   geom_col(fill = "#219EBC")+
   geom_text(aes(label = percent,
                 hjust = -0.3 
@@ -928,8 +934,8 @@ KNOWLEDGE_9 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
 ## Carlos Pineda
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
 OPINION_10 <- VariablePercent(myDF = data, myCol = B12_10)
-kable (KNOWLEDGE_10)
-KNOWLEDGE_10 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
+kable (OPINION_10)
+OPINION_10 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
   geom_col(fill = "#219EBC")+
   geom_text(aes(label = percent,
                 hjust = -0.3 
@@ -947,8 +953,8 @@ KNOWLEDGE_10 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
 ## Manuel Conde
 ```{r echo = FALSE,message=FALSE, warning=FALSE}
 OPINION_11 <- VariablePercent(myDF = data, myCol = B12_11)
-kable (KNOWLEDGE_11)
-KNOWLEDGE_11 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
+kable (OPINION_11)
+OPINION_11 %>% ggplot(aes(fct_reorder(Option, percent), percent))+
   geom_col(fill = "#219EBC")+
   geom_text(aes(label = percent,
                 hjust = -0.3 

@@ -17,16 +17,27 @@ math: true
 
 ```{css, echo=FALSE}
 
-
 img {
-  border-radius: 20px;
-  background: #e0e0e0;
-  box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
-  margin: 0 5px;
-  max-width: 100%;
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
 }
 
+img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  border-radious 20px;
+  z-index:1;
+}
+
+img:active {
+  transform: translateY(-1px);
+}
 
 ```
 
@@ -300,6 +311,8 @@ Una gráfica dice más que mil palabras. A continuación se presenta un contexto
     </p>
 </body>
 
+<br>
+<br>
 ```{r fig.height=20, fig.width=13, echo=FALSE}
 layout <- "
 AAAAAA#
@@ -312,7 +325,7 @@ AAAAAA#
 (map_perc_change / plot_states_change)+plot_layout(design = layout ) & theme(plot.background = element_rect(fill = "#CFDDD4", colour = "#F3F7F4" ))
   
 ```
-
+<br>
 <br>
 
 La migración parece ir de las costas hacía el centro, ciudades como <b style="color:#1d3557">New York</b> y el <b style="color:#1d3557">District of Columbia</b> perdiendo la mayor cantidad de personas, e <b style="color:#e63946"> Idaho</b> el estado que ha recibido la mayor migración durante todo el año. 
