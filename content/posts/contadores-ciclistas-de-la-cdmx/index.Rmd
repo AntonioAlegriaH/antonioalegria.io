@@ -428,7 +428,7 @@ plot_anual
 
 **Reforma** al estar ubicada en el centro de la ciudad ha contabilizado la mayor cantidad de ciclistas de forma anual, sin embargo a mediados de 2020 dejó de registrar datos, quizá por algún falló en el sistema. 
 
-**Patriotismo y Revolución** cuentan con una afluencia similar con máximos anuales de más de 300,000 ciclistas.
+**Patriotismo y Revolución** cuentan con una afluencia similar con máximos anuales de más de **300,000** ciclistas.
 
 <br>
 <br>
@@ -935,6 +935,7 @@ plot_daily_stream_patch+inset_element(map_buff_patch,
 <br>
 
 Nunca sobrarán datos cuando se habla de movilidad sustentable.❏
+
 
 <br>
 <br>
