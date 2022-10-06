@@ -16,11 +16,38 @@ output:
   html_document:
     code_folding: hide
 ---
+```{css plot styles, echo = FALSE}
+
+img {
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
+}
+
+img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  border-radious 20px;
+  z-index:1;
+}
+
+img:active {
+  transform: translateY(-1px);
+}
+
+```
 
 ## Animal based products use too much land!!!
 
 Day 1 of the #30DayChartChallenge 📅 Part-to-Whole! 
 
+<br>
+<br>
 ```{r echo=FALSE, fig.height=10, fig.width=7, message=FALSE, warning=FALSE, collapse=TRUE}
 library(tidyverse)
 library(scales)
@@ -88,3 +115,5 @@ plot_land_use
 
 ```
 
+<br>
+<br>
