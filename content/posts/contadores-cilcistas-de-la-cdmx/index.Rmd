@@ -935,7 +935,7 @@ plot_daily_stream_patch+inset_element(map_buff_patch,
 
 <br>
 
-Nunca sobrarán datos cuando se habla de movilidad sustentable.❏
+Nunca sobrarán datos cuando se trata de movilidad sustentable.❏
 
 
 <br>
