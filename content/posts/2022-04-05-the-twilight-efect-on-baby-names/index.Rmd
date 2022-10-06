@@ -13,12 +13,38 @@ tags:
 toc: no
 images: ~
 ---
+```{css plot styles, echo = FALSE}
+
+img {
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
+}
+
+img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  border-radious 20px;
+  z-index:1;
+}
+
+img:active {
+  transform: translateY(-1px);
+}
+
+```
 
 ## The increase is only apparent on babies named Isabella. 
 
 Day 3 of the #30DayChartChallenge 📅 Historical! 
 
-
+<br>
+<br>
 ```{r echo=FALSE, fig.height=9, fig.width=11, message=FALSE, warning=FALSE, collapse=TRUE}
 library(babynames)
 library(ggplot2)
@@ -114,3 +140,5 @@ theatrically on November 21, 2008",) +
 twilight_plot  
 ```
 
+<br>
+<br>
