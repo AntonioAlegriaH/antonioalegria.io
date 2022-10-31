@@ -1,5 +1,5 @@
 ---
-title: Contadores Cilcistas de la CDMX
+title: Contadores Ciclistas de la CDMX
 author: Antonio Alegría
 date: '2022-10-06'
 slug: contadores-cilcistas-de-la-cdmx
@@ -224,7 +224,7 @@ data_ciclo_buff <- ciclo_buff_500 %>%
 
 ```
 
-## ¿Cuantos ciclistas ciculan diario en las avenidas de Reforma, Patriotismo y Revolución?
+## ¿Cuántos ciclistas ciculan diariamente sobre las avenidas de Reforma, Patriotismo y Revolución?
 
 
 De acuerdo a las cifras oficiales, la ciudad tiene un registro de **90** ciclovías distribuidas en todo su territorio, de las cuales solo **80** se encuentran activas y funcionales en 2022. 
