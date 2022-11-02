@@ -61,4 +61,22 @@ This post will archive my personal progress.
 
 ## Day 2: Lines
 
-*Not available yet*
+>The Nazca Lines are a group of geoglyphs made in the soil of the Nazca Desert in southern Perú. They were created between 500 BCE and 500 CE  by people making depressions or shallow incisions in the desert floor, removing pebbles and leaving differently colored dirt exposed. There are two major phases of the Nazca lines, Paracas phase, from 400 to 200 BCE, and Nazca phase, from 200 BCE to 500 CE. In the years leading up to 2020, between 80 and 100 new figures had been found with the use of drones, and archaeologists believe that there are more to be found.
+
+SHP data came from: [www.geogpsperu.com](https://www.geogpsperu.com/2018/07/mapa-de-las-lineas-de-nazca-ministerio.html)
+
+<br>
+<br>
+
+![🇵🇪](/./30daysmap2022/day2-lines.png)
+
+<br>
+<br>
+
+Other Nazca lines:
+
+<br>
+
+![🇵🇪](/./30daysmap2022/day2-lines-other.png)
+
+<br>
