@@ -80,3 +80,20 @@ Other Nazca lines:
 ![🇵🇪](/./30daysmap2022/day2-lines-other.png)
 
 <br>
+
+
+## Day 3: Green
+
+>Argentinian Yerba Mate it's a plant grown and processed in the provinces Misiones y Corrientes. The leaves can be steeped in hot water to make a beverage known as mate. Brewed cold, it is used to make tereré. The flavor resembles an infusion of vegetables, herbs, and is reminiscent of some varieties of green tea. According to data from the Departamento de Estimaciones Agricolas and Instituto de la Yerma Mate, between 1969 to 2019, Argentina produced more than 20 million tonnes of yerba.
+
+Datsets: [Departamento de Estimacones Agricolas](https://datos.gob.ar/dataset/agroindustria-agricultura---estimaciones-agricolas/archivo/agroindustria_95d066e6-8a0f-4a80-b59d-6f28f88eacd5) y del [Instituto Nacional de la Yerba Mate](https://inym.org.ar/publicaciones.html)
+
+Geometries: [Portal de datos abiertos de Argentina](https://datos.gob.ar/dataset/jgm-servicio-normalizacion-datos-geograficos/archivo/jgm_8.26)
+
+Matecito Illustration: [María Laura Villanueva (MLV)](https://mlvvirtual.com/)
+
+<br> 
+
+![🧉](/./30daysmap2022/day4-green.png)
+
+<br> 
