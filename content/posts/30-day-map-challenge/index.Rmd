@@ -106,3 +106,6 @@ Matecito Illustration: [María Laura Villanueva (MLV)](https://mlvvirtual.com/)
 
 Raster: [naturalearthdata.com/](https://www.naturalearthdata.com/downloads/)
 
+<br> 
+
+![🌊](/./30daysmap2022/day7-raster.png)
