@@ -104,8 +104,22 @@ Matecito Illustration: [María Laura Villanueva (MLV)](https://mlvvirtual.com/)
 
 >Blended depth colors and relief shading of the ocean bottom derived from CleanTOPO2 data. The ocean color extends beneath land areas as a flat tint—mask it with the 10m Natural Earth vector shoreline, or a shoreline from another data source.
 
-Raster: [naturalearthdata.com/](https://www.naturalearthdata.com/downloads/)
+Raster: [naturalearthdata.com](https://www.naturalearthdata.com/downloads/)
 
 <br> 
 
 ![🌊](/./30daysmap2022/day7-raster.png)
+
+<br>
+
+## Day 10: Bad Map
+
+> A USA Choropleth map with alpha value below 0.01 
+ 
+Data [US Census Bureau](https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-cities-and-towns.html)
+
+<br>
+
+![If you squint hard enough, it might look good](/./30daysmap2022/day10-badmap.png)
+
+The real post -> [American Migration During Covid19](http://bit.ly/3tkrIM4)
