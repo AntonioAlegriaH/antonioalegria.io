@@ -123,3 +123,20 @@ Data [US Census Bureau](https://www.census.gov/data/tables/time-series/demo/pope
 ![If you squint hard enough, it might look good](/./30daysmap2022/day10-badmap.png)
 
 The real post -> [American Migration During Covid19](http://bit.ly/3tkrIM4)
+
+
+
+
+<br>
+
+## Day 16: Minimal
+
+> Unrealized DC Metro map designs. Although Massimo Vignelli, while at Unimark International, designed the signage for the Washington DC Metro subway in 1968, he didn’t design the map (which was designed by Lance Wyman). 
+ 
+Data [Open Data DC](https://opendata.dc.gov/datasets/DCGIS::metro-lines/explore?location=38.892509%2C-77.020630%2C13.00)
+
+<br>
+
+![Ⓜ️🚇](/./30daysmap2022/day16-minimal.png)
+
+You can check the original designs here -> [Vignelli Center](https://vignellicenter.tumblr.com/post/173781335542/found-in-the-archives-unrealized-dc-metro-map) 
