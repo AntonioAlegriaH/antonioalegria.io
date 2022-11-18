@@ -140,3 +140,18 @@ Data [Open Data DC](https://opendata.dc.gov/datasets/DCGIS::metro-lines/explore?
 ![Ⓜ️🚇](/./30daysmap2022/day16-minimal.png)
 
 You can check the original designs here -> [Vignelli Center](https://vignellicenter.tumblr.com/post/173781335542/found-in-the-archives-unrealized-dc-metro-map) 
+
+
+<br>
+
+## Day 18: Blue
+
+> Maps that show future coastal flood risk (including areas affected by
+coastal storm surges combined with sea level rise)
+ 
+Data [NYC Open Data](https://data.cityofnewyork.us/Environment/Sea-Level-Rise-Maps-2050s-500-year-Floodplain-/qwca-zqw3)
+
+<br>
+
+![🌊🐟](/./30daysmap2022/day18-blue.png)
+
