@@ -160,7 +160,7 @@ Data [NYC Open Data](https://data.cityofnewyork.us/Environment/Sea-Level-Rise-Ma
 
 ## Day 23: Movement
 
-> Maps that show daily ridership of Mexico City metro system. 
+> Map with daily ridership from each station of Mexico City metro system. 
  
 Data [Portal de datos abiertos de la CDMX](https://datos.cdmx.gob.mx/dataset/afluencia-diaria-del-metro-cdmx)
 
