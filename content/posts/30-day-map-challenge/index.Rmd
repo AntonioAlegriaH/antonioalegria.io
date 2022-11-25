@@ -168,3 +168,16 @@ Data [Portal de datos abiertos de la CDMX](https://datos.cdmx.gob.mx/dataset/afl
 
 ![Ⓜ️🚆](/./30daysmap2022/day23-movement.gif)
 
+<br>
+
+## Day 25: 2 Colours
+
+> National cycle network routes and quiet routes for local walking or cycling within the Edinburgh Council area. 
+ 
+Data: 
+[National Network](https://opendata.scot/datasets/city+of+edinburgh+council-national+cycle+network/) + [Quiet routes](https://opendata.scot/datasets/city+of+edinburgh+council-quiet+routes/)
+
+<br>
+
+![🏴 🚲](/./30daysmap2022/day25-2colors.png)
+
