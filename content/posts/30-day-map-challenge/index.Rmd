@@ -181,3 +181,25 @@ Data:
 
 ![🏴 🚲](/./30daysmap2022/day25-2colors.png)
 
+<br>
+
+## Day 29: Out
+
+... of my comfort zone
+
+> Barcelona elevation map with rayshader. 
+ 
+Data: 
+
+* [gicoR](https://ropengov.github.io/giscoR/index.html) 
+
+* [elevatr](https://github.com/jhollist/elevatr)
+
+* [rayshader](https://www.rayshader.com/index.html)
+
+
+
+<br>
+
+![🗺🏔💻](/./30daysmap2022/day29-out.png)
+
