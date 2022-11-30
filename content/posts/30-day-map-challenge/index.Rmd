@@ -203,3 +203,27 @@ Data:
 
 ![🗺🏔💻](/./30daysmap2022/day29-out.png)
 
+<br>
+
+## Day 29: Remix
+
+Last Day!
+
+> Estimated population density per grid-cell.The units are number of people per square kilometer. 
+ 
+ 
+Data: 
+
+* [World Pop Hub](https://hub.worldpop.org/geodata/summary?id=41389) 
+
+
+Remix is based on [How wet is it really?](https://twitter.com/JessWhoMaps/status/1589564901412196354?s=20&t=9kxCjyF32gK32yGvEvG4dw) from [JessWhoMaps](https://twitter.com/JessWhoMaps)
+
+
+<br>
+
+![🇩🇪👥](/./30daysmap2022/day30-remix.png)
+
+<br>
+
+..See you next year.  
