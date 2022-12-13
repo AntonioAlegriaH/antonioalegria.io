@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Poppins;
+  font-weight: bold;
+	line-height: .5;
+  background-color: #f1f1f1;
+}
+ /* background: linear-gradient(180deg, #000428 10%, #004e92 50%, #4BB3FD 100%);
+
+
+/* text style */
+.hit-the-floor {
+  color: #222222;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: Poppins;
+  font-weight: bold;
+  text-shadow: 
+    0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9, 
+    0 3px 0 #bbb, 
+    0 4px 0 #b9b9b9, 
+    0 5px 0 #aaa, 
+    0 6px 1px rgba(0,0,0,.1), 
+    0 0 5px rgba(0,0,0,.1), 
+    0 1px 3px rgba(0,0,0,.3), 
+    0 3px 5px rgba(0,0,0,.2), 
+    0 5px 10px rgba(0,0,0,.25), 
+    0 10px 10px rgba(0,0,0,.2), 
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+.hit-the-floor {
+  text-align: center;
+}
+
+img {
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 3px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.9; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1.1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 55px;
+  cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="hit-the-floor"; style="text-align:center">
+  <h1>GALLERY</h1>
+  <p>Click & scroll for better view:</p>
+</div>
+
+<!-- The four columns -->
+<div class="row">
+  <div class="column">
+    <img src="blue-sea-level_final.png" alt="NYC Sea Level Rise" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="morocco-pop-op3.png" alt="Morocco Density Population" style="width: 100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="usa-nurses.png" alt="Nurses Historic Data" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="day29-out.png" alt="Raytracing Elevation Map of Barcelora" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="day30-remix.png" alt="Germany Population Density" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="contadores-ciclistas.png" alt="Cyclist Count in Mexico City" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="test_2.png" alt="Argentinian Yerba Mate Production" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="day23-movement.gif" alt="One Year Affluence in Mexico City Metro" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="baby-names.png" alt="Lights" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="dc_metro_5.png" alt="DC Metro Map: Based on Massimo Vignelli Design" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column"> 
+    <img src="giant-pumpinks.png" alt="Giant Pumpkins", style="width: 100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="Edinburgh-cycle.png" alt="Edinburgh Cycle Network" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="usa-migration-covid.png" alt="American Migration During Covid19" style="width:100%" onclick="myFunction(this);">
+  </div>
+
+ 
+
+</div>
+
+
+
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:100%">
+  <div id="imgtext"></div>
+</div>
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+
+</body>
+</html>
