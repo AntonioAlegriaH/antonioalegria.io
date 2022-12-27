@@ -168,9 +168,9 @@ disableHugoGeneratorInject = false
     weight     = 1
 
    [[menu.main]]
-    identifier = "gallery"
+    identifier = "gallery2"
     name       = "Gallery"
-    url        = "gallery/"
+    url        = "gallery2/"
     weight     = 2
    [[menu.main]]
     identifier = "projects"
