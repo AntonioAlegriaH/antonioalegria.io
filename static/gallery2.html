@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DataViz Gallery</title>
+    <style>
+
+        
+         .container {
+            display: flex; /* Use flexbox layout for the images */
+            flex-wrap: wrap; /* Wrap images onto multiple rows if necessary */
+            align-items: center; /* Center images vertically */
+            justify-content: space-between; /* Add space between images */
+            margin: 30px; /* Add a margin around the container */
+            margin-bottom: 250px;   
+            outline: 2px solid;
+            outline-color: #536976;
+            outline-width: 2px;
+            border-radius: 15px;
+            
+        }
+        
+        .header {
+            display: flex;
+            align-items: right;
+            justify-content: space-between; /* Align the elements within the header evenly along the main axis, with equal space between them */
+            background: #0000ff;
+            color: #555555;
+            padding: 20px;
+            position: fixed; /* Add a fixed position */
+            top: 10; /* Place the header at the top of the viewport */
+            width: 100%; /* Make the header the same width as the viewport */
+            z-index: 10; /* Give the header a high z-index value */
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: 0.2s ease;
+            }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+
+        .back-button svg {
+            margin-right: 10px;
+        }
+
+
+      /*  * {
+            font-family:Bungee;
+        }*/
+
+        /*https://techstacker.com/gradient-text-color-css/*/
+
+        h1 {
+            font-size: 100px;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+            color: #333333;
+            text-align: center;
+            font-family: Bungee Shade;
+            font-size: 72px;
+            background: linear-gradient(to right, #536976, #292e49);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+
+        h3{
+            font-size: 20px;
+            font-weight: lighter;
+            color: #333;
+            font-family: Bungee;
+            /*font-family: 'Nytimes', serif; */
+        }
+
+
+        .image {
+            width: 320px; /* Set a fixed width for the images */
+            height: 320px; /* Set a fixed height for the images */
+            margin: 36px; /* Reduce the margin around each image */
+            overflow: hidden; /* Hide any overflow */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add a box shadow */
+            transition: 0.3s; /* Add a transition effect on hover */
+            cursor: pointer; /* Change the cursor to a pointer on hover */
+            border-radius: 10px;
+            
+            
+        }
+
+        .image:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Increase the shadow on hover */
+            transform: scale(1.1); /* Scale up the image on hover */
+        }
+
+        .image img {
+           /*  width: auto; img inside fit */
+          /*  height: 100%;  img inside fit */
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            
+        }
+
+        .image .caption {
+            display: none; /* Hide the caption by default */
+            position: absolute; /* Position the caption */
+            bottom: 0; /* Place the caption at the bottom of the image */
+            background: #536976; /* Make the caption background semi-transparent */
+            color: #f1f1f1; /* Set the text color */
+            width: 100%; /* Make the caption the same width as the image */
+            padding: 10px; /* Add padding to the caption */
+        }
+
+        .image:hover .caption {
+            display: block; /* Show the caption on hover */
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; /* Hide the modal by default */
+            position: fixed; /* Make the modal fixed to the viewport */
+            z-index: 1; /* Make the modal appear above other elements */
+            padding-top: 50px; /* Add some space between the top margin and the image */
+            left: 0;
+            top: 0;
+            width: 100%; /* Make the modal the same width as the viewport */
+            height: 100%; /* Make the modal the same height as the viewport */
+            overflow: auto; /* Add scrollbars if necessary */
+            background-color: rgba(0, 0, 0, 0.4); /* Make the modal background semi-transparent */
+        }
+
+        /* Modal content styling */
+        .modal-content {
+            position: relative; /* Position the modal content */
+            display: block; /* Make the modal content a block-level element */
+            margin: auto; /* Center the mod
+         /* Set a maximum width for the modal content */
+            max-height: 90%; /* Set a maximum height for the modal content */
+            object-fit: contain; /* Fit the image within the viewport while preserving the aspect ratio */
+            border-radius: 10px;
+        }
+
+        .modal-caption {
+            display: none;
+            position: sticky;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Make the caption background semi-transparent */
+            color: #f3f0f0; /* Set the text color to white */
+            width: 50%;
+            padding: 10px;
+            font-family: "Open Sans", sans-serif; /* Use the Open Sans font */
+            
+        }
+
+        /* Close button styling */
+        .close {
+            color: #f3f0f0; /* Set the text color of the close button */
+            float: right; /* Float the close button to the right */
+            font-size: 70px; /* Increase the font size of the close button */
+            font-weight: bold; /* Make the close button text bold */
+            padding-right: 50px;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: #000; /* Change the text color of the close button on hover */
+        text-decoration: none; /* Remove underlines from links */
+        cursor: pointer; /* Change the cursor to a pointer on hover */
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            color: #f3f0f0;
+        }
+        
+        .footer-distributed {
+         /*   background-color: #292c2f; nyt colors */ 
+            background-color: #292e49;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            width: 100%;
+            text-align: left;
+            font: normal 16px sans-serif;
+            padding: 45px 50px;
+        }
+
+        .footer-distributed .footer-left p {
+            color: #8f9296;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* Footer links */
+
+        .footer-distributed p.footer-links {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0 0 10px;
+            padding: 0;
+            transition: ease .25s;
+        }
+
+        .footer-distributed p.footer-links a {
+            display: inline-block;
+            line-height: 1.8;
+            text-decoration: none;
+            color: inherit;
+            transition: ease .25s;
+        }
+
+        .footer-distributed .footer-links a:before {
+            content: "·";
+            font-size: 20px;
+            left: 0;
+            color: #fff;
+            display: inline-block;
+            padding-right: 5px;
+        }
+
+        .footer-distributed .footer-links .link-1:before {
+            content: none;
+        }
+
+        .footer-distributed .footer-right {
+            float: right;
+            margin-top: 6px;
+            max-width: 180px;
+        }
+
+        .footer-distributed .footer-right a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #292e49;
+            border-radius: 2px;
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 35px;
+            margin-left: 3px;
+            transition:all .25s;
+        }
+
+        .footer-distributed .footer-right a:hover{transform:scale(1.3); -webkit-transform:scale(1.3);}
+
+        .footer-distributed p.footer-links a:hover{text-decoration:underline;transform:scale(1.1); -webkit-transform:scale(1.1);}
+
+        /* Media Queries */
+
+        @media (max-width: 600px) {
+            .footer-distributed .footer-left, .footer-distributed .footer-right {
+                text-align: center;
+            }
+            .footer-distributed .footer-right {
+                float: none;
+                margin: 0 auto 20px;
+            }
+            .footer-distributed .footer-left p.footer-links {
+                line-height: 1.8;
+            }
+        }
+                
+    </style>
+
+</head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton|Bungee|Bungee Shade|Antic Didone|Asset|Abril Fatface">
+    <body>
+        <header>
+            <a href="javascript:history.back()" class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="#555555"/>
+                </svg>
+            </a>
+
+            <h1><center>DataViz Gallery</center></h1>
+            <h3><center></center></h3>
+
+
+
+        </header>
+        
+
+        <div class="container">
+            <div class="image" onclick="openModal(1)">
+                <img src="image1.png" alt="Image 1" id="image1">
+                <div class="caption">Caption 1</div>
+            </div>
+            <div class="image" onclick="openModal(2)">
+                <img src="image2.png" alt="Image 2" id="image2">
+                <div class="caption">Caption 2</div>
+            </div>
+            <div class="image" onclick="openModal(3)">
+                <img src="image3.png" alt="Image 3" id="image3">
+                <div class="caption">Caption 3</div>
+            </div>
+            <div class="image" onclick="openModal(4)">
+                <img src="image4.png" alt="Image 4" id="image4">
+                <div class="caption">Caption 1</div>
+            </div>
+            <div class="image" onclick="openModal(5)">
+                <img src="image5.png" alt="Image 5" id="image5">
+                <div class="caption">Caption 2</div>
+            </div>
+            <div class="image" onclick="openModal(6)">
+                <img src="image6.gif" alt="Image 6" id="image6">
+                <div class="caption">Caption 3</div>
+            </div>
+            <div class="image" onclick="openModal(7)">
+                <img src="image7.png" alt="Image 7" id="image7">
+                <div class="caption">Caption 1</div>
+            </div>
+            <div class="image" onclick="openModal(8)">
+                <img src="image8.png" alt="Image 8" id="image8">
+                <div class="caption">Caption 2</div>
+            </div>
+            <div class="image" onclick="openModal(9)">
+                <img src="image9.png" alt="Image 9" id="image9">
+                <div class="caption">Caption 3</div>
+            </div>
+            <div class="image" onclick="openModal(10)">
+                <img src="image10.png" alt="Image 10" id="image10">
+                <div class="caption">Caption 1</div>
+            </div>
+            <div class="image" onclick="openModal(11)">
+                <img src="image11.png" alt="Image 11" id="image11">
+                <div class="caption">Caption 2</div>
+            </div>
+            <div class="image" onclick="openModal(12)">
+                <img src="image12.png" alt="Image 12" id="image12">
+                <div class="caption">Caption 3</div>
+            </div>
+            <div class="image" onclick="openModal(13)">
+                <img src="image13.png" alt="Image 13" id="image13">
+                <div class="caption">Caption 1</div>
+            </div>
+            <div class="image" onclick="openModal(14)">
+                <img src="image14.png" alt="Image 14" id="image14">
+                <div class="caption">Caption 2</div>
+            </div>
+            <div class="image" onclick="openModal(15)">
+                <img src="image15.png" alt="Image 15" id="image15">
+                <div class="caption">Caption 3</div>
+            </div>
+
+            <!-- Add more images here -->
+        
+        </div>
+
+        <!-- Modal 1 -->
+        <div id="modal1" class="modal">
+            <span class="close" onclick="closeModal(1)">&times;</span>
+            <img class="modal-content" src="image1-full.png" alt="Image 1" id="img1">
+            <div id="caption1" class="caption"></div>
+        </div>
+
+        <!-- Modal 2 -->
+        <div id="modal2" class="modal">
+            <span class="close" onclick="closeModal(2)">&times;</span>
+            <img class="modal-content" src="image2-full.png" alt="Image 2" id="img2">
+            <div id="caption2" class="caption"></div>
+        </div>
+
+        <!-- Modal 3 -->
+        <div id="modal3" class="modal">
+            <span class="close" onclick="closeModal(3)">&times;</span>
+            <img class="modal-content" src="image3-full.png" alt="Image 3" id="img3">
+            <div id="caption3" class="caption"></div>
+        </div>
+
+        <!-- Modal 4 -->
+        <div id="modal4" class="modal">
+            <span class="close" onclick="closeModal(4)">&times;</span>
+            <img class="modal-content" src="image4-full.png" alt="Image 4" id="img4">
+            <div id="caption4" class="caption"></div>
+        </div>
+
+        <!-- Modal 5 -->
+        <div id="modal5" class="modal">
+            <span class="close" onclick="closeModal(5)">&times;</span>
+            <img class="modal-content" src="image5-full.png" alt="Image 5" id="img5">
+            <div id="caption5" class="caption"></div>
+        </div>
+
+        <!-- Modal 6 -->
+        <div id="modal6" class="modal">
+            <span class="close" onclick="closeModal(6)">&times;</span>
+            <img class="modal-content" src="image6-full.png" alt="Image 6" id="img6">
+            <div id="caption6" class="caption"></div>
+        </div>
+
+         <!-- Modal 7 -->
+         <div id="modal7" class="modal">
+            <span class="close" onclick="closeModal(7)">&times;</span>
+            <img class="modal-content" src="image7-full.png" alt="Image 7" id="img7">
+            <div id="caption7" class="caption"></div>
+        </div>
+
+        <!-- Modal 8 -->
+        <div id="modal8" class="modal">
+            <span class="close" onclick="closeModal(8)">&times;</span>
+            <img class="modal-content" src="image8-full.png" alt="Image 8" id="img8">
+            <div id="caption8" class="caption"></div>
+        </div>
+
+        <!-- Modal 9 -->
+        <div id="modal" class="modal">
+            <span class="close" onclick="closeModal(9)">&times;</span>
+            <img class="modal-content" src="image9-full.png" alt="Image 9" id="img9">
+            <div id="caption9" class="caption"></div>
+        </div>
+        
+         <!-- Modal 10 -->
+         <div id="modal10" class="modal">
+            <span class="close" onclick="closeModal(10)">&times;</span>
+            <img class="modal-content" src="image10-full.png" alt="Image 10" id="img10">
+            <div id="caption10" class="caption"></div>
+        </div>
+
+        <!-- Modal 11 -->
+        <div id="modal11" class="modal">
+            <span class="close" onclick="closeModal(11)">&times;</span>
+            <img class="modal-content" src="image11-full.png" alt="Image 11" id="img11">
+            <div id="caption11" class="caption"></div>
+        </div>
+
+        <!-- Modal 12 -->
+        <div id="modal12" class="modal">
+            <span class="close" onclick="closeModal(12)">&times;</span>
+            <img class="modal-content" src="image12-full.png" alt="Image 12" id="img12">
+            <div id="caption12" class="caption"></div>
+        </div>
+       
+        <!-- Modal 13 -->
+        <div id="modal13" class="modal">
+            <span class="close" onclick="closeModal(13)">&times;</span>
+            <img class="modal-content" src="image1-full.png" alt="Image 13" id="img13">
+            <div id="caption13" class="caption"></div>
+        </div>
+
+        <!-- Modal 14 -->
+        <div id="modal14" class="modal">
+            <span class="close" onclick="closeModal(14)">&times;</span>
+            <img class="modal-content" src="image14-full.png" alt="Image 14" id="img14">
+            <div id="caption14" class="caption"></div>
+        </div>
+
+        <!-- Modal 15 -->
+        <div id="modal15" class="modal">
+            <span class="close" onclick="closeModal(15)">&times;</span>
+            <img class="modal-content" src="image15-full.png" alt="Image 15" id="img15">
+            <div id="caption15" class="caption"></div>
+        </div>        
+        
+        <!-- Add more modals here -->
+
+
+
+        <!-- Footer -->
+        
+    
+        <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fab fa-facebook"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a>
+				<a href="#"><i class="fab fa-pinterest"></i></a>
+				<a href="#"><i class="fab fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a class="link-1" href="#">Home</a>
+
+					<a href="#">Blog</a>
+
+					<a href="#">Projects</a>
+
+					<a href="#">About</a>
+
+					<a href="#">Pricing</a>
+				</p>
+
+				<p>Antonio Alegría &copy; 2022</p>
+			</div>
+
+		</footer>
+     
+
+        <script>
+            // Get the modal elements
+            
+            var modal1 = document.getElementById("modal1");
+            var modal2 = document.getElementById("modal2");
+            var modal3 = document.getElementById("modal3");
+            var modal4 = document.getElementById("modal4");
+            var modal5 = document.getElementById("modal5");
+            var modal6 = document.getElementById("modal6");
+            var modal7 = document.getElementById("modal7");
+            var modal8 = document.getElementById("modal8");
+            var modal9 = document.getElementById("modal9");
+            var modal10 = document.getElementById("modal10");
+            var modal11 = document.getElementById("modal11");
+            var modal12 = document.getElementById("modal12");
+            var modal13 = document.getElementById("modal13");
+            var modal14 = document.getElementById("modal14");
+            var modal15 = document.getElementById("modal15");
+
+            // Get the caption elements
+            var caption1 = document.getElementById("caption1");
+            var caption2 = document.getElementById("caption2");
+            var caption3 = document.getElementById("caption3");
+            var caption4 = document.getElementById("caption4");
+            var caption5 = document.getElementById("caption5");
+            var caption6 = document.getElementById("caption6");
+            var caption7 = document.getElementById("caption7");
+            var caption8 = document.getElementById("caption8");
+            var caption9 = document.getElementById("caption9");
+            var caption10 = document.getElementById("caption10");
+            var caption11 = document.getElementById("caption11");
+            var caption12 = document.getElementById("caption12");
+            var caption13 = document.getElementById("caption13");
+            var caption14 = document.getElementById("caption14");
+            var caption15 = document.getElementById("caption15");
+
+            // Get the image elements
+            var img1 = document.getElementById("image1");
+            var img2 = document.getElementById("image2");
+            var img3 = document.getElementById("image3");
+            var img4 = document.getElementById("image4");
+            var img5 = document.getElementById("image5");
+            var img6 = document.getElementById("image6");
+            var img7 = document.getElementById("image7");
+            var img8 = document.getElementById("image8");
+            var img9 = document.getElementById("image9");
+            var img10 = document.getElementById("image10");
+            var img11 = document.getElementById("image11");
+            var img12 = document.getElementById("image12");
+            var img13 = document.getElementById("image13");
+            var img14 = document.getElementById("image14");
+            var img15 = document.getElementById("image15");
+
+            // Get the modal images
+            var modalImg1 = document.getElementById("img1");
+            var modalImg2 = document.getElementById("img2");
+            var modalImg3 = document.getElementById("img3");
+            var modalImg4 = document.getElementById("img4");
+            var modalImg5 = document.getElementById("img5");
+            var modalImg6 = document.getElementById("img6");
+            var modalImg7 = document.getElementById("img7");
+            var modalImg8 = document.getElementById("img8");
+            var modalImg9 = document.getElementById("img9");
+            var modalImg10 = document.getElementById("img10");
+            var modalImg11 = document.getElementById("img11");
+            var modalImg12 = document.getElementById("img12");
+            var modalImg13 = document.getElementById("img13");
+            var modalImg14 = document.getElementById("img14");
+            var modalImg15 = document.getElementById("img15");
+
+            // When the user clicks on an image, open the modal
+            function openModal(modalNumber) {
+                if (modalNumber == 1) {
+                modal1.style.display = "block";
+                modalImg1.src = img1.src;
+                caption1.innerHTML = img1.alt;
+                } else if (modalNumber == 2) {
+                modal2.style.display = "block";
+                modalImg2.src = img2.src;
+                caption2.innerHTML = img2.alt;
+                } else if (modalNumber == 3) {
+                modal3.style.display = "block";
+                modalImg3.src = img3.src;
+                caption3.innerHTML = img3.alt;
+                } else if (modalNumber == 4) {
+                modal4.style.display = "block";
+                modalImg4.src = img4.src;
+                caption4.innerHTML = img4.alt;
+                } else if (modalNumber == 5) {
+                modal5.style.display = "block";
+                modalImg5.src = img5.src;
+                caption5.innerHTML = img5.alt;
+                } else if (modalNumber == 6) {
+                modal6.style.display = "block";
+                modalImg6.src = img6.src;
+                caption6.innerHTML = img6.alt;
+                } else if (modalNumber == 7) {
+                modal7.style.display = "block";
+                modalImg7.src = img7.src;
+                caption7.innerHTML = img7.alt;
+                } else if (modalNumber == 8) {
+                modal8.style.display = "block";
+                modalImg8.src = img8.src;
+                caption8.innerHTML = img8.alt;
+                } else if (modalNumber == 9) {
+                modal9.style.display = "block";
+                modalImg9.src = img9.src;
+                caption9.innerHTML = img9.alt;
+                } else if (modalNumber == 10) {
+                modal10.style.display = "block";
+                modalImg10.src = img10.src;
+                caption10.innerHTML = img10.alt;
+                } else if (modalNumber == 11) {
+                modal11.style.display = "block";
+                modalImg11.src = img11.src;
+                caption11.innerHTML = img11.alt;
+                } else if (modalNumber == 12) {
+                modal12.style.display = "block";
+                modalImg12.src = img12.src;
+                caption12.innerHTML = img12.alt;
+                } else if (modalNumber == 13) {
+                modal13.style.display = "block";
+                modalImg13.src = img13.src;
+                caption13.innerHTML = img13.alt;
+                } else if (modalNumber == 14) {
+                modal14.style.display = "block";
+                modalImg14.src = img14.src;
+                caption14.innerHTML = img14.alt;
+                } else if (modalNumber == 15) {
+                modal15.style.display = "block";
+                modalImg15.src = img15.src;
+                caption15.innerHTML = img15.alt;
+                }
+                // Add code to handle additional modals here
+            }
+
+            // When the user clicks on the close button, close the modal
+            function closeModal(modalNumber) {
+                if (modalNumber == 1) {
+                modal1.style.display = "none";
+                } else if (modalNumber == 2) {
+                modal2.style.display = "none";
+                } else if (modalNumber == 3) {
+                modal3.style.display = "none";
+                } else if (modalNumber == 4) {
+                modal4.style.display = "none";
+                } else if (modalNumber == 5) {
+                modal5.style.display = "none";
+                } else if (modalNumber == 6) {
+                modal6.style.display = "none";
+                } else if (modalNumber == 7) {
+                modal7.style.display = "none";
+                } else if (modalNumber == 8) {
+                modal8.style.display = "none";
+                } else if (modalNumber == 9) {
+                modal9.style.display = "none";
+                } else if (modalNumber == 10) {
+                modal10.style.display = "none";
+                } else if (modalNumber == 11) {
+                modal11.style.display = "none";
+                } else if (modalNumber == 12) {
+                modal12.style.display = "none";
+                } else if (modalNumber == 13) {
+                modal13.style.display = "none";
+                } else if (modalNumber == 14) {
+                modal14.style.display = "none";
+                } else if (modalNumber == 15) {
+                modal15.style.display = "none";
+                } 
+                // Add code to handle additional modals here
+            }
+        </script>
+    </body>
+</html>
