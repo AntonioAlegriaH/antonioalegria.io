@@ -10,7 +10,7 @@
             flex-wrap: wrap; /* Wrap images onto multiple rows if necessary */
             align-items: center; /* Center images vertically */
             justify-content: space-between; /* Add space between images */
-            margin: 30px; /* Add a margin around the container */
+            margin: 80px; /* Add a margin around the container */
             margin-bottom: 250px;   
             outline: 2px solid;
             outline-color: #536976;
@@ -79,14 +79,16 @@
 
 
         .image {
-            width: 320px; /* Set a fixed width for the images */
-            height: 320px; /* Set a fixed height for the images */
-            margin: 36px; /* Reduce the margin around each image */
+            width: 300px; /* Set a fixed width for the images */
+            height: 300px; /* Set a fixed height for the images */
+            margin: 20px; /* Reduce the margin around each image */
             overflow: hidden; /* Hide any overflow */
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add a box shadow */
             transition: 0.3s; /* Add a transition effect on hover */
             cursor: pointer; /* Change the cursor to a pointer on hover */
             border-radius: 10px;
+            float: left;
+            padding: 0px;
             
             
         }
@@ -99,8 +101,8 @@
         .image img {
            /*  width: auto; img inside fit */
           /*  height: 100%;  img inside fit */
-            width: 320px;
-            height: 320px;
+            width: 300px;
+            height: 300px;
             object-fit: cover;
             
         }
@@ -288,63 +290,71 @@
 
         <div class="container">
             <div class="image" onclick="openModal(1)">
-                <img src="gallery-imgs/image1.png" alt="Image 1" id="image1">
+                <img src="image1.jpeg" alt="Image 1" id="image1">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(2)">
-                <img src="gallery-imgs/image2.png" alt="Image 2" id="image2">
+                <img src="image2.jpeg" alt="Image 2" id="image2">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(3)">
-                <img src="gallery-imgs/image3.png" alt="Image 3" id="image3">
+                <img src="image3.jpeg" alt="Image 3" id="image3">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(4)">
-                <img src="gallery-imgs/image4.png" alt="Image 4" id="image4">
+                <img src="image4.jpeg" alt="Image 4" id="image4">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(5)">
-                <img src="gallery-imgs/image5.png" alt="Image 5" id="image5">
+                <img src="image5.jpeg" alt="Image 5" id="image5">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(6)">
-                <img src="gallery-imgs/image6.gif" alt="Image 6" id="image6">
+                <img src="image6.gif" alt="Image 6" id="image6">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(7)">
-                <img src="gallery-imgs/image7.png" alt="Image 7" id="image7">
+                <img src="image7.jpeg" alt="Image 7" id="image7">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(8)">
-                <img src="gallery-imgs/image8.png" alt="Image 8" id="image8">
+                <img src="image8.jpeg" alt="Image 8" id="image8">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(9)">
-                <img src="gallery-imgs/image9.png" alt="Image 9" id="image9">
+                <img src="image9.jpeg" alt="Image 9" id="image9">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(10)">
-                <img src="gallery-imgs/image10.png" alt="Image 10" id="image10">
+                <img src="image10.jpeg" alt="Image 10" id="image10">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(11)">
-                <img src="gallery-imgs/image11.png" alt="Image 11" id="image11">
+                <img src="image11.jpeg" alt="Image 11" id="image11">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(12)">
-                <img src="gallery-imgs/image12.png" alt="Image 12" id="image12">
+                <img src="image12.jpeg" alt="Image 12" id="image12">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(13)">
-                <img src="gallery-imgs/image13.png" alt="Image 13" id="image13">
+                <img src="image13.jpeg" alt="Image 13" id="image13">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(14)">
-                <img src="gallery-imgs/image14.png" alt="Image 14" id="image14">
+                <img src="image14.jpeg" alt="Image 14" id="image14">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(15)">
-                <img src="gallery-imgs/image15.png" alt="Image 15" id="image15">
+                <img src="image15.jpeg" alt="Image 15" id="image15">
+                <div class="caption">Caption 3</div>
+            </div>
+            <div class="image" onclick="openModal(16)">
+                <img src="image16.jpeg" alt="Image 16" id="image16">
+                <div class="caption">Caption 2</div>
+            </div>
+            <div class="image" onclick="openModal(17)">
+                <img src="image17.jpeg" alt="Image 17" id="image17">
                 <div class="caption">Caption 3</div>
             </div>
 
@@ -457,6 +467,20 @@
             <div id="caption15" class="caption"></div>
         </div>        
         
+        <!-- Modal 16 -->
+        <div id="modal16" class="modal">
+            <span class="close" onclick="closeModal(16)">&times;</span>
+            <img class="modal-content" src="image16-full.png" alt="Image 16" id="img16">
+            <div id="caption16" class="caption"></div>
+        </div>
+
+        <!-- Modal 17 -->
+        <div id="modal17" class="modal">
+            <span class="close" onclick="closeModal(17)">&times;</span>
+            <img class="modal-content" src="image17-full.png" alt="Image 17" id="img17">
+            <div id="caption17" class="caption"></div>
+        </div>  
+
         <!-- Add more modals here -->
 
 
@@ -468,28 +492,29 @@
 
 			<div class="footer-right">
 
-				<a href="#"><i class="fab fa-facebook"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
+				<a href="http://bit.ly/3vlii3V"><i class="fab fa-facebook"></i></a>
+				<a href="http://bit.ly/3VoZifn"><i class="fab fa-twitter"></i></a>
 				<a href="#"><i class="fab fa-pinterest"></i></a>
-				<a href="#"><i class="fab fa-github"></i></a>
+				<a href="http://bit.ly/3PUmXDs"><i class="fab fa-github"></i></a>
 
 			</div>
 
 			<div class="footer-left">
 
 				<p class="footer-links">
-					<a class="link-1" href="#">Home</a>
+					<a class="link-1" href="https://antonioalegria.io/">Home</a>
 
-					<a href="#">Blog</a>
+					<a href="https://antonioalegria.io/posts/">Blog</a>
 
-					<a href="#">Projects</a>
+					<a href="https://antonioalegria.io/projects/">Projects</a>
 
-					<a href="#">About</a>
+					<a href="https://antonioalegria.io/about/">About</a>
 
-					<a href="#">Pricing</a>
+					<a href="mailto:antonioalegriah@gmail.com">Pricing</a>
 				</p>
 
 				<p>Antonio Alegría &copy; 2022</p>
+            
 			</div>
 
 		</footer>
@@ -513,6 +538,9 @@
             var modal13 = document.getElementById("modal13");
             var modal14 = document.getElementById("modal14");
             var modal15 = document.getElementById("modal15");
+            var modal16 = document.getElementById("modal16");
+            var modal17 = document.getElementById("modal17");
+
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -530,6 +558,8 @@
             var caption13 = document.getElementById("caption13");
             var caption14 = document.getElementById("caption14");
             var caption15 = document.getElementById("caption15");
+            var caption16 = document.getElementById("caption16");
+            var caption17 = document.getElementById("caption17");
 
             // Get the image elements
             var img1 = document.getElementById("image1");
@@ -547,6 +577,8 @@
             var img13 = document.getElementById("image13");
             var img14 = document.getElementById("image14");
             var img15 = document.getElementById("image15");
+            var img16 = document.getElementById("image16");
+            var img17 = document.getElementById("image17");
 
             // Get the modal images
             var modalImg1 = document.getElementById("img1");
@@ -564,6 +596,8 @@
             var modalImg13 = document.getElementById("img13");
             var modalImg14 = document.getElementById("img14");
             var modalImg15 = document.getElementById("img15");
+            var modalImg16 = document.getElementById("img16");
+            var modalImg17 = document.getElementById("img17");
 
             // When the user clicks on an image, open the modal
             function openModal(modalNumber) {
@@ -627,6 +661,14 @@
                 modal15.style.display = "block";
                 modalImg15.src = img15.src;
                 caption15.innerHTML = img15.alt;
+                } else if (modalNumber == 16) {
+                modal16.style.display = "block";
+                modalImg16.src = img16.src;
+                caption16.innerHTML = img16.alt;
+                } else if (modalNumber == 17) {
+                modal17.style.display = "block";
+                modalImg17.src = img17.src;
+                caption17.innerHTML = img17.alt;
                 }
                 // Add code to handle additional modals here
             }
@@ -663,6 +705,10 @@
                 modal14.style.display = "none";
                 } else if (modalNumber == 15) {
                 modal15.style.display = "none";
+                } else if (modalNumber == 16) {
+                modal16.style.display = "none";
+                } else if (modalNumber == 17) {
+                modal17.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
