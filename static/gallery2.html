@@ -3,17 +3,70 @@
 <head>
     <title>DataViz Gallery</title>
     <style>
+            
+            body{
+                background-color: #f1f1f1;
 
-        
+            }
+            #background{
+            position:relative;
+            font-family: Bungee Shade;
+            left: 50%;
+            bottom: 10%;
+            transform:translate(-50%, -50%);
+            color:rgba(255, 255, 255, .1);
+            background: linear-gradient(to right, rgb(52, 170, 220), #536976, #292e49);
+            background-size: 400%;
+            -webkit-background-clip:text;
+            font-weight:900;
+            font-size:5em;
+            text-align:left;
+            animation:sTransition 15s linear infinite;
+            }
+
+            @keyframes sTransition{
+            0%{
+                background-position:0%;
+            }
+            
+            100%{
+                background-position:400%;
+            }
+            } 
+            #background2{
+            position:relative;
+            font-family: Bungee;
+            left: 50%;
+            transform:translate(-50%, -50%);
+            color:rgba(255, 255, 255, .1);
+            background: linear-gradient(to right, rgb(52, 170, 220), #536976, #292e49);
+            background-size: 400%;
+            -webkit-background-clip:text;
+            font-weight:900;
+            font-size:3em;
+            text-align:left;
+            animation:sTransition 10s linear infinite;
+            }
+
+            @keyframes sTransition{
+            0%{
+                background-position:0%;
+            }
+            
+            100%{
+                background-position:400%;
+            }
+            } 
+
          .container {
             display: flex; /* Use flexbox layout for the images */
             flex-wrap: wrap; /* Wrap images onto multiple rows if necessary */
             align-items: center; /* Center images vertically */
             justify-content: space-between; /* Add space between images */
             margin: 80px; /* Add a margin around the container */
-            margin-bottom: 250px;   
+            margin-bottom: 250px;  
             outline: 2px solid;
-            outline-color: #536976;
+            outline-color: #53697615;
             outline-width: 2px;
             border-radius: 15px;
             
@@ -54,7 +107,7 @@
 
         /*https://techstacker.com/gradient-text-color-css/*/
 
-        h1 {
+      /*   h1 {
             font-size: 100px;
             font-weight: normal;
             margin: 0;
@@ -63,11 +116,11 @@
             text-align: center;
             font-family: Bungee Shade;
             font-size: 72px;
-            background: linear-gradient(to right, #536976, #292e49);
+           /* background: linear-gradient(to right, #536976, #292e49);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
+            -webkit-text-fill-color: transparent; 
+        } */
+                
 
         h3{
             font-size: 20px;
@@ -280,9 +333,8 @@
                 </svg>
             </a>
 
-            <h1><center>DataViz Gallery</center></h1>
-            <h3><center></center></h3>
-
+            <h1 id="background"> <center> DataViz Gallery </center></h1>
+            <h3 id="background2"> <center> Information Graphics</center></h3>
 
 
         </header>
@@ -290,71 +342,71 @@
 
         <div class="container">
             <div class="image" onclick="openModal(1)">
-                <img src="gallery-imgs/image1.jpeg" alt="Image 1" id="image1">
+                <img src="image1.jpeg" alt="Image 1" id="image1">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(2)">
-                <img src="gallery-imgs/image2.jpeg" alt="Image 2" id="image2">
+                <img src="image2.jpeg" alt="Image 2" id="image2">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(3)">
-                <img src="gallery-imgs/image3.jpeg" alt="Image 3" id="image3">
+                <img src="image3.jpeg" alt="Image 3" id="image3">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(4)">
-                <img src="gallery-imgs/image4.jpeg" alt="Image 4" id="image4">
+                <img src="image4.jpeg" alt="Image 4" id="image4">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(5)">
-                <img src="gallery-imgs/image5.jpeg" alt="Image 5" id="image5">
+                <img src="image5.jpeg" alt="Image 5" id="image5">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(6)">
-                <img src="gallery-imgs/image6.gif" alt="Image 6" id="image6">
+                <img src="image6.gif" alt="Image 6" id="image6">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(7)">
-                <img src="gallery-imgs/image7.jpeg" alt="Image 7" id="image7">
+                <img src="image7.jpeg" alt="Image 7" id="image7">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(8)">
-                <img src="gallery-imgs/image8.jpeg" alt="Image 8" id="image8">
+                <img src="image8.jpeg" alt="Image 8" id="image8">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(9)">
-                <img src="gallery-imgs/image9.jpeg" alt="Image 9" id="image9">
+                <img src="image9.jpeg" alt="Image 9" id="image9">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(10)">
-                <img src="gallery-imgs/image10.jpeg" alt="Image 10" id="image10">
+                <img src="image10.jpeg" alt="Image 10" id="image10">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(11)">
-                <img src="gallery-imgs/image11.jpeg" alt="Image 11" id="image11">
+                <img src="image11.jpeg" alt="Image 11" id="image11">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(12)">
-                <img src="gallery-imgs/image12.jpeg" alt="Image 12" id="image12">
+                <img src="image12.jpeg" alt="Image 12" id="image12">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(13)">
-                <img src="gallery-imgs/image13.jpeg" alt="Image 13" id="image13">
+                <img src="image13.jpeg" alt="Image 13" id="image13">
                 <div class="caption">Caption 1</div>
             </div>
             <div class="image" onclick="openModal(14)">
-                <img src="gallery-imgs/image14.jpeg" alt="Image 14" id="image14">
+                <img src="image14.jpeg" alt="Image 14" id="image14">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(15)">
-                <img src="gallery-imgs/image15.jpeg" alt="Image 15" id="image15">
+                <img src="image15.jpeg" alt="Image 15" id="image15">
                 <div class="caption">Caption 3</div>
             </div>
             <div class="image" onclick="openModal(16)">
-                <img src="gallery-imgs/image16.jpeg" alt="Image 16" id="image16">
+                <img src="image16.jpeg" alt="Image 16" id="image16">
                 <div class="caption">Caption 2</div>
             </div>
             <div class="image" onclick="openModal(17)">
-                <img src="gallery-imgs/image17.jpeg" alt="Image 17" id="image17">
+                <img src="image17.jpeg" alt="Image 17" id="image17">
                 <div class="caption">Caption 3</div>
             </div>
 
