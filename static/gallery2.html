@@ -410,6 +410,11 @@
                 <div class="caption">Caption 3</div>
             </div>
 
+            <div class="image" onclick="openModal(18)">
+                <img src="gallery-imgs/image18.jpeg" alt="Image 18" id="image18">
+                <div class="caption">Caption 3</div>
+            </div>
+
             <!-- Add more images here -->
         
         </div>
@@ -533,6 +538,13 @@
             <div id="caption17" class="caption"></div>
         </div>  
 
+        <div id="modal18" class="modal">
+            <span class="close" onclick="closeModal(18)">&times;</span>
+            <img class="modal-content" src="image17-full.png" alt="Image 18" id="image18">
+            <div id="caption18" class="caption"></div>
+        </div>  
+
+
         <!-- Add more modals here -->
 
 
@@ -592,6 +604,7 @@
             var modal15 = document.getElementById("modal15");
             var modal16 = document.getElementById("modal16");
             var modal17 = document.getElementById("modal17");
+            var modal18 = document.getElementById("modal18");
 
 
             // Get the caption elements
@@ -612,6 +625,7 @@
             var caption15 = document.getElementById("caption15");
             var caption16 = document.getElementById("caption16");
             var caption17 = document.getElementById("caption17");
+            var caption18 = document.getElementById("caption18");
 
             // Get the image elements
             var img1 = document.getElementById("image1");
@@ -631,6 +645,7 @@
             var img15 = document.getElementById("image15");
             var img16 = document.getElementById("image16");
             var img17 = document.getElementById("image17");
+            var img18 = document.getElementById("image18");
 
             // Get the modal images
             var modalImg1 = document.getElementById("img1");
@@ -650,6 +665,7 @@
             var modalImg15 = document.getElementById("img15");
             var modalImg16 = document.getElementById("img16");
             var modalImg17 = document.getElementById("img17");
+            var modalImg18 = document.getElementById("img18");
 
             // When the user clicks on an image, open the modal
             function openModal(modalNumber) {
@@ -721,6 +737,10 @@
                 modal17.style.display = "block";
                 modalImg17.src = img17.src;
                 caption17.innerHTML = img17.alt;
+                } else if (modalNumber == 18) {
+                modal18.style.display = "block";
+                modalImg18.src = img18.src;
+                caption18.innerHTML = img18.alt;
                 }
                 // Add code to handle additional modals here
             }
@@ -761,6 +781,8 @@
                 modal16.style.display = "none";
                 } else if (modalNumber == 17) {
                 modal17.style.display = "none";
+                } else if (modalNumber == 18) {
+                modal18.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
