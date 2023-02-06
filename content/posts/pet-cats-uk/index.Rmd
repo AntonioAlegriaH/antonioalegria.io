@@ -25,6 +25,6 @@ Tracking paths, and distance of domestic cats in the UK.
 
 [![Click to enter the dashboard](images/img-pet-cats.png)](https://antonioalegria.io/pet_cats_uk_tracking)
 
-
+Made with {flexdashboard} and {echarts4r}
 
 Upcoming update: Add USA, AUS and NZ data.
