@@ -19,9 +19,11 @@ images: ~
 > Between 2013 and 2017, Roland Kays et al. convinced hundreds of volunteers in the U.S., U.K., Australia, and New Zealand to strap GPS sensors on their pet cats. The aforelinked datasets include each cat’s characteristics (such as age, sex, neuter status, hunting habits) and time-stamped GPS pings.
 
 
-# Dashboard
+# Dashboard 🐈
 
 Tracking paths, and distance of domestic cats in the UK.
+
+Click the image to access the dashboard 👇
 
 [![Click to enter the dashboard](images/img-pet-cats.png)](https://antonioalegria.io/pet_cats_uk_tracking)
 
