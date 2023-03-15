@@ -26,8 +26,442 @@ images: ~
 <p>To capture the full scope of twelve years’ worth of ridership data in a single plot, follow these simple steps and unleash the power of {ggplot2}</p>
 <ol style="list-style-type: decimal">
 <li>Import the dataset.</li>
-<li>Correct any factor issues that may exist in the data.</li>
+<li>Correct any factor issues that may exist in the data (and count).</li>
 <li>Create a custom function for plotting.</li>
 <li>Add plot aesthetics to make the plot more visually appealing.</li>
 </ol>
+<div id="import-the-dataset" class="section level3">
+<h3>1. Import the dataset</h3>
+<p>Here you can download the complete data. <a href="https://datos.cdmx.gob.mx/dataset/afluencia-diaria-del-metro-cdmx">datos.cdmx.gob.mx</a>.</p>
+<p>Next, set up the necessary libraries for data wrangling and plotting using the tidyverse, as well as some additional packages for graphical enhancements:</p>
+<pre class="r"><code>#libraries
+pacman::p_load(readr,
+               dplyr,
+               tidyr,
+               lubridate,
+               forcats,
+               ggplot2,
+               scales
+)
+
+
+# Some additional customizations to the global theme.
+theme_set(theme_minimal(base_size = 15))
+theme_update(
+  plot.title.position = &quot;plot&quot;,
+  axis.line.x = element_line(size = .2, colour = &quot;grey50&quot;),
+  axis.line.y = element_line(size = .5, colour = &quot;grey50&quot;),
+  panel.grid = element_blank()
+)</code></pre>
+<p>Due to the presence of Latin characters in the dataset, it’s necessary to specify the imports as UTF-8 to ensure proper encoding.</p>
+<pre class="r"><code>df_simple_encoding &lt;- read.csv(&quot;afluenciastc_simple_12_2022.csv&quot;, fileEncoding=&quot;UTF-8&quot;)
+
+# Tip: if you don&#39;t know the encoding of your data try this
+# guess_encoding(&quot;data.csv&quot;, n_max=10000, threshold = 0.2)</code></pre>
+</div>
+<div id="correct-any-factor-issues-that-may-exist-in-the-data." class="section level3">
+<h3>2. Correct any factor issues that may exist in the data.</h3>
+<p>Wrangling operations to prepare the <code>df_simple_encoding</code> dataset for plotting the ridership of twelve years.</p>
+<ul>
+<li>We need to rename certain stations with special characters in their names to their correct names.</li>
+<li>The linea column is then recoded to replace certain values with their equivalent values for consistency.</li>
+<li>The <code>count()</code> function is used to count the number of rides (afluencia) for each station (estaciones_renamed).</li>
+</ul>
+<pre class="r"><code>afluencia_lineas &lt;- df_simple_encoding %&gt;% 
+  group_by(linea) %&gt;%  # dataset is grouped by the Metro lines
+  mutate(estaciones_renamed = case_when(
+    estacion == &quot;Gómez Far\xfc\xbe\x99\x86\x94\xbcas&quot; ~ &quot;Gómez Farías&quot;,
+    estacion == &quot;Tasque&quot; ~ &quot;Tasqueña&quot;,
+    .default = estacion
+  )) %&gt;% 
+  mutate(linea=recode_factor(linea,
+                             &quot;Linea 1&quot; = &quot;Line 1&quot;,
+                             &quot;Linea 2&quot; = &quot;Line 2&quot;,
+                             &quot;Linea 3&quot; = &quot;Line 3&quot;, 
+                             &quot;Linea 4&quot; = &quot;Line 4&quot;,
+                             &quot;Linea 5&quot; = &quot;Line 5&quot;,
+                             &quot;Linea 6&quot; = &quot;Line 6&quot;,
+                             &quot;Linea 7&quot; = &quot;Line 7&quot;,
+                             &quot;Linea 8&quot; = &quot;Line 8&quot;,
+                             &quot;Linea 9&quot; = &quot;Line 9&quot;,
+                             &quot;Linea A&quot; = &quot;Line A&quot;,
+                             &quot;Linea B&quot; = &quot;Line B&quot;,
+                             &quot;Linea 12&quot; = &quot;Line 12&quot;)
+  )  %&gt;%
+  mutate(linea=recode_factor(linea,
+                             &quot;Línea 1&quot; = &quot;Line 1&quot;,
+                             &quot;Línea 2&quot; = &quot;Line 2&quot;,
+                             &quot;Línea 3&quot; = &quot;Line 3&quot;, 
+                             &quot;Línea 4&quot; = &quot;Line 4&quot;,
+                             &quot;Línea 5&quot; = &quot;Line 5&quot;,
+                             &quot;Línea 6&quot; = &quot;Line 6&quot;,
+                             &quot;Línea 7&quot; = &quot;Line 7&quot;,
+                             &quot;Línea 8&quot; = &quot;Line 8&quot;,
+                             &quot;Línea 9&quot; = &quot;Line 9&quot;,
+                             &quot;Línea A&quot; = &quot;Line A&quot;,
+                             &quot;Línea B&quot; = &quot;Line B&quot;,
+                             &quot;Línea 12&quot; = &quot;Line 12&quot;)
+  )  %&gt;%
+  count(estaciones_renamed, wt = afluencia) %&gt;% #
+  na.omit() </code></pre>
+<p>Convert into a factor variable with specific levels. The <code>levels</code> argument specifies the desired order of the factor levels, with “Line 1” as the first level and “Line 12” as the last level.</p>
+<p>This code ensures that the linea factor levels are ordered as desired for the subsequent plotting step.</p>
+<pre class="r"><code>afluencia_lineas$linea &lt;- factor(afluencia_lineas$linea, 
+                                 levels=c(
+                                   &quot;Line 1&quot;,
+                                   &quot;Line 2&quot;,
+                                   &quot;Line 3&quot;, 
+                                   &quot;Line 4&quot;,
+                                   &quot;Line 5&quot;,
+                                   &quot;Line 6&quot;,
+                                   &quot;Line 7&quot;,
+                                   &quot;Line 8&quot;,
+                                   &quot;Line 9&quot;,
+                                   &quot;Line A&quot;,
+                                   &quot;Line B&quot;,
+                                   &quot;Line 12&quot;)
+                                 )</code></pre>
+<p>Next is the messiest and least elegant part of this:</p>
+<p>For each Metro Line, we need a new variable that numbers the order of each station. There are going to be duplicates, which we are going to deal with later.</p>
+<p><em>Note:</em> Metro stations are ordered in the order in which they appear on the map.</p>
+<pre class="r"><code>afluencia_lineas_orden &lt;- afluencia_lineas %&gt;% 
+  mutate(linea1_order = case_when(
+   estaciones_renamed ==  &quot;Observatorio&quot; ~ 1,
+   estaciones_renamed ==  &quot;Tacubaya&quot; ~ 2,
+   estaciones_renamed ==  &quot;Juanacatlán&quot; ~ 3,
+   estaciones_renamed ==  &quot;Chapultepec&quot; ~ 4,
+   estaciones_renamed ==  &quot;Sevilla&quot; ~ 5,
+   estaciones_renamed ==  &quot;Insurgentes&quot; ~ 6,
+   estaciones_renamed ==  &quot;Cuauhtémoc&quot; ~ 7,
+   estaciones_renamed ==  &quot;Balderas&quot; ~ 8,
+   estaciones_renamed ==  &quot;Salto del Agua&quot; ~ 9,
+   estaciones_renamed ==  &quot;Isabel la Católica&quot; ~ 10,
+   estaciones_renamed ==  &quot;Pino Suárez&quot; ~ 11,
+   estaciones_renamed ==  &quot;Merced&quot; ~ 12,
+   estaciones_renamed ==  &quot;Candelaria&quot; ~ 13,
+   estaciones_renamed ==  &quot;San Lázaro&quot; ~ 14,
+   estaciones_renamed ==  &quot;Moctezuma&quot; ~ 15,
+   estaciones_renamed ==  &quot;Balbuena&quot; ~ 16,
+   estaciones_renamed ==  &quot;Blvd. Puerto Aéreo&quot; ~ 17, 
+   estaciones_renamed ==  &quot;Gómez Farías&quot; ~ 18,     
+   estaciones_renamed ==  &quot;Zaragoza&quot; ~ 19, 
+   estaciones_renamed ==  &quot;Pantitlán&quot; ~ 20)
+    ) %&gt;% 
+  mutate(linea2_order = case_when(
+    estaciones_renamed == &quot;Cuatro Caminos&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Panteones&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Tacuba&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Cuitláhuac&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Popotla&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Colegio Militar&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Normal&quot; ~ 7, 
+    estaciones_renamed ==  &quot;San Cosme&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Revolución&quot; ~ 9, 
+    estaciones_renamed ==  &quot;Hidalgo&quot; ~ 10, 
+    estaciones_renamed ==  &quot;Bellas Artes&quot; ~ 11, 
+    estaciones_renamed ==  &quot;Allende&quot; ~ 12, 
+    estaciones_renamed ==  &quot;Zócalo&quot; ~ 13, 
+    estaciones_renamed ==  &quot;Pino Suárez&quot; ~ 14, 
+    estaciones_renamed ==  &quot;San Antonio Abad&quot; ~ 15, 
+    estaciones_renamed ==  &quot;Chabacano&quot; ~ 16, 
+    estaciones_renamed ==  &quot;Viaducto&quot; ~ 17, 
+    estaciones_renamed ==  &quot;Xola&quot; ~ 18, 
+    estaciones_renamed ==  &quot;Villa de Cortés&quot; ~ 19, 
+    estaciones_renamed ==  &quot;Nativitas&quot; ~ 20,
+    estaciones_renamed ==  &quot;Portales&quot; ~ 21, 
+    estaciones_renamed ==  &quot;Ermita&quot; ~ 22,    
+    estaciones_renamed ==  &quot;General Anaya&quot; ~ 23,    
+    estaciones_renamed ==  &quot;Tasqueña&quot; ~ 24)
+  )%&gt;% 
+  mutate(linea3_order = case_when(
+    estaciones_renamed == &quot;Indios Verdes&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Deptvo. 18 de Marzo&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Potrero&quot; ~ 3, 
+    estaciones_renamed ==  &quot;La Raza&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Tlatelolco&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Guerrero&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Hidalgo&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Juárez&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Balderas&quot; ~ 9, 
+    estaciones_renamed ==  &quot;Niños Héroes&quot; ~ 10, 
+    estaciones_renamed ==  &quot;Hospital General&quot; ~ 11, 
+    estaciones_renamed ==  &quot;Centro Médico&quot; ~ 12, 
+    estaciones_renamed ==  &quot;Etiopía&quot; ~ 13, 
+    estaciones_renamed ==  &quot;Eugenia&quot; ~ 14, 
+    estaciones_renamed ==  &quot;División del Norte&quot; ~ 15, 
+    estaciones_renamed ==  &quot;Zapata&quot; ~ 16, 
+    estaciones_renamed ==  &quot;Coyoacán&quot; ~ 17, 
+    estaciones_renamed ==  &quot;Viveros&quot; ~ 18, 
+    estaciones_renamed ==  &quot;Miguel A. de Q.&quot; ~ 19, 
+    estaciones_renamed ==  &quot;Copilco&quot; ~ 20,
+    estaciones_renamed ==  &quot;Universidad&quot; ~ 21)
+  )%&gt;% 
+  mutate(linea4_order = case_when(
+    estaciones_renamed == &quot;Martín Carrera&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Talismán&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Bondojito&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Consulado&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Canal del Norte&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Morelos&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Candelaria&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Fray Servando&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Jamaica&quot; ~ 9, 
+    estaciones_renamed ==  &quot;Santa Anita&quot; ~ 10)
+  )%&gt;% 
+  mutate(linea5_order = case_when(
+    estaciones_renamed == &quot;Pantitlán&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Hangares&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Terminal Aérea&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Oceanía&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Aragón&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Eduardo Molina&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Consulado&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Valle Gómez&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Misterios&quot; ~ 9, 
+    estaciones_renamed ==  &quot;La Raza&quot; ~ 10, 
+    estaciones_renamed ==  &quot;Autobuses del Norte&quot; ~ 11, 
+    estaciones_renamed ==  &quot;Inst. del Petróleo&quot; ~ 12, 
+    estaciones_renamed ==  &quot;Politécnico&quot; ~ 13)
+  )%&gt;% 
+  mutate(linea6_order = case_when(
+    estaciones_renamed == &quot;El Rosario&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Tezozomoc&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Azcapotzalco&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Ferrería&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Norte 45&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Vallejo&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Inst. del Petróleo&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Lindavista&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Deptvo. 18 de Marzo&quot; ~ 9, 
+    estaciones_renamed ==  &quot;La Villa-Basilica&quot; ~ 10, 
+    estaciones_renamed ==  &quot;Martín Carrera&quot; ~ 11)
+  )%&gt;% 
+  mutate(linea7_order = case_when(
+    estaciones_renamed == &quot;El Rosario&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Aquiles Serdán&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Camarones&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Refinería&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Tacuba&quot; ~ 5, 
+    estaciones_renamed ==  &quot;San Joaquín&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Polanco&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Auditorio&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Constituyentes&quot; ~ 9, 
+    estaciones_renamed ==  &quot;Tacubaya&quot; ~ 10, 
+    estaciones_renamed ==  &quot;San Pedro los Pinos&quot; ~ 11, 
+    estaciones_renamed ==  &quot;San Antonio&quot; ~ 12, 
+    estaciones_renamed ==  &quot;Mixcoac&quot; ~ 13,
+    estaciones_renamed ==  &quot;Barranca del Muerto&quot; ~ 14)
+  )%&gt;% 
+  mutate(linea8_order = case_when(
+    estaciones_renamed ==  &quot;Garibaldi&quot; ~ 1,
+    estaciones_renamed ==  &quot;Bellas Artes&quot; ~ 2,
+    estaciones_renamed ==  &quot;San Juan Letrán&quot; ~ 3,
+    estaciones_renamed ==  &quot;Salto del Agua&quot; ~ 4,
+    estaciones_renamed ==  &quot;Doctores&quot; ~ 5,
+    estaciones_renamed ==  &quot;Obrera&quot; ~ 6,
+    estaciones_renamed ==  &quot;Chabacano&quot; ~ 7,
+    estaciones_renamed ==  &quot;La Viga&quot; ~ 8,
+    estaciones_renamed ==  &quot;Santa Anita&quot; ~ 9,
+    estaciones_renamed ==  &quot;Coyuya&quot; ~ 10,
+    estaciones_renamed ==  &quot;Iztacalco&quot; ~ 11,
+    estaciones_renamed ==  &quot;Apatlaco&quot; ~ 12,
+    estaciones_renamed ==  &quot;Aculco&quot; ~ 13,
+    estaciones_renamed ==  &quot;Escuadrón 201&quot; ~ 14,
+    estaciones_renamed ==  &quot;Atlalilco&quot; ~ 15,
+    estaciones_renamed ==  &quot;Iztapalapa&quot; ~ 16,
+    estaciones_renamed ==  &quot;Cerro de la Estrella&quot; ~ 17, 
+    estaciones_renamed ==  &quot;U A M  I&quot; ~ 18,     
+    estaciones_renamed ==  &quot;Constitución de 1917&quot; ~ 19)
+  )%&gt;% 
+  mutate(linea9_order = case_when(
+    estaciones_renamed == &quot;Tacubaya&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Patriotismo&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Chilpancingo&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Centro Médico&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Lázaro Cárdenas&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Chabacano&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Jamaica&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Mixiuhca&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Velódromo&quot; ~ 9, 
+    estaciones_renamed ==  &quot;Ciudad Deportiva&quot; ~ 10, 
+    estaciones_renamed ==  &quot;Puebla&quot; ~ 11, 
+    estaciones_renamed ==  &quot;Pantitlán&quot; ~ 12)
+  ) %&gt;% 
+  mutate(lineaA_order = case_when(
+    estaciones_renamed == &quot;Pantitlán&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Agrícola Oriental&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Canal de San Juan&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Tepalcates&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Guelatao&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Peñón Viejo&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Acatitla&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Santa Marta&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Los Reyes&quot; ~ 9, 
+    estaciones_renamed ==  &quot;La Paz&quot; ~ 10)
+  )%&gt;% 
+  mutate(lineaB_order = case_when(
+    estaciones_renamed == &quot;Ciudad Azteca&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Plaza Aragón&quot; ~ 2, 
+    estaciones_renamed ==  &quot;Olímpica&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Tecnológico&quot; ~ 4, #Tecnológico a Ecatepec en 2008.
+    estaciones_renamed ==  &quot;Múzquiz&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Río de los Remedios&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Impulsora&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Nezahualcóyotl&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Villa de Aragón&quot; ~ 9, 
+    estaciones_renamed ==  &quot;Bosque de Aragón&quot; ~ 10, 
+    estaciones_renamed ==  &quot;Deportivo Oceanía&quot; ~ 11, 
+    estaciones_renamed ==  &quot;Oceanía&quot; ~ 12, 
+    estaciones_renamed ==  &quot;Romero Rubio&quot; ~ 13, 
+    estaciones_renamed ==  &quot;Ricardo Flores Magón&quot; ~ 14, 
+    estaciones_renamed ==  &quot;San Lázaro&quot; ~ 15, 
+    estaciones_renamed ==  &quot;Morelos&quot; ~ 16, 
+    estaciones_renamed ==  &quot;Tepito&quot; ~ 17, 
+    estaciones_renamed ==  &quot;Lagunilla&quot; ~ 18, 
+    estaciones_renamed ==  &quot;Garibaldi&quot; ~ 19, 
+    estaciones_renamed ==  &quot;Guerrero&quot; ~ 20,
+    estaciones_renamed ==  &quot;Buenavista&quot; ~ 21)
+  )%&gt;% 
+  mutate(linea12_order = case_when(
+    estaciones_renamed == &quot;Mixcoac&quot; ~ 1,        
+    estaciones_renamed ==  &quot;Insurgentes Sur&quot; ~ 2, 
+    estaciones_renamed ==  &quot;20 de Noviembre&quot; ~ 3, 
+    estaciones_renamed ==  &quot;Zapata&quot; ~ 4, 
+    estaciones_renamed ==  &quot;Parque de los Venados&quot; ~ 5, 
+    estaciones_renamed ==  &quot;Eje Central&quot; ~ 6, 
+    estaciones_renamed ==  &quot;Ermita&quot; ~ 7, 
+    estaciones_renamed ==  &quot;Mexicaltzingo&quot; ~ 8, 
+    estaciones_renamed ==  &quot;Atlalilco&quot; ~ 9, 
+    estaciones_renamed ==  &quot;Culhuacán&quot; ~ 10, 
+    estaciones_renamed ==  &quot;San Andrés Tomatlán&quot; ~ 11, 
+    estaciones_renamed ==  &quot;Lomas Estrella&quot; ~ 12, 
+    estaciones_renamed ==  &quot;Calle 11&quot; ~ 13, 
+    estaciones_renamed ==  &quot;Periférico Oriente&quot; ~ 14, 
+    estaciones_renamed ==  &quot;Tezonco&quot; ~ 15, 
+    estaciones_renamed ==  &quot;Olivos&quot; ~ 16, 
+    estaciones_renamed ==  &quot;Nopalera&quot; ~ 17, 
+    estaciones_renamed ==  &quot;Zapotitlán&quot; ~ 18, 
+    estaciones_renamed ==  &quot;Tlaltenco&quot; ~ 19, 
+    estaciones_renamed ==  &quot;Tláhuac&quot; ~ 20)
+  )</code></pre>
+<p>Duplicates occur because transfer stations have double entrances. However, this analysis considers only the registration of the line in question</p>
+<p>Therefore, we need to eliminate duplicates in each of the new variables.</p>
+<p>(Again, this is not very elegant)</p>
+<pre class="r"><code>afluencia_lineas_orden$linea1_order[afluencia_lineas_orden$linea != &#39;Line 1&#39;] &lt;- NA
+afluencia_lineas_orden$linea2_order[afluencia_lineas_orden$linea != &#39;Line 2&#39;] &lt;- NA
+afluencia_lineas_orden$linea3_order[afluencia_lineas_orden$linea != &#39;Line 3&#39;] &lt;- NA
+afluencia_lineas_orden$linea4_order[afluencia_lineas_orden$linea != &#39;Line 4&#39;] &lt;- NA
+afluencia_lineas_orden$linea5_order[afluencia_lineas_orden$linea != &#39;Line 5&#39;] &lt;- NA
+afluencia_lineas_orden$linea6_order[afluencia_lineas_orden$linea != &#39;Line 6&#39;] &lt;- NA
+afluencia_lineas_orden$linea7_order[afluencia_lineas_orden$linea != &#39;Line 7&#39;] &lt;- NA
+afluencia_lineas_orden$linea8_order[afluencia_lineas_orden$linea != &#39;Line 8&#39;] &lt;- NA
+afluencia_lineas_orden$linea9_order[afluencia_lineas_orden$linea != &#39;Line 9&#39;] &lt;- NA
+afluencia_lineas_orden$lineaA_order[afluencia_lineas_orden$linea != &#39;Line A&#39;] &lt;- NA
+afluencia_lineas_orden$lineaB_order[afluencia_lineas_orden$linea != &#39;Line B&#39;] &lt;- NA
+afluencia_lineas_orden$linea12_order[afluencia_lineas_orden$linea != &#39;Line 12&#39;] &lt;- NA</code></pre>
+</div>
+<div id="create-a-custom-function-for-plotting." class="section level3">
+<h3>3. Create a custom function for plotting.</h3>
+<p>To build the plot, a new layer needs to be created for each of the twelve Metro Lines variables. Each layer is composed of:</p>
+<ul>
+<li><code>geom_point()</code>: is used to create the stations, and depending on the ridership, increase or decrease the size of them.</li>
+<li><code>annotate</code>: is used to connect the points vertically.</li>
+<li><code>geom_text()</code>: is used to name individual stations.</li>
+</ul>
+<p>The parameters of this function are:
+- <code>lineas()</code>: the numbering variables for the twelve lines
+- <code>color()</code>: the hex code of the corresponding line
+- <code>line_position()</code>: the position inside the plot where the segment should be placed
+- <code>n_stations()</code>: the number of stations at which to end the segment.</p>
+<pre class="r"><code>my_geom_and_text &lt;- function(lineas, color, line_position, n_stations){
+  list(
+    ggplot2::geom_point(aes(x = linea, y = {{ lineas }}, size = n),
+                        color = color,
+                        show.legend = FALSE,
+                        na.rm = TRUE),
+    ggplot2::annotate(geom = &quot;segment&quot;,
+                      x = line_position,
+                      xend = line_position,
+                      y = 1,
+                      yend = n_stations,
+                      color = color),
+    ggplot2::geom_text(aes(x = linea, 
+                           y = {{ lineas }},
+                           label = estaciones_renamed),
+                       size = 3,
+                       color = color, alpha = .5,
+                       nudge_y = .51,
+                       na.rm = TRUE)
+    )
+  
+}</code></pre>
+</div>
+<div id="add-plot-aesthetics-to-make-the-plot-more-visually-appealing." class="section level3">
+<h3>4. Add plot aesthetics to make the plot more visually appealing.</h3>
+<p>Finally, this code generates the final plot of the ridership of the different metro lines in México City. It uses the custom function <code>my_geom_and_text()</code> that creates a segment of the line and adds the stations and their names. The function is called for each of the twelve metro lines in the dataset, with different parameters that specify the line number, color, position within the plot, and number of stations. The <code>scale_size()</code> function is used to set the size of the stations according to their ridership.</p>
+<p>The rest is just the <code>theme()</code> function to customize the appearance of the plot.</p>
+<pre class="r"><code>p &lt;-  afluencia_lineas_orden %&gt;% 
+  ggplot() +
+  my_geom_and_text(lineas = linea2_order,color = &quot;#0b5b9d&quot;,
+                   line_position = 2, n_stations = 24)+
+  my_geom_and_text(lineas = linea1_order, color = &quot;#e74a8e&quot;,
+                   line_position = 1, n_stations = 20)+
+  my_geom_and_text(lineas = linea3_order, color = &quot;#b59b28&quot;,
+                   line_position = 3, n_stations = 21)+
+  my_geom_and_text(lineas = linea4_order, color = &quot;#6fbab1&quot;,
+                   line_position = 4, n_stations = 10)+
+  my_geom_and_text(lineas = linea5_order, color = &quot;#fcd030&quot;,
+                   line_position = 5, n_stations = 13)+
+  my_geom_and_text(lineas = linea6_order, color = &quot;#d81c22&quot;,
+                   line_position = 6, n_stations = 11)+
+  my_geom_and_text(lineas = linea7_order, color = &quot;#e77022&quot;,
+                   line_position = 7, n_stations = 14)+
+  my_geom_and_text(lineas = linea8_order, color = &quot;#128c41&quot;,
+                   line_position = 8, n_stations = 19)+
+  my_geom_and_text(lineas = linea9_order, color = &quot;#5a352f&quot;,
+                   line_position = 9, n_stations = 12)+
+  my_geom_and_text(lineas = lineaA_order, color = &quot;#9d2180&quot;,
+                   line_position = 10, n_stations = 10)+
+  my_geom_and_text(lineas = lineaB_order, color = &quot;#bbb9b8&quot;,
+                   line_position = 11, n_stations = 21)+
+  my_geom_and_text(lineas = linea12_order, color = &quot;#c3995a&quot;,
+                   line_position = 12, n_stations = 20)+
+  scale_size(range = c(1, 20))+
+  labs(title = &quot;México City  Metro Stations Ridership&quot;,
+       x = &quot;&quot;,
+       y = &quot;&quot;,
+       caption = &quot;Dataviz: antonioalegria.io | @elmedicobrujo
+        Data: datos.cdmx.gob.mx | Metro CDMX: 2010-2022&quot;)+
+  theme(axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.text.x = element_text(size = 28,
+                                   color = &quot;#f1f1f1&quot;),
+        plot.margin = margin(7,7,5,7, &quot;cm&quot;),
+        plot.title = element_text(hjust = 0.7, size = 110,
+                                  color = &quot;#f1f1f1&quot;,
+                                  family = &quot;Avenir Next Condensed&quot;,
+                                  face = &quot;bold&quot;,
+                                  margin = margin(1,1,4,1, &quot;cm&quot;)
+                                  ),
+        plot.caption = element_text(color = &quot;#f1f1f1&quot;,
+                                    size = 22, 
+                                    margin = margin(3,1,-1,1, &quot;cm&quot;)),
+        text = element_text(family = &quot;Roboto&quot;, 
+                            face = &quot;bold&quot;,
+                            color = &quot;#f1f1f1&quot;)
+        
+  )
+
+# ggsave(&quot;stations_final_final_ver_12.png&quot;,
+#        plot = p,
+#        width = 1200,
+#        height = 1200,
+#        units = &quot;px&quot;,
+#        scale = 10,
+#        dpi = 400,
+#        bg = &quot;#222222&quot;
+#        )
+# </code></pre>
+<p><em>Note</em>: Logos and legend were added in figma.</p>
+</div>
 </div>
