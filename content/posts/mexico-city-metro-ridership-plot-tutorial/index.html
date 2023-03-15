@@ -1,5 +1,5 @@
 ---
-title: Mexico City Metro Ridership - Plot Tutorial
+title: Mexico City Metro Ridership | Plot Tutorial
 author: Antonio Alegría
 date: '2023-03-15'
 slug: mexico-city-metro-ridership-plot-tutorial
@@ -31,11 +31,15 @@ img {
  
 }
 
+pre code {
+    color: #777;
 
+}
 </style>
 <div id="metro-ridership" class="section level2">
 <h2>Metro Ridership</h2>
 <p><img src="images/metro-ridership.png" /></p>
+<p><br></p>
 <p>The Mexico City subway is not only one of the busiest metro systems in the world, but also a vibrant cultural hub that showcases colorful murals, live music performances, and a diverse array of street art.</p>
 <p>Despite Mexico City’s stark socioeconomic disparities, the subway serves as an equalizer, transporting over 1.6 billion passengers annually across the city, from the most affluent neighborhoods to the poorest areas.</p>
 <p>To capture the full scope of twelve years’ worth of ridership data in a single plot, follow these simple steps and unleash the power of {ggplot2}</p>
@@ -45,10 +49,12 @@ img {
 <li>Create a custom function for plotting.</li>
 <li>Add plot aesthetics to make the plot more visually appealing.</li>
 </ol>
+<p><br></p>
 <div id="import-the-dataset" class="section level3">
 <h3>1. Import the dataset</h3>
 <p>Here you can download the complete data. <a href="https://datos.cdmx.gob.mx/dataset/afluencia-diaria-del-metro-cdmx">datos.cdmx.gob.mx</a>.</p>
 <p>Next, set up the necessary libraries for data wrangling and plotting using the tidyverse, as well as some additional packages for graphical enhancements:</p>
+<p><br></p>
 <pre class="r"><code>#libraries
 pacman::p_load(readr,
                dplyr,
@@ -68,11 +74,15 @@ theme_update(
   axis.line.y = element_line(size = .5, colour = &quot;grey50&quot;),
   panel.grid = element_blank()
 )</code></pre>
+<p><br></p>
 <p>Due to the presence of Latin characters in the dataset, it’s necessary to specify the imports as UTF-8 to ensure proper encoding.</p>
+<p><br></p>
 <pre class="r"><code>df_simple_encoding &lt;- read.csv(&quot;afluenciastc_simple_12_2022.csv&quot;, fileEncoding=&quot;UTF-8&quot;)
 
 # Tip: if you don&#39;t know the encoding of your data try this
-# guess_encoding(&quot;data.csv&quot;, n_max=10000, threshold = 0.2)</code></pre>
+
+guess_encoding(&quot;data.csv&quot;, n_max=10000, threshold = 0.2)</code></pre>
+<p><br></p>
 </div>
 <div id="correct-any-factor-issues-that-may-exist-in-the-data." class="section level3">
 <h3>2. Correct any factor issues that may exist in the data.</h3>
@@ -82,6 +92,7 @@ theme_update(
 <li>The linea column is then recoded to replace certain values with their equivalent values for consistency.</li>
 <li>The <code>count()</code> function is used to count the number of rides (afluencia) for each station (estaciones_renamed).</li>
 </ul>
+<p><br></p>
 <pre class="r"><code>afluencia_lineas &lt;- df_simple_encoding %&gt;% 
   group_by(linea) %&gt;%  # dataset is grouped by the Metro lines
   mutate(estaciones_renamed = case_when(
@@ -119,8 +130,10 @@ theme_update(
   )  %&gt;%
   count(estaciones_renamed, wt = afluencia) %&gt;% #
   na.omit() </code></pre>
+<p><br></p>
 <p>Convert into a factor variable with specific levels. The <code>levels</code> argument specifies the desired order of the factor levels, with “Line 1” as the first level and “Line 12” as the last level.</p>
 <p>This code ensures that the linea factor levels are ordered as desired for the subsequent plotting step.</p>
+<p><br></p>
 <pre class="r"><code>afluencia_lineas$linea &lt;- factor(afluencia_lineas$linea, 
                                  levels=c(
                                    &quot;Line 1&quot;,
@@ -136,9 +149,11 @@ theme_update(
                                    &quot;Line B&quot;,
                                    &quot;Line 12&quot;)
                                  )</code></pre>
+<p><br></p>
 <p>Next is the messiest and least elegant part of this:</p>
 <p>For each Metro Line, we need a new variable that numbers the order of each station. There are going to be duplicates, which we are going to deal with later.</p>
-<p><em>Note:</em> Metro stations are ordered in the order in which they appear on the map.</p>
+<p><strong>Note:</strong> Metro stations are ordered in the order in which they appear on the map.</p>
+<p><br></p>
 <pre class="r"><code>afluencia_lineas_orden &lt;- afluencia_lineas %&gt;% 
   mutate(linea1_order = case_when(
    estaciones_renamed ==  &quot;Observatorio&quot; ~ 1,
@@ -359,9 +374,11 @@ theme_update(
     estaciones_renamed ==  &quot;Tlaltenco&quot; ~ 19, 
     estaciones_renamed ==  &quot;Tláhuac&quot; ~ 20)
   )</code></pre>
+<p><br></p>
 <p>Duplicates occur because transfer stations have double entrances. However, this analysis considers only the registration of the line in question</p>
 <p>Therefore, we need to eliminate duplicates in each of the new variables.</p>
 <p>(Again, this is not very elegant)</p>
+<p><br></p>
 <pre class="r"><code>afluencia_lineas_orden$linea1_order[afluencia_lineas_orden$linea != &#39;Line 1&#39;] &lt;- NA
 afluencia_lineas_orden$linea2_order[afluencia_lineas_orden$linea != &#39;Line 2&#39;] &lt;- NA
 afluencia_lineas_orden$linea3_order[afluencia_lineas_orden$linea != &#39;Line 3&#39;] &lt;- NA
@@ -374,6 +391,7 @@ afluencia_lineas_orden$linea9_order[afluencia_lineas_orden$linea != &#39;Line 9&
 afluencia_lineas_orden$lineaA_order[afluencia_lineas_orden$linea != &#39;Line A&#39;] &lt;- NA
 afluencia_lineas_orden$lineaB_order[afluencia_lineas_orden$linea != &#39;Line B&#39;] &lt;- NA
 afluencia_lineas_orden$linea12_order[afluencia_lineas_orden$linea != &#39;Line 12&#39;] &lt;- NA</code></pre>
+<p><br></p>
 </div>
 <div id="create-a-custom-function-for-plotting." class="section level3">
 <h3>3. Create a custom function for plotting.</h3>
@@ -388,6 +406,7 @@ afluencia_lineas_orden$linea12_order[afluencia_lineas_orden$linea != &#39;Line 1
 - <code>color()</code>: the hex code of the corresponding line
 - <code>line_position()</code>: the position inside the plot where the segment should be placed
 - <code>n_stations()</code>: the number of stations at which to end the segment.</p>
+<p><br></p>
 <pre class="r"><code>my_geom_and_text &lt;- function(lineas, color, line_position, n_stations){
   list(
     ggplot2::geom_point(aes(x = linea, y = {{ lineas }}, size = n),
@@ -410,11 +429,13 @@ afluencia_lineas_orden$linea12_order[afluencia_lineas_orden$linea != &#39;Line 1
     )
   
 }</code></pre>
+<p><br></p>
 </div>
 <div id="add-plot-aesthetics-to-make-the-plot-more-visually-appealing." class="section level3">
 <h3>4. Add plot aesthetics to make the plot more visually appealing.</h3>
 <p>Finally, this code generates the final plot of the ridership of the different metro lines in México City. It uses the custom function <code>my_geom_and_text()</code> that creates a segment of the line and adds the stations and their names. The function is called for each of the twelve metro lines in the dataset, with different parameters that specify the line number, color, position within the plot, and number of stations. The <code>scale_size()</code> function is used to set the size of the stations according to their ridership.</p>
 <p>The rest is just the <code>theme()</code> function to customize the appearance of the plot.</p>
+<p><br></p>
 <pre class="r"><code>p &lt;-  afluencia_lineas_orden %&gt;% 
   ggplot() +
   my_geom_and_text(lineas = linea2_order,color = &quot;#0b5b9d&quot;,
@@ -464,19 +485,19 @@ afluencia_lineas_orden$linea12_order[afluencia_lineas_orden$linea != &#39;Line 1
         text = element_text(family = &quot;Roboto&quot;, 
                             face = &quot;bold&quot;,
                             color = &quot;#f1f1f1&quot;)
-        
-  )
+        )
 
-# ggsave(&quot;stations_final_final_ver_12.png&quot;,
-#        plot = p,
-#        width = 1200,
-#        height = 1200,
-#        units = &quot;px&quot;,
-#        scale = 10,
-#        dpi = 400,
-#        bg = &quot;#222222&quot;
-#        )
-# </code></pre>
-<p><em>Note</em>: Logos and legend were added in figma.</p>
+ ggsave(&quot;stations_final_final_ver_12.png&quot;,
+        plot = p,
+        width = 1200,
+        height = 1200,
+        units = &quot;px&quot;,
+        scale = 10,
+        dpi = 400,
+        bg = &quot;#222222&quot;
+        )</code></pre>
+<p><br></p>
+<p><strong>Final Note</strong> Logos and legend were added in figma.</p>
+<p><br></p>
 </div>
 </div>
