@@ -1,0 +1,40 @@
+---
+title: Mexico City Metro Ridership - Plot Tutorial
+author: Antonio Alegría
+date: '2023-03-15'
+slug: mexico-city-metro-ridership-plot-tutorial
+categories:
+  - dataviz
+  - R
+  - tutorial
+tags:
+  - lineplot
+toc: no
+images: ~
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+
+```
+
+## Metro Ridership 
+
+![](images/metro-ridership.png)
+
+
+The Mexico City subway is not only one of the busiest metro systems in the world, but also a vibrant cultural hub that showcases colorful murals, live music performances, and a diverse array of street art.
+
+Despite Mexico City's stark socioeconomic disparities, the subway serves as an equalizer, transporting over 1.6 billion passengers annually across the city, from the most affluent neighborhoods to the poorest areas.
+
+
+To capture the full scope of twelve years' worth of ridership data in a single plot, follow these simple steps and unleash the power of {ggplot2}
+
+
+1. Import the dataset.
+2. Correct any factor issues that may exist in the data.
+3. Create a custom function for plotting.
+4. Add plot aesthetics to make the plot more visually appealing.
