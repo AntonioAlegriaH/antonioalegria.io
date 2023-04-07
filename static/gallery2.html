@@ -65,10 +65,10 @@
             flex-wrap: wrap; /* Wrap images onto multiple rows if necessary */
             align-items: center; /* Center images vertically */
             justify-content: space-between; /* Add space between images */
-            margin: 80px; /* Add a margin around the container */
+            margin: 90px; /* Add a margin around the container */
             margin-bottom: 250px;  
             outline: 2px solid;
-            outline-color: #53697615;
+            outline-color: rgba(220, 20, 60, 0.15);
             outline-width: 2px;
             border-radius: 15px;
             
@@ -95,9 +95,11 @@
             }
 
         .back-button:hover {
-            transform: translateX(-5px);
+            transform: translateX(-10px);
         }
 
+
+        
         .back-button svg {
             margin-right: 10px;
         }
@@ -134,9 +136,9 @@
 
 
         .image {
-            width: 300px; /* Set a fixed width for the images */
-            height: 300px; /* Set a fixed height for the images */
-            margin: 20px; /* Reduce the margin around each image */
+            width: 260px; /* Set a fixed width for the images */
+            height: 250px; /* Set a fixed height for the images */
+            margin: 10px; /* Reduce the margin around each image */
             overflow: hidden; /* Hide any overflow */
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add a box shadow */
             transition: 0.3s; /* Add a transition effect on hover */
@@ -330,7 +332,7 @@
     <body>
         <header>
             <a href="javascript:history.back()" class="back-button">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="#555555"/>
                 </svg>
             </a>
@@ -403,32 +405,33 @@
                 <div class="caption">Registered nurse workforce changes in each US state</div>
             </div>
             <div class="image" onclick="openModal(16)">
-                <img src="gallery-imgs/image16.jpeg" alt="Image 16" id="image16">
-                <div class="caption">Caption 2</div>
+                <img src="gallery-imgs/image16.jpeg" alt="Infographic showing retail sales trends for health and personal care products in the USA, with historic area plots and national average"" id="image16">
+                <div class="caption">Retail Sales: Health Care | Area</div>
             </div>
             <div class="image" onclick="openModal(17)">
-                <img src="gallery-imgs/image17.jpeg" alt="Image 17" id="image17">
-                <div class="caption">Caption 3</div>
+                <img src="gallery-imgs/image17.jpeg" alt="USA tile map with gradient colors showing retail sales of health and personal care products. Idicating rising prices since 2021." id="image17">
+                <div class="caption">Retail Sales: Health Care | Tiles</div>
             </div>
 
             <div class="image" onclick="openModal(18)">
-                <img src="gallery-imgs/image18.jpeg" alt="Image 18" id="image18">
-                <div class="caption">Caption 3</div>
+                <img src="gallery-imgs/image18.jpeg" alt="A map of Canada that overlays topography and population density, highlighting the most and least populated areas. Using rayshader techniques, the infographic reveals that 50% of Canada's population is concentrated in Toronto, Ottawa, Montreal, and Quebec." id="image18">
+                <div class="caption">Canada Population Density and Topography</div>
             </div>
+         
 
             <div class="image" onclick="openModal(19)">
-                <img src="gallery-imgs/image19.jpg" alt="Image 19" id="image19">
-                <div class="caption">Caption 3</div>
+                <img src="gallery-imgs/image19.jpg" alt="An infographic highlighting the bird species richness in Texas, with a map indicating the different areas where bird species sightings have been recorded and a bar plot that showcases the top 30 most commonly observed birds in the state." id="image19">
+                <div class="caption">Bird sightings in texas. Top 30 Species </div>
             </div>
 
             <div class="image" onclick="openModal(20)">
-                <img src="gallery-imgs/image20.jpg" alt="Image 20" id="image20">
-                <div class="caption">Caption 3</div>
+                <img src="gallery-imgs/image20joy.jpg" alt="A stream plot showing the distribution of colors used by Bob Ross throughout his painting career." id="image20">
+                <div class="caption">Colors Used By Bob Ross </div>
             </div>
 
             <div class="image" onclick="openModal(21)">
-                <img src="gallery-imgs/image21.jpg" alt="Image 21" id="image21">
-                <div class="caption">Caption 3</div>
+                <img src="gallery-imgs/image21.jpg" alt="A scatter plot displaying the Mexico City Metro system with points representing stations and size indicating ridership from 2010 to 2022." id="image21">
+                <div class="caption">México City Metro Ridership</div>
             </div>
 
             <!-- Add more images here -->
@@ -554,29 +557,29 @@
             <div id="caption17" class="caption"></div>
         </div>  
         <!-- Modal 18 -->
-        <div id="modal18" class="modal">
-            <span class="close" onclick="closeModal(18)">&times;</span>
-            <img class="modal-content" src="gallery-imgs/image18.jpeg" alt="Image 18" id="image18">
-            <div id="caption18" class="caption"></div>
-        </div>  
+      <div id="modal18" class="modal">
+        <span class="close" onclick="closeModal(18)">&times;</span>
+        <img class="modal-content" src="image18-full.png" alt="Image 18" id="img18">
+        <div id="caption18" class="caption"></div>
+    </div>  
         <!-- Modal 19 -->
         <div id="modal19" class="modal">
             <span class="close" onclick="closeModal(19)">&times;</span>
-            <img class="modal-content" src="gallery-imgs/image19.jpg" alt="Image 19" id="image19">
+            <img class="modal-content" src="image19-full.png" alt="Image 19" id="img19">
             <div id="caption19" class="caption"></div>
         </div>  
         
         <!-- Modal 20 -->
         <div id="modal20" class="modal">
             <span class="close" onclick="closeModal(20)">&times;</span>
-            <img class="modal-content" src="gallery-imgs/image20.jpg" alt="Image 20" id="image20">
+            <img class="modal-content" src="image20-full.png" alt="Image 20" id="img20">
             <div id="caption20" class="caption"></div>
         </div>  
  
-        <!-- Modal 20 -->
+        <!-- Modal 21 -->
         <div id="modal21" class="modal">
             <span class="close" onclick="closeModal(21)">&times;</span>
-            <img class="modal-content" src="gallery-imgs/image21.jpg" alt="Image 21" id="image21">
+            <img class="modal-content" src="image21-full.png" alt="Image 21" id="img21">
             <div id="caption21" class="caption"></div>
         </div>  
                 
