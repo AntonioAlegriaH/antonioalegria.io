@@ -5,7 +5,7 @@
     <style>
             
             body{
-                background-color: #fffff;
+                background-color: #ffffff;
 
             }
             #background{
@@ -343,28 +343,28 @@
 
         <div class="container">
             <div class="image" onclick="openModal(1)">
-                <img src="gallery-imgs/image1.jpeg" alt="Image 1" id="image1">
-                <div class="caption">Caption 1</div>
+                <img src="gallery-imgs/image1.jpeg" alt="New York City flood risk projections for 2050 due to sea level rise" id="image1">
+                <div class="caption">NYC Sea Level Rise</div>
             </div>
             <div class="image" onclick="openModal(2)">
-                <img src="gallery-imgs/image2.jpeg" alt="Image 2" id="image2">
-                <div class="caption">Caption 2</div>
+                <img src="gallery-imgs/image2.jpeg" alt="Population density visualization of Morocco with raytraced map" id="image2">
+                <div class="caption">Morocco Population Density</div>
             </div>
             <div class="image" onclick="openModal(3)">
-                <img src="gallery-imgs/image3.jpeg" alt="Image 3" id="image3">
-                <div class="caption">Caption 3</div>
+                <img src="gallery-imgs/image3.jpeg" alt="Map illustrating the production of yerba mate in Argentina over 50 years" id="image3">
+                <div class="caption">Argentinian Yerba Mate Production</div>
             </div>
             <div class="image" onclick="openModal(4)">
-                <img src="gallery-imgs/image4.jpeg" alt="Image 4" id="image4">
-                <div class="caption">Caption 1</div>
+                <img src="gallery-imgs/image4.jpeg" alt="Visualization of baby name trends for Edward, Bella, and Jacob, highlighting the impact of the Twilight movie" id="image4">
+                <div class="caption">Twilight Saga Baby Names</div>
             </div>
             <div class="image" onclick="openModal(5)">
-                <img src="gallery-imgs/image5.jpeg" alt="Image 5" id="image5">
-                <div class="caption">Caption 2</div>
+                <img src="gallery-imgs/image5.jpeg" alt="Visualization of historical data on bicycle ridership in Mexico City"" id="image5">
+                <div class="caption">Mexico City Bike Paths</div>
             </div>
             <div class="image" onclick="openModal(6)">
-                <img src="gallery-imgs/image6.gif" alt="Image 6" id="image6">
-                <div class="caption">Caption 3</div>
+                <img src="gallery-imgs/image6.gif" alt="Animated map of Mexico City metro ridership" id="image6">
+                <div class="caption">Daily Ridership of Mexico City Metro System</div>
             </div>
             <div class="image" onclick="openModal(7)">
                 <img src="gallery-imgs/image7.jpeg" alt="Image 7" id="image7">
@@ -425,6 +425,12 @@
                 <img src="gallery-imgs/image20.jpg" alt="Image 20" id="image20">
                 <div class="caption">Caption 3</div>
             </div>
+
+            <div class="image" onclick="openModal(21)">
+                <img src="gallery-imgs/image21.jpg" alt="Image 21" id="image21">
+                <div class="caption">Caption 3</div>
+            </div>
+
             <!-- Add more images here -->
         
         </div>
@@ -566,7 +572,15 @@
             <img class="modal-content" src="gallery-imgs/image20.jpg" alt="Image 20" id="image20">
             <div id="caption20" class="caption"></div>
         </div>  
-
+ 
+        <!-- Modal 20 -->
+        <div id="modal21" class="modal">
+            <span class="close" onclick="closeModal(21)">&times;</span>
+            <img class="modal-content" src="gallery-imgs/image21.jpg" alt="Image 21" id="image21">
+            <div id="caption21" class="caption"></div>
+        </div>  
+                
+        
         
 
         <!-- Add more modals here -->
@@ -631,6 +645,7 @@
             var modal18 = document.getElementById("modal18");
             var modal19 = document.getElementById("modal19");
             var modal20 = document.getElementById("modal20");
+            var modal21 = document.getElementById("modal21");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -653,6 +668,8 @@
             var caption18 = document.getElementById("caption18");
             var caption19 = document.getElementById("caption19");
             var caption20 = document.getElementById("caption20");
+            var caption21 = document.getElementById("caption21");
+
 
             // Get the image elements
             var img1 = document.getElementById("image1");
@@ -675,6 +692,7 @@
             var img18 = document.getElementById("image18");
             var img19 = document.getElementById("image19");
             var img20 = document.getElementById("image20");
+            var img21 = document.getElementById("image21");
 
             // Get the modal images
             var modalImg1 = document.getElementById("img1");
@@ -697,6 +715,7 @@
             var modalImg18 = document.getElementById("img18");
             var modalImg19 = document.getElementById("img19");
             var modalImg20 = document.getElementById("img20");
+            var modalImg21 = document.getElementById("img21");
 
             // When the user clicks on an image, open the modal
             function openModal(modalNumber) {
@@ -780,6 +799,10 @@
                 modal20.style.display = "block";
                 modalImg20.src = img20.src;
                 caption20.innerHTML = img20.alt;
+                } else if (modalNumber == 21) {
+                modal21.style.display = "block";
+                modalImg21.src = img21.src;
+                caption21.innerHTML = img21.alt;
                 }
                 // Add code to handle additional modals here
             }
@@ -826,6 +849,8 @@
                 modal19.style.display = "none";
                 } else if (modalNumber == 20) {
                 modal20.style.display = "none";
+                } else if (modalNumber == 21) {
+                modal21.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
