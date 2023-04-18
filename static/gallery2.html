@@ -434,6 +434,14 @@
                 <div class="caption">México City Metro Ridership</div>
             </div>
 
+
+            <div class="image" onclick="openModal(22)">
+                <img src="gallery-imgs/image22.jpg" alt="An infographic depicting the production of eggs in the United States for food ingredients, including shell eggs and processed eggs in liquid, frozen, or dried/powdered forms. It also mentions table egg type layers as the hens that produce eggs for consumption." id="image22">
+                <div class="caption">US Eggs Production</div>
+            </div>
+
+
+
             <!-- Add more images here -->
         
         </div>
@@ -584,7 +592,13 @@
         </div>  
                 
         
-        
+         <!-- Modal 22 -->
+         <div id="modal22" class="modal">
+            <span class="close" onclick="closeModal(22)">&times;</span>
+            <img class="modal-content" src="image22-full.png" alt="Image 22" id="img22">
+            <div id="caption22" class="caption"></div>
+        </div>  
+                
 
         <!-- Add more modals here -->
 
@@ -649,6 +663,7 @@
             var modal19 = document.getElementById("modal19");
             var modal20 = document.getElementById("modal20");
             var modal21 = document.getElementById("modal21");
+            var modal22 = document.getElementById("modal22");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -672,6 +687,7 @@
             var caption19 = document.getElementById("caption19");
             var caption20 = document.getElementById("caption20");
             var caption21 = document.getElementById("caption21");
+            var caption22 = document.getElementById("caption22");
 
 
             // Get the image elements
@@ -696,6 +712,7 @@
             var img19 = document.getElementById("image19");
             var img20 = document.getElementById("image20");
             var img21 = document.getElementById("image21");
+            var img22 = document.getElementById("image22");
 
             // Get the modal images
             var modalImg1 = document.getElementById("img1");
@@ -719,6 +736,7 @@
             var modalImg19 = document.getElementById("img19");
             var modalImg20 = document.getElementById("img20");
             var modalImg21 = document.getElementById("img21");
+            var modalImg22 = document.getElementById("img22");
 
             // When the user clicks on an image, open the modal
             function openModal(modalNumber) {
@@ -806,7 +824,12 @@
                 modal21.style.display = "block";
                 modalImg21.src = img21.src;
                 caption21.innerHTML = img21.alt;
+                } else if (modalNumber == 22) {
+                modal22.style.display = "block";
+                modalImg22.src = img22.src;
+                caption22.innerHTML = img22.alt;
                 }
+
                 // Add code to handle additional modals here
             }
 
@@ -854,6 +877,8 @@
                 modal20.style.display = "none";
                 } else if (modalNumber == 21) {
                 modal21.style.display = "none";
+                } else if (modalNumber == 22) {
+                modal22.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
