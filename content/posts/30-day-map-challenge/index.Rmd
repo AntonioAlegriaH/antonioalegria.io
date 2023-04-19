@@ -27,13 +27,13 @@ img {
 
 img:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
   border-radious 20px;
   z-index:1;
 }
 
 img:active {
-  transform: translateY(-1px);
+  transform: translateY(-10px);
 }
 
 ```
