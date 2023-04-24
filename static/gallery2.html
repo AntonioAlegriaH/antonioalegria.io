@@ -440,6 +440,11 @@
                 <div class="caption">US Eggs Production</div>
             </div>
 
+            <div class="image" onclick="openModal(23)">
+                <img src="gallery-imgs/image23.jpg" alt="Data visualization map of Washington, DC's street lights, showing the majority of materials used: wood, steel, and cast iron. Explore the city's illuminated landscape with over 71K street lights." id="image23">
+                <div class="caption">Washington, DC Lights</div>
+            </div>
+
 
 
             <!-- Add more images here -->
@@ -598,7 +603,17 @@
             <img class="modal-content" src="image22-full.png" alt="Image 22" id="img22">
             <div id="caption22" class="caption"></div>
         </div>  
-                
+            
+
+        <!-- Modal 22 -->
+        <div id="modal23" class="modal">
+            <span class="close" onclick="closeModal(23)">&times;</span>
+            <img class="modal-content" src="image23-full.png" alt="Image 23" id="img23">
+            <div id="caption23" class="caption"></div>
+        </div>  
+                       
+
+        
 
         <!-- Add more modals here -->
 
@@ -664,6 +679,7 @@
             var modal20 = document.getElementById("modal20");
             var modal21 = document.getElementById("modal21");
             var modal22 = document.getElementById("modal22");
+            var modal23 = document.getElementById("modal23");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -688,6 +704,7 @@
             var caption20 = document.getElementById("caption20");
             var caption21 = document.getElementById("caption21");
             var caption22 = document.getElementById("caption22");
+            var caption23 = document.getElementById("caption23");
 
 
             // Get the image elements
@@ -713,6 +730,7 @@
             var img20 = document.getElementById("image20");
             var img21 = document.getElementById("image21");
             var img22 = document.getElementById("image22");
+            var img23 = document.getElementById("image23");
 
             // Get the modal images
             var modalImg1 = document.getElementById("img1");
@@ -737,6 +755,7 @@
             var modalImg20 = document.getElementById("img20");
             var modalImg21 = document.getElementById("img21");
             var modalImg22 = document.getElementById("img22");
+            var modalImg23 = document.getElementById("img23");
 
             // When the user clicks on an image, open the modal
             function openModal(modalNumber) {
@@ -828,6 +847,10 @@
                 modal22.style.display = "block";
                 modalImg22.src = img22.src;
                 caption22.innerHTML = img22.alt;
+                } else if (modalNumber == 23) {
+                modal23.style.display = "block";
+                modalImg23.src = img23.src;
+                caption23.innerHTML = img23.alt;
                 }
 
                 // Add code to handle additional modals here
@@ -879,6 +902,8 @@
                 modal21.style.display = "none";
                 } else if (modalNumber == 22) {
                 modal22.style.display = "none";
+                } else if (modalNumber == 23) {
+                modal23.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
