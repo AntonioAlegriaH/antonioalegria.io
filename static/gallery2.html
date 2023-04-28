@@ -445,6 +445,11 @@
                 <div class="caption">Washington, DC Lights</div>
             </div>
 
+            <div class="image" onclick="openModal(24)">
+                <img src="gallery-imgs/image24.jpg" alt="This dataviz map displays the distribution of healthcare institutions in Mexico, including hospitals, clinics, dentists, and social security facilities, highlighting their concentration in urban areas. Made with rayshader." id="image24">
+                <div class="caption">México Healthcare</div>
+            </div>
+
 
 
             <!-- Add more images here -->
@@ -605,14 +610,22 @@
         </div>  
             
 
-        <!-- Modal 22 -->
+        <!-- Modal 23 -->
         <div id="modal23" class="modal">
             <span class="close" onclick="closeModal(23)">&times;</span>
             <img class="modal-content" src="image23-full.png" alt="Image 23" id="img23">
             <div id="caption23" class="caption"></div>
         </div>  
                        
+        <!-- Modal 24 -->
+        <div id="modal24" class="modal">
+            <span class="close" onclick="closeModal(24)">&times;</span>
+            <img class="modal-content" src="image24-full.png" alt="Image 24" id="img24">
+            <div id="caption24" class="caption"></div>
+        </div>  
+                       
 
+        
         
 
         <!-- Add more modals here -->
@@ -680,6 +693,7 @@
             var modal21 = document.getElementById("modal21");
             var modal22 = document.getElementById("modal22");
             var modal23 = document.getElementById("modal23");
+            var modal24 = document.getElementById("modal24");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -705,6 +719,7 @@
             var caption21 = document.getElementById("caption21");
             var caption22 = document.getElementById("caption22");
             var caption23 = document.getElementById("caption23");
+            var caption24 = document.getElementById("caption24");
 
 
             // Get the image elements
@@ -731,6 +746,7 @@
             var img21 = document.getElementById("image21");
             var img22 = document.getElementById("image22");
             var img23 = document.getElementById("image23");
+            var img24 = document.getElementById("image24");
 
             // Get the modal images
             var modalImg1 = document.getElementById("img1");
@@ -756,6 +772,7 @@
             var modalImg21 = document.getElementById("img21");
             var modalImg22 = document.getElementById("img22");
             var modalImg23 = document.getElementById("img23");
+            var modalImg24 = document.getElementById("img24");
 
             // When the user clicks on an image, open the modal
             function openModal(modalNumber) {
@@ -851,6 +868,10 @@
                 modal23.style.display = "block";
                 modalImg23.src = img23.src;
                 caption23.innerHTML = img23.alt;
+                } else if (modalNumber == 24) {
+                modal24.style.display = "block";
+                modalImg24.src = img24.src;
+                caption24.innerHTML = img24.alt;
                 }
 
                 // Add code to handle additional modals here
@@ -904,6 +925,8 @@
                 modal22.style.display = "none";
                 } else if (modalNumber == 23) {
                 modal23.style.display = "none";
+                } else if (modalNumber == 24) {
+                modal24.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
