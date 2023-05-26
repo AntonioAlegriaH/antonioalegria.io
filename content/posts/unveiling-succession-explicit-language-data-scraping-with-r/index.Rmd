@@ -1,0 +1,360 @@
+---
+title: 'Unveiling Succession''s Explicit Language: Data Scraping with R'
+author: Antonio Alegría
+date: '2023-05-25'
+slug: unveiling-succession-explicit-language-data-scraping-with-r
+categories:
+  - dataviz
+  - R
+  - tutorial
+tags:
+  - lineplot
+  - dataviz
+toc: no
+images: ~
+---
+
+```{css plot styles, echo = FALSE}
+
+img {
+ background: rgb(236, 236, 236);
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ border: 2px solid rgb(200, 200, 200);
+ border-radius: 10px;
+ transition: all .5s;
+ cursor: pointer;
+ outline: none;
+ 
+}
+
+pre code {
+    color: #777;
+
+}
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      eval = FALSE)
+
+```
+
+## F*uck Succession
+
+![](images/succecion-fucks-final.png)
+
+<br>
+
+
+In our blog entry, we take you behind the scenes of our data visualization project, where we explore the explicit language used in the TV show Succession. Using R, we scrape the necessary data, unraveling the language that characterizes the series. Extracting valuable information from the transcripts of Succession is just the pretext for shedding light on the fascinating process of data scraping.
+
+
+* Part 1: Setting the Stage
+* Part 2: Harnessing the Power of `{rvest}`
+* Part 3: Streamlining Data Extraction
+* Part 4: Efficient Data Extraction
+* Part 5: Bringing the Succession Saga Together
+* Part 6: Preserving the data
+* Part 7: F-Bombs": Exploring the Frequency of Explicit Language 
+* Conclusion:
+
+<br>
+
+### 1. Setting the Stage
+
+To truly understand the language dynamics in Succession, we recognized the need for an extensive dataset. Our first step was to identify a reliable and comprehensive source of information: [transcripts.foreverdreaming.org](https://transcripts.foreverdreaming.org/viewforum.php?f=929). This website provided a vast collection of transcripts from various TV shows, making it the perfect resource for our project.
+
+
+The real star of this project is the `{rvest}` package. It played a pivotal role in our data scraping process, allowing us to extract the necessary textual data from the transcripts. 
+
+
+<br>
+
+### 2. Harnessing the Power of `{rvest}`
+
+To scrape and extract data efficiently, we first need to learn how to do it with a simple example, focusing on extracting the transcript from a single episode. Once we have mastered the basics, we will move on to automating the extraction process for an entire season. This involves creating a custom function that can handle different URLs and streamline the data extraction process.
+
+To begin, we load the essential package `{rvest}`, which equips us with the necessary functions for web scraping. This package helps us to navigate web pages, extract relevant information, and manipulate the data for further analysis. 
+
+
+ARTD (Always Read The Documentation):
+[{rvest}](https://rvest.tidyverse.org/articles/rvest.html)
+
+
+
+```{r}
+# Packages
+
+pacman::p_load(dplyr,
+               tidyr,
+               rvest,
+               stringr,
+               tidytext,
+               install = FALSE) #This is to avoid unwanted updates
+
+```
+
+Using the `read_html()` function, we can retrieve the HTML content of the webpage located at "https://transcripts.foreverdreaming.org/viewtopic.php?t=36113" and store it in the variable `html_sucession_cap`.
+
+This content is then stored in the variable `html_sucession_cap`, ready for further extraction and analysis. The `read_html()` function enables us to access the underlying structure of the webpage, laying the foundation for our data scraping.
+
+```{r}
+# Read the HTML from the website
+html_sucession_cap <- read_html("https://transcripts.foreverdreaming.org/viewtopic.php?t=36113")
+
+```
+
+
+To extract the desired elements from the HTML content, we employ the `html_element()` function and specify the CSS selector as ".content". This ensures that we capture the relevant sections of the webpage containing the desired data.
+
+
+Once we have obtained the targeted elements, we further refine the extracted information using the `html_text2()` function. This function allows us to isolate and extract only the textual content from the selected elements, filtering out any unnecessary HTML tags or formatting.
+
+To enhance the readability and structure of the extracted text, we employ the `stringr::str_split("\n\n")` function. By splitting the text at each occurrence of double line breaks ("\n\n"), we effectively eliminate any excessive line breaks and organize the text into distinct segments for further processing and analysis.
+
+```{r}
+# Extract the desired elements from Season 1, Episode 1
+s01_e01_elements <- html_element(html_sucession_cap, ".content") %>% 
+  html_text2() %>% # Extract only the text
+  str_split("\n\n") # Eliminate "\n\n"
+
+```
+
+
+The extracted elements are transformed into a dataframe named `d_as_df` through the utilization of the `data.frame()` function. This conversion allows us to organize and manipulate the extracted data more effectively.
+
+To enhance clarity and consistency, we employ the `rename()` function to assign the column containing the extracted text with the descriptive label "SnEn_text".
+
+In the subsequent step, the `transmute()` function is utilized to modify the extracted text. Specifically, we utilize `str_replace_all()` to replace any censored variations of the word "fuck" (such as "f*ck") with their uncensored equivalents.
+
+To provide further context and facilitate analysis, a new column named "line" is introduced to indicate the line number of each extracted text element. This is achieved through the application of the `mutate()` function.
+
+Additionally, columns denoting the season and episode ("01" in this instance) are appended to the dataframe using `mutate()`. These columns serve to provide valuable information about the specific episode from which the text was extracted.
+
+Finally, for streamlined handling and analysis, the resulting dataframe is converted into a tibble using `as_tibble()`. This conversion ensures a consistent and standardized format for the data, allowing for easier manipulation and exploration.
+
+
+```{r}
+# Convert the extracted elements into a dataframe
+d_as_df <- s01_e01_elements %>% 
+  data.frame() %>% 
+  rename("SnEn_text" = "c...SNORING......GRUNTING......GRUNTS......PANTING........CLATTER..n...GRUNTS....") %>% 
+  transmute(text = str_replace_all(string = .$SnEn_text, fixed(c("f*ck" = "fuck", 
+                                                                "f*cked" = "fucked",
+                                                                "f*cking" = "fucking",
+                                                                "f*ck's" = "fucks")
+                                                             ))) %>%  
+  mutate(line = row_number()) %>%
+  mutate(season = "01",
+         episode = "01") %>% 
+  as_tibble()
+```
+<br>
+
+### 3. Streamlining Data Extraction: Extracting and Tidying Succession Episode Data with Ease
+
+While the previous code successfully extracted episode data, it had limitations in terms of efficiency and scalability. Extracting data for each episode involved repetitive scripting, resulting in a cumbersome and time-consuming process. To overcome these challenges and enhance our workflow, we need to develop a custom function called `episode_by_season()`.
+
+<br>
+
+```{r}
+
+# Custom function to extract episode data based on season and episode number
+episode_by_season <- function(html_link, 
+                              season, episode){
+  
+  # Read the HTML from the provided link
+  html_sucession_ep <- read_html(html_link)
+   
+  # Extract the desired elements for the episode
+  SnEn_elements <- html_element(html_sucession_ep, ".content") %>% 
+    html_text2() %>% 
+    str_split("\n\n")
+  
+  # Clean and transform the extracted text into a tidy dataframe
+  episode_text_clean <- SnEn_elements %>% 
+    data.frame() %>% 
+    rename("SnEn_text" = 1) %>% 
+    transmute(text = str_replace_all(string = .$SnEn_text, fixed(c("f*ck" = "fuck", 
+                                                                   "f*cked" = "fucked",
+                                                                   "f*cking" = "fucking",
+                                                                   "f*ck's" = "fucks")
+    ))) %>%
+    mutate(line = row_number()) %>% 
+    mutate(season = season,
+           episode = episode) %>% 
+    as_tibble()
+
+}
+
+```
+
+This new function allowing us to retrieve episode data with just a few simple parameters. By providing the HTML link, season number, and episode number as inputs, the `episode_by_season()` function takes care of the rest. 
+
+With this streamlined approach, we minimize the amount of scripting required. The function encapsulates all the necessary steps, from reading the HTML content to extracting and tidying the episode data.
+
+<br>
+### 4. Efficient Data Extraction
+ 
+We continue our data extraction, focusing on Season 1. Let's take a closer look at how we utilize this function to extract and organize the episode data.
+
+For each episode of Season 1, we call the `episode_by_season()` function with the corresponding HTML link, season number, and episode number as parameters. Here's a breakdown of the code:
+
+
+<br>
+```{r}
+df_S01E01 <- episode_by_season(html_link = "https://transcripts.foreverdreaming.org/viewtopic.php?t=36113",
+                               season = "01",
+                               episode = "01")
+
+df_S01E02 <- episode_by_season(html_link = "https://transcripts.foreverdreaming.org/viewtopic.php?t=36336",
+                               season = "01",
+                               episode = "02")
+
+df_S01E03 <- episode_by_season(html_link = "https://transcripts.foreverdreaming.org/viewtopic.php?t=36337",
+                               season = "01",
+                               episode = "03")
+
+...
+
+```
+<br>
+
+We repeat this process for each episode, incrementing the episode number accordingly. The result is individual data frames for each episode, such as 
+`df_S01E01`, `df_S01E02`, and so on. 
+
+To consolidate all the episode data into a single data frame for Season 1, we use the `bind_rows()` function. This function combines the rows of multiple data frames into one. In this case, we bind together the data frames of all ten episodes of Season 1:
+
+<br>
+```{r}
+df_season_01 <- bind_rows(df_S01E01,
+                          df_S01E02,
+                          df_S01E03,
+                          ...
+                          df_S01E10)
+```
+
+<br>
+
+Once we have the consolidated `df_season_01` data frame, we can perform comprehensive analysis and visualization on the complete season's data.
+
+To keep our workspace tidy and avoid clutter, we remove the individual episode data frames using the `rm()` function:
+
+<br>
+
+```{r}
+rm(df_S01E01,
+   df_S01E02,
+   df_S01E03,
+   ...
+   df_S01E10)
+
+```
+
+<br>
+
+### 5. Bringing the Succession Saga Together
+
+We now shift our focus to consolidating the data from multiple seasons. By merging the individual season data frames,
+
+The `bind_rows()` function once again comes to our aid, seamlessly combining the individual season data frames into a single data frame named `df_complete_seasons`.
+
+<br>
+
+```{r}
+
+
+df_complete_seasons <- bind_rows(df_season_01,
+                                 df_season_02,
+                                 df_season_03,
+                                 df_season_04
+)
+
+```
+
+<br>
+### 6. Preserving the data
+
+It becomes crucial to preserve our hard work and avoid rerun the code. In this section, we focus on saving the complete season data in two different formats: RDS and CSV.
+
+<br>
+
+```{r}
+
+saveRDS(df_complete_seasons, 
+        file = "df_complete_seasons.rds")
+
+write.csv(df_complete_seasons, file = "df_complete.csv")
+
+
+```
+
+<br>
+
+Using the `saveRDS()` function, we save the `df_complete_seasons` data frame as an RDS (R Data Serialization) file. This binary format ensures that all the data and its associated structure are saved accurately, allowing us to easily reload it in future R sessions. 
+
+In addition to the RDS file, we also save the complete season data frame in CSV format using the `write.csv()` function. This format is widely compatible and can be easily imported into various data analysis tools or shared with collaborators who may not be using R.
+
+By employing both the RDS and CSV formats, we ensure the long-term preservation and accessibility of our data. This enables us to continue our analysis, share the data with collaborators, or utilize it in future projects seamlessly.sis.
+
+<br>
+
+### 7. "F-Bombs": Exploring the Frequency of Explicit Language 
+
+
+In our quest to uncover the linguistic nuances of Succession, we take a crucial step by transforming the complete season data frame into a tidy format. Using the `unnest_tokens()` function, we break down the text into individual words, enabling more granular analysis and exploration.
+
+<br>
+
+```{r}
+
+tidy_seasons <- df_complete_seasons %>%
+  unnest_tokens(input = text, word)
+
+```
+
+<br>
+
+
+
+Building upon the tidy season data, we narrow our focus to the explicit word "fuck" and its variations. By filtering for specific words and grouping the data by season and episode, we create a new data frame `fucks_by_episode` that counts the occurrences of these words in each episode.
+
+To enhance the analysis further, we introduce the concept of episode chronology. Using the `mutate()` function in combination with `case_when()`, we assign a chronological episode number based on the season. This allows for a unified representation of episode sequence across all seasons, facilitating comparisons and identifying trends.
+
+<br>
+
+```{r}
+fucks_by_episode <- tidy_seasons %>% 
+  filter(word %in% c("fuck",
+                     "fucked",
+                     "fucking",
+                     "fucks",
+                     "fuck's",
+                     "fuck'")) %>% 
+  group_by(season_int, episode_in) %>% 
+  count(word) %>% 
+  ungroup() %>% 
+  mutate(episode_chronological = case_when(season_int == 1 ~ episode_in,
+                                           season_int == 2 ~ episode_in + 10,
+                                           season_int == 3 ~ episode_in + 20,
+                                           season_int == 4 ~ episode_in + 29,
+                                           TRUE ~ 0))
+
+```
+
+<br>
+
+### 8. Conclusion 
+
+Through the process of web scraping and organizing the data, we have laid the foundation for deeper exploration and understanding. By leveraging the capabilities of packages like `{rvest}` and `{tidytext}`, we have scraped the transcripts and transformed them into a tidy format. This process of gathering, cleaning, and structuring the data is a crucial step that lays the groundwork for further analysis and visualization.
+
+
+As we bring this blog entry to a close, we have completed the data acquisition and preparation stage. However, our quest continues in the next entry, where we will shift our focus towards data visualization. In the upcoming blog post. (TBD)
+
+
+
+
+
