@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```
 
-## F*uck Succession
+## Succession Fuckometer
 
 ![](images/succession-fucks-final.png)
 
