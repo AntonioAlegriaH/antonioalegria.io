@@ -276,6 +276,7 @@ df_complete_seasons <- bind_rows(df_season_01,
 ```
 
 <br>
+
 ### 6. Preserving the data
 
 It becomes crucial to preserve our hard work and avoid rerun the code. In this section, we focus on saving the complete season data in two different formats: RDS and CSV.
