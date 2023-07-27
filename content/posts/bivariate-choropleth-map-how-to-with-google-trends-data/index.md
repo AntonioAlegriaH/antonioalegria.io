@@ -90,7 +90,7 @@ With these two packages, you'll have all the data you need to create an impressi
 
 <br>
 
-# 2.1- Using `{gtrendsR}` to get the data you need
+## 2.1- Using {gtrendsR} to get the data you need
 
 To fetch the data we need from Google Trends, we use `{gtrendsR}` package. But, before we dive in, let's understand what a **Topic search** is and why it's important to differentiate it from a regular search.
 
@@ -138,7 +138,7 @@ Here's a simple way to find the correct Google Knowledge Graph ID for your topic
 3. Once you find your topic on Wikidata, scroll down or use `cmd+f` to search for **"Google Knowledge Graph ID"**.
 4. Copy the code associated with your topic and save it in your script.
 
-For example, let's consider the topic "Barbie" as an example: B[arbie on Wikidata.](https://www.wikidata.org/wiki/Q55436290#P2671). The Google Knowledge Graph ID for the upcoming **Barbie Film** is **/g/11bytn60s0**. With this code, we can now extract the data accurately.
+For example, let's consider the topic "Barbie" as an example: [Barbie on Wikidata](https://www.wikidata.org/wiki/Q55436290#P2671). The Google Knowledge Graph ID for the upcoming **Barbie Film** is **/g/11bytn60s0**. With this code, we can now extract the data accurately.
 
 As you can see, using the Google Knowledge Graph ID ensures that you get the exact topic search you need to fetch precise data from Google Trends. It's a straightforward and reliable way to make sure you're working with the right information.
 
@@ -159,7 +159,7 @@ With this data, you're all set to create insightful bivariate maps and uncover a
 
 <br>
 
-## 2.3- It's time to use `{gtrendsR}` and gather the data.
+## 2.3- It's time to use {gtrendsR} and gather the data.
 
 
 Awesome! Now that we have the Google Knowledge Graph IDs for the **Barbie** Film and the **Oppenheimer** Film, we can use the `{gtrendsR}` package to retrieve the Google Trends data we need.
@@ -296,7 +296,7 @@ BvO_Merged %>%
 
 <br>
 
-## 3- Making Sense of the Data: The magic of `{biscale}` package.
+## 3- Making Sense of the Data: The magic of {biscale} package.
 
 Now comes the exciting part! We'll use the `{biscale}` package to combine our two datasets into a single bivariate map. This package works its magic by scaling and aligning the data correctly, allowing us to create a visually informative bivariate map.
 
@@ -473,7 +473,9 @@ If you ever need any help or have questions in your future mapping endeavors, do
 
 Happy mapping!
 
-Here's a pic of Hurrem to make your life a little bit happier.
+------------------------
+**Bonus content:**
+*Here's a pic of Hurrem to make your life a little bit happier.*
 
 ![](figures/hurrem.jpg)
 
