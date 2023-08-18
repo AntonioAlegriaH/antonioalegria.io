@@ -471,6 +471,16 @@
                 <div class="caption">Traffic Volume Map of Washington, D.C.</div>
             </div>
 
+            <div class="image" onclick="openModal(29)">
+                <img src="gallery-imgs/image29.jpg" alt="" id="image29">
+                <div class="caption"></div>
+            </div>
+
+            <div class="image" onclick="openModal(30)">
+                <img src="gallery-imgs/image30.jpg" alt="" id="image30">
+                <div class="caption"></div>
+            </div>
+
             <!-- Add more images here -->
         
         </div>
@@ -670,6 +680,22 @@
             <img class="modal-content" src="image28-full.png" alt="Image 28" id="img28">
             <div id="caption28" class="caption"></div>
         </div> 
+        
+        <!-- Modal 29 -->
+        <div id="modal29" class="modal">
+            <span class="close" onclick="closeModal(29)">&times;</span>
+            <img class="modal-content" src="image29-full.png" alt="Image 29" id="img29">
+            <div id="caption29" class="caption"></div>
+        </div> 
+         
+        <!-- Modal 30 -->
+        <div id="modal30" class="modal">
+            <span class="close" onclick="closeModal(30)">&times;</span>
+            <img class="modal-content" src="image30-full.png" alt="Image 30" id="img30">
+            <div id="caption30" class="caption"></div>
+        </div> 
+
+
 
         <!-- Add more modals here -->
 
@@ -741,6 +767,8 @@
             var modal26 = document.getElementById("modal26");
             var modal27 = document.getElementById("modal27");
             var modal28 = document.getElementById("modal28");
+            var modal29 = document.getElementById("modal29");
+            var modal30 = document.getElementById("modal30");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -771,6 +799,8 @@
             var caption26 = document.getElementById("caption26");
             var caption27 = document.getElementById("caption27");
             var caption28 = document.getElementById("caption28");
+            var caption29 = document.getElementById("caption29");
+            var caption30 = document.getElementById("caption30");
 
 
             // Get the image elements
@@ -802,6 +832,9 @@
             var img26 = document.getElementById("image26");
             var img27 = document.getElementById("image27");
             var img28 = document.getElementById("image28");
+            var img29 = document.getElementById("image29");
+            var img30 = document.getElementById("image30");
+
 
 
         // Get the modal images
@@ -833,6 +866,9 @@
             var modalImg26 = document.getElementById("img26");
             var modalImg27 = document.getElementById("img27");
             var modalImg28 = document.getElementById("img28");
+            var modalImg29 = document.getElementById("img29");
+            var modalImg30 = document.getElementById("img30");
+
 
             // When the user clicks on an image, open the modal
             function openModal(modalNumber) {
@@ -948,6 +984,14 @@
                 modal28.style.display = "block";
                 modalImg28.src = img28.src;
                 caption28.innerHTML = img28.alt;
+                } else if (modalNumber == 29) {
+                modal29.style.display = "block";
+                modalImg29.src = img29.src;
+                caption29.innerHTML = img29.alt;
+                } else if (modalNumber == 30) {
+                modal30.style.display = "block";
+                modalImg30.src = img30.src;
+                caption30.innerHTML = img30.alt;
                 }
 
                 // Add code to handle additional modals here
@@ -1011,6 +1055,10 @@
                 modal27.style.display = "none";
                 } else if (modalNumber == 28) {
                 modal28.style.display = "none";
+                } else if (modalNumber == 29) {
+                modal29.style.display = "none";
+                } else if (modalNumber == 30) {
+                modal30.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
