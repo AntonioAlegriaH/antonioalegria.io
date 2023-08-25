@@ -472,13 +472,18 @@
             </div>
 
             <div class="image" onclick="openModal(29)">
-                <img src="gallery-imgs/image29.jpg" alt=" Google Trends bivariate analysis for the Barbie & Oppenheimer movie.  The map depicts the search interest trend across states in both Mexico and the USA" id="image29">
+                <img src="gallery-imgs/image29.jpg" alt="Google Trends bivariate analysis for the Barbie & Oppenheimer movie.  The map depicts the search interest trend across states in both Mexico and the USA" id="image29">
                 <div class="caption">Barbie & Oppenheimer movie trends in México</div>
             </div>
 
             <div class="image" onclick="openModal(30)">
-                <img src="gallery-imgs/image30.jpg" alt=" Google Trends bivariate analysis for the Barbie & Oppenheimer movie.  The map depicts the search interest trend across states in both Mexico and the USA" id="image30">
+            <img src="gallery-imgs/image30.jpg" alt="Google Trends bivariate analysis for the Barbie & Oppenheimer movie.  The map depicts the search interest trend across states in both Mexico and the USA" id="image30">
                 <div class="caption">Barbie & Oppenheimer movie trends in the USA</div>
+            </div>
+            
+            <div class="image" onclick="openModal(31)">
+            <img src="gallery-imgs/image31.jpg" alt="" id="image31">
+                <div class="caption"></div>
             </div>
 
             <!-- Add more images here -->
@@ -694,6 +699,13 @@
             <img class="modal-content" src="image30-full.png" alt="Image 30" id="img30">
             <div id="caption30" class="caption"></div>
         </div> 
+        
+        <!-- Modal 31 -->
+        <div id="modal31" class="modal">
+            <span class="close" onclick="closeModal(31)">&times;</span>
+            <img class="modal-content" src="image31-full.png" alt="Image 31" id="img31">
+            <div id="caption31" class="caption"></div>
+        </div> 
 
 
 
@@ -769,6 +781,7 @@
             var modal28 = document.getElementById("modal28");
             var modal29 = document.getElementById("modal29");
             var modal30 = document.getElementById("modal30");
+            var modal31 = document.getElementById("modal31");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -801,6 +814,7 @@
             var caption28 = document.getElementById("caption28");
             var caption29 = document.getElementById("caption29");
             var caption30 = document.getElementById("caption30");
+            var caption31 = document.getElementById("caption31");
 
 
             // Get the image elements
@@ -834,6 +848,7 @@
             var img28 = document.getElementById("image28");
             var img29 = document.getElementById("image29");
             var img30 = document.getElementById("image30");
+            var img31 = document.getElementById("image31");
 
 
 
@@ -868,6 +883,7 @@
             var modalImg28 = document.getElementById("img28");
             var modalImg29 = document.getElementById("img29");
             var modalImg30 = document.getElementById("img30");
+            var modalImg31 = document.getElementById("img31");
 
 
             // When the user clicks on an image, open the modal
@@ -992,6 +1008,10 @@
                 modal30.style.display = "block";
                 modalImg30.src = img30.src;
                 caption30.innerHTML = img30.alt;
+                } else if (modalNumber == 31) {
+                modal31.style.display = "block";
+                modalImg31.src = img31.src;
+                caption31.innerHTML = img31.alt;
                 }
 
                 // Add code to handle additional modals here
@@ -1059,6 +1079,8 @@
                 modal29.style.display = "none";
                 } else if (modalNumber == 30) {
                 modal30.style.display = "none";
+                } else if (modalNumber == 31) {
+                modal31.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
