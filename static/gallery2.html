@@ -482,9 +482,14 @@
             </div>
             
             <div class="image" onclick="openModal(31)">
-            <img src="gallery-imgs/image31.jpg" alt=" Explore the map depicting Scotland's railway network. Discover how railways shaped history, linked communities, and traversed diverse landscapes. Data source: OpenStreetMap & Transport Scotland." id="image31">
+            <img src="gallery-imgs/image31.jpg" alt="Explore the map depicting Scotland's railway network. Discover how railways shaped history, linked communities, and traversed diverse landscapes. Data source: OpenStreetMap & Transport Scotland." id="image31">
                 <div class="caption">Map Of Scotland's Railway Network.</div>
             </div>
+
+            <div class="image" onclick="openModal(32)">
+                <img src="gallery-imgs/image32.jpg" alt="Highly detailed SEPTA & PATCO rail map created in R, showcasing the Philadelphia area's extensive transit network, including SEPTA and PATCO lines, stations, and connections. Ideal for urban commuters and travelers. 🗺️🚆 #SEPTA #PATCO #PhiladelphiaTransit #RailMap #CityTransportation" id="image32">
+                    <div class="caption">Detailed SEPTA & PATCO rail map designed in R</div>
+                </div>
 
             <!-- Add more images here -->
         
@@ -707,6 +712,13 @@
             <div id="caption31" class="caption"></div>
         </div> 
 
+        <!-- Modal 32 -->
+        <div id="modal32" class="modal">
+            <span class="close" onclick="closeModal(32)">&times;</span>
+            <img class="modal-content" src="image32-full.png" alt="Image 32" id="img32">
+            <div id="caption32" class="caption"></div>
+        </div> 
+
 
 
         <!-- Add more modals here -->
@@ -782,6 +794,7 @@
             var modal29 = document.getElementById("modal29");
             var modal30 = document.getElementById("modal30");
             var modal31 = document.getElementById("modal31");
+            var modal32 = document.getElementById("modal32");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -815,6 +828,7 @@
             var caption29 = document.getElementById("caption29");
             var caption30 = document.getElementById("caption30");
             var caption31 = document.getElementById("caption31");
+            var caption32 = document.getElementById("caption32");
 
 
             // Get the image elements
@@ -849,6 +863,7 @@
             var img29 = document.getElementById("image29");
             var img30 = document.getElementById("image30");
             var img31 = document.getElementById("image31");
+            var img32 = document.getElementById("image32");
 
 
 
@@ -884,6 +899,7 @@
             var modalImg29 = document.getElementById("img29");
             var modalImg30 = document.getElementById("img30");
             var modalImg31 = document.getElementById("img31");
+            var modalImg32 = document.getElementById("img32");
 
 
             // When the user clicks on an image, open the modal
@@ -1012,6 +1028,10 @@
                 modal31.style.display = "block";
                 modalImg31.src = img31.src;
                 caption31.innerHTML = img31.alt;
+                } else if (modalNumber == 32) {
+                modal32.style.display = "block";
+                modalImg32.src = img32.src;
+                caption32.innerHTML = img32.alt;
                 }
 
                 // Add code to handle additional modals here
@@ -1081,6 +1101,8 @@
                 modal30.style.display = "none";
                 } else if (modalNumber == 31) {
                 modal31.style.display = "none";
+                } else if (modalNumber == 32) {
+                modal32.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
