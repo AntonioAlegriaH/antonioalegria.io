@@ -473,6 +473,10 @@
                 <img src="gallery-imgs/image32.jpg" alt="Highly detailed SEPTA & PATCO rail map created in R, showcasing the Philadelphia area's extensive transit network, including SEPTA and PATCO lines, stations, and connections. Ideal for urban commuters and travelers. 🗺️🚆 #SEPTA #PATCO #PhiladelphiaTransit #RailMap #CityTransportation" id="image32">
                     <div class="caption">Detailed SEPTA & PATCO rail map designed in R</div>
                 </div>
+            <div class="image" onclick="openModal(33)">
+                <img src="gallery-imgs/image33.jpg" alt="Understanding Worldwide Time Allocation Patterns: A Data Visualization Project" id="image33">
+                    <div class="caption">Understanding Worldwide Time Allocation Patterns: A Data Visualization Project</div>
+                </div>
 
             <!-- Add more images here -->
         
@@ -701,6 +705,13 @@
             <img class="modal-content" src="image32-full.png" alt="Image 32" id="img32">
             <div id="caption32" class="caption"></div>
         </div> 
+        
+        <!-- Modal 33 -->
+        <div id="modal33" class="modal">
+            <span class="close" onclick="closeModal(33)">&times;</span>
+            <img class="modal-content" src="image33-full.png" alt="Image 33" id="img33">
+            <div id="caption33" class="caption"></div>
+        </div> 
 
 
 
@@ -778,6 +789,7 @@
             var modal30 = document.getElementById("modal30");
             var modal31 = document.getElementById("modal31");
             var modal32 = document.getElementById("modal32");
+            var modal33 = document.getElementById("modal33");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -812,6 +824,7 @@
             var caption30 = document.getElementById("caption30");
             var caption31 = document.getElementById("caption31");
             var caption32 = document.getElementById("caption32");
+            var caption33 = document.getElementById("caption33");
 
 
             // Get the image elements
@@ -847,6 +860,7 @@
             var img30 = document.getElementById("image30");
             var img31 = document.getElementById("image31");
             var img32 = document.getElementById("image32");
+            var img33 = document.getElementById("image33");
 
 
 
@@ -883,6 +897,7 @@
             var modalImg30 = document.getElementById("img30");
             var modalImg31 = document.getElementById("img31");
             var modalImg32 = document.getElementById("img32");
+            var modalImg33 = document.getElementById("img33");
 
 
             // When the user clicks on an image, open the modal
@@ -1015,6 +1030,10 @@
                 modal32.style.display = "block";
                 modalImg32.src = img32.src;
                 caption32.innerHTML = img32.alt;
+                } else if (modalNumber == 33) {
+                modal33.style.display = "block";
+                modalImg33.src = img33.src;
+                caption33.innerHTML = img33.alt;
                 }
 
                 // Add code to handle additional modals here
@@ -1086,6 +1105,8 @@
                 modal31.style.display = "none";
                 } else if (modalNumber == 32) {
                 modal32.style.display = "none";
+                } else if (modalNumber == 33) {
+                modal33.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
