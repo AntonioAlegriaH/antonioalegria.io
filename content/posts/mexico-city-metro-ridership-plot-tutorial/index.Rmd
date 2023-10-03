@@ -577,8 +577,18 @@ p <-  afluencia_lineas_orden %>%
 
 <br>
 
-**Final Note** Logos and legend were added in figma. 
+**Note:** Logos and legend were added in figma. 
 
+<br>
+
+### What's Next?
+
+In a future tutorial, we will provide a step-by-step guide on how to create a ridership map similar to this one. Essentially, we will be following the same steps as outlined above, and you will learn how to transform a .shp file into an sf object.
+
+
+<br>
+
+![](images/metro-ridership-map.png)
 <br>
 
 
