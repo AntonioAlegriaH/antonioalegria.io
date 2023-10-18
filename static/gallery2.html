@@ -478,6 +478,11 @@
                     <div class="caption">Understanding Worldwide Time Allocation Patterns: A Data Visualization Project</div>
                 </div>
 
+            <div class="image" onclick="openModal(34)">
+                <img src="gallery-imgs/image34.jpg" alt="" id="image34">
+                    <div class="caption"></div>
+                </div>
+
             <!-- Add more images here -->
         
         </div>
@@ -712,6 +717,12 @@
             <img class="modal-content" src="image33-full.png" alt="Image 33" id="img33">
             <div id="caption33" class="caption"></div>
         </div> 
+        <!-- Modal 34 -->
+        <div id="modal34" class="modal">
+            <span class="close" onclick="closeModal(34)">&times;</span>
+            <img class="modal-content" src="image34-full.png" alt="Image 34" id="img34">
+            <div id="caption34" class="caption"></div>
+        </div> 
 
 
 
@@ -790,6 +801,7 @@
             var modal31 = document.getElementById("modal31");
             var modal32 = document.getElementById("modal32");
             var modal33 = document.getElementById("modal33");
+            var modal34 = document.getElementById("modal34");
 
             // Get the caption elements
             var caption1 = document.getElementById("caption1");
@@ -825,6 +837,7 @@
             var caption31 = document.getElementById("caption31");
             var caption32 = document.getElementById("caption32");
             var caption33 = document.getElementById("caption33");
+            var caption34 = document.getElementById("caption34");
 
 
             // Get the image elements
@@ -861,6 +874,7 @@
             var img31 = document.getElementById("image31");
             var img32 = document.getElementById("image32");
             var img33 = document.getElementById("image33");
+            var img34 = document.getElementById("image34");
 
 
 
@@ -898,6 +912,7 @@
             var modalImg31 = document.getElementById("img31");
             var modalImg32 = document.getElementById("img32");
             var modalImg33 = document.getElementById("img33");
+            var modalImg34 = document.getElementById("img34");
 
 
             // When the user clicks on an image, open the modal
@@ -1034,6 +1049,10 @@
                 modal33.style.display = "block";
                 modalImg33.src = img33.src;
                 caption33.innerHTML = img33.alt;
+                } else if (modalNumber == 34) {
+                modal34.style.display = "block";
+                modalImg34.src = img34.src;
+                caption34.innerHTML = img34.alt;
                 }
 
                 // Add code to handle additional modals here
@@ -1107,6 +1126,8 @@
                 modal32.style.display = "none";
                 } else if (modalNumber == 33) {
                 modal33.style.display = "none";
+                } else if (modalNumber == 34) {
+                modal34.style.display = "none";
                 } 
                 // Add code to handle additional modals here
             }
