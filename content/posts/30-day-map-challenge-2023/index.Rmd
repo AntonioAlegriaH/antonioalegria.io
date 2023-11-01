@@ -1,0 +1,47 @@
+---
+title: '30 Day Map Challenge: 2023'
+author: Antonio Alegría
+date: '2023-11-01'
+slug: 30-day-map-challenge-2023
+categories:
+  - 30daymapchallenge
+  - dataviz
+  - R
+tags:
+  - dataviz
+  - maps
+toc: no
+images: ~
+---
+
+## 30 Days of Maps?
+
+>The idea is to create maps based around different themes each day of November using the hashtag #30DayMapChallenge. You can prepare the maps beforehand, but the main idea is to publish maps on the dedicated days. Just include a picture of the map when you post to Twitter (or other platforms) with the hashtag. You don't have to sign up anywhere to participate. There are no restrictions on the tools, technologies or the data you use in your maps. Doing less than 30 is also fine. See the Code of Conduct.
+<br>
+
+## Yes! 30 Days of Maps!
+
+![](figures/30dmc-2023.png)
+<br>
+
+I will try to make the code and sources available for every map when time allows me. It will be linked to my GitHub repository. If not today, I promise when the challenge is over. Happy map month, everybody!
+
+
+
+## Day 1: Points
+
+Mapping 32K free wireless access points in Mexico City. They are part of 17 public programs distributed in places like public transport, medical centers, schools and universities. 
+
+Source: [CDMX Datos Abiertos](https://datos.cdmx.gob.mx/dataset/puntos-de-acceso-wifi-en-la-ciudad-de-mexico)
+
+<br>
+
+![](figures/day1-points.png)
+<br>
+
+
+
+
+
+
+
