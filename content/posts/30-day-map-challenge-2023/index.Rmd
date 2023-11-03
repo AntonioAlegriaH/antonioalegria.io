@@ -39,7 +39,18 @@ Source: [CDMX Datos Abiertos](https://datos.cdmx.gob.mx/dataset/puntos-de-acceso
 ![](figures/day1-points.png)
 <br>
 
+## Day 2: Lines
 
+Mapping the ridership on the Glasgow Subway line. Unfortunately, there's not much information or data easily available on the ridership of the system. I could only find some annual reports from 2015 and a 2019 Freedom of Information Act request from Patrick Murphy.
+
+
+Source: [Freedom Of Information Act](https://www.whatdotheyknow.com/request/request_for_some_usage_statistic_7#incoming-1291508) and of course Open Street Maps
+
+<br>
+
+![](figures/day2-lines.png)
+
+<br>
 
 
 
