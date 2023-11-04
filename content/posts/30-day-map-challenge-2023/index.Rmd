@@ -53,7 +53,7 @@ Source: [Freedom Of Information Act](https://www.whatdotheyknow.com/request/requ
 <br>
 
 
-## Day 3: Polygons
+## Day 3: Polygons
 
 How many trees are there in Buenos Aires Ciudad? More than 300,000! All of this data was made possible by: [Buenos Aires Data: Arbolado 2017-2018](https://data.buenosaires.gob.ar/dataset/arbolado-publico-lineal/resource/51668e94-12af-401f-aba5-84476f78bb9d)
 
