@@ -87,3 +87,13 @@ This is a really curious case of the failure of the United States dental healthc
 Los Algodones is a relatively small town that has at least 600 clinics!
 
 ![](figures/day10-northamerica.png)
+
+## Day 17: Flow
+
+This is such an amazing dataset. I could barely scratch the surface. Honestly, this deserves a future in-depth analysis.
+
+Note: The population density estimates seem a little bit off. But if you read the methodology, it makes some sense. Again, those numbers are just estimates.
+
+Data [Data for good at Meta](https://facebookincubator.github.io/CommutingZones/docs/intro/)
+
+![](figures/day17-flow.png)
