@@ -94,6 +94,6 @@ This is such an amazing dataset. I could barely scratch the surface. Honestly, t
 
 Note: The population density estimates seem a little bit off. But if you read the methodology, it makes some sense. Again, those numbers are just estimates.
 
-Data [Data for good at Meta](https://facebookincubator.github.io/CommutingZones/docs/intro/)
+Source: [Data for good at Meta](https://facebookincubator.github.io/CommutingZones/docs/intro/)
 
 ![](figures/day17-flow.png)
