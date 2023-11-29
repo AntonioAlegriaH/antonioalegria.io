@@ -97,3 +97,13 @@ Note: The population density estimates seem a little bit off. But if you read th
 Source: [Data for good at Meta](https://facebookincubator.github.io/CommutingZones/docs/intro/)
 
 ![](figures/day17-flow.png)
+
+## Day 24: Black and White
+
+Last week in Mexico City, we bore witness to some of the clearest views of the year of two of the highest peaks in the country: the active Popocatépetl and the snow-capped Iztaccihuatl. This is usually the result of lower temperatures caused by a cold front and rapid winds. 
+
+I attempted to recreate some of the uncanny views using the rayshader machine. However, you can also Google some real-life images for comparison.
+
+Source: [AWS Open Data Terrain Tiles with {elevatr}](https://registry.opendata.aws/terrain-tiles/)
+
+![](figures/day24-blackwhite.jpg)
