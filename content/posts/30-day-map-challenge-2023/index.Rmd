@@ -24,8 +24,7 @@ images: ~
 ![](figures/30dmc-2023.png)
 <br>
 
-I will try to make the code and sources available for every map when time allows me. It will be linked to my GitHub repository. If not today, I promise when the challenge is over. Happy map month, everybody!
-
+You can find the code on my [github](https://bit.ly/3Us4COu). 
 
 
 ## Day 1: Points
