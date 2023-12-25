@@ -1,228 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DataViz Gallery</title>
-    <style>
-            
-            body{
-                background-color: #ffffff;
+  <meta charset="UTF-8">
+  <title>DataViz Gallery</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    
+    .gallery {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    /* title  and subtitle styles */
+   .title {
+     text-align: left;
+     margin-bottom: 40px;
+     padding-top: 20px;
+     background-color: #fafafa;
+     color: #222;
+     border-bottom: 4px solid #fe5186;
+     border-radius: 5px;
+   }
+   .title h1 {
+     font-size: 64px;
+     margin: 10px 0;
+     font-family: 'Helvetica Neue', Helvetica;
+     font-weight: bold;
+     text-transform: uppercase;
+   }
+   .title h2 {
+     font-size: 24px;
+     margin: 10px 0;
+     font-style: italic;
+     color: #777;
+   }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      position: relative;
+    }
+    /* Image hover effect */
+    .grid img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px; /* Added round corners */
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transition for opacity added */
+      position: relative;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      
+    }
 
-            }
-            #background{
-            position:relative;
-            font-family: Bebas Neue;
-            left: 50%;
-            bottom: 10%;
-            transform:translate(-50%, -50%);
-            color:rgba(255, 255, 255, .1);
-            background: linear-gradient(to left, #CADBC0, #292e49, #292e49);
-            background-size: 400%;
-            -webkit-background-clip: text;
-            background-clip:text ;
-            font-weight:bolder;
-            font-size:10em;
-            text-align:left;
-            animation:sTransition 30s linear infinite;
-            margin-bottom: -10%;
-            margin-top: 10;
-            }
+    
+    .grid img:hover {
+      transform: scale(1.05);
+      opacity: 0.7; /* Reduced opacity on hover */
+    }
+    /* Fade-in overlay */
+    .grid img::before {
+      content: attr(alt);
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      border-radius: 8px;
+    }
+    .grid img:hover::before {
+      opacity: 1;
+    }
+    /* Back button styles */
+    .back-button {
+      position: static;
+      top: 40px;
+      left: 20px;
+      font-size: 24px;
+      color: #f1f1f1;
+      cursor: pointer;
+      z-index: 9999;   
+      background-color: #fe5186;
+      text-decoration: none;
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 3px;
+      vertical-align: initial;
+    }
+    /* Caption styles */
+    .caption {
+      position: relative;
+      bottom: 40px;
+      left: 0;
+      width: 100%; /* Adjusts the width to match the image */
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 8px 8px 25px 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      font-size: 18px;
+      text-align: left;
+      box-sizing: border-box; /* Ensures padding is included in width */
+    }
 
-            @keyframes sTransition{
-            0%{
-                background-position:0%;
-            }
-            
-            100%{
-                background-position:400%;
-            }
-            } 
-            @keyframes sTransition{
-            0%{
-                background-position:0%;
-            }
-            
-            100%{
-                background-position:400%;
-            }
-            } 
+    .grid div {
+      position: relative;
+      overflow: hidden; /* Hides overflowing caption content */
+      border-radius: 5px 5px 0px 0px;
+      transition: opacity 0.3s ease-in-out;
+      cursor: pointer; 
+    }
 
-         .container {
-            display: flex; /* Use flexbox layout for the images */
-            flex-wrap: wrap; /* Wrap images onto multiple rows if necessary */
-            align-items: center; /* Center images vertically */
-            justify-content: space-between; /* Add space between images */
-            margin: 90px; /* Add a margin around the container */
-            margin-bottom: 250px;  
-            outline: 2px solid;
-            outline-color: rgba(220, 20, 60, 0.15);
-            outline-width: 2px;
-            border-radius: 15px;
-            
-        }
-        
-        .header {
-            display: flex;
-            align-items: right;
-            justify-content: space-between; /* Align the elements within the header evenly along the main axis, with equal space between them */
-            background: #0000ff;
-            color: #555555;
-            padding: 20px;
-            position: fixed; /* Add a fixed position */
-            top: 10; /* Place the header at the top of the viewport */
-            width: 100%; /* Make the header the same width as the viewport */
-            z-index: 10; /* Give the header a high z-index value */
-        }
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            color: #ffffff;
-            transition: 0.2s ease;
-            }
+    .grid div:hover .caption {
+      opacity: 1;
+    }
 
-        .back-button:hover {
-            transform: translateX(-10px);
-        }
+    
 
+    /* Modal styles */
 
-        
-        .back-button svg {
-            margin-right: 10px;
-        }
-
-
-      /*  * {
-            font-family:Bungee;
-        }*/
-
-        /*https://techstacker.com/gradient-text-color-css/*/
-
-      /*   h1 {
-            font-size: 100px;
-            font-weight: normal;
-            margin: 0;
-            padding: 0;
-            color: #333333;
-            text-align: center;
-            font-family: Bungee Shade;
-            font-size: 72px;
-           /* background: linear-gradient(to right, #536976, #292e49);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; 
-        } */
-                
-
-        h3{
-            font-size: 20px;
-            font-weight: lighter;
-            color: #333;
-            font-family: Bungee;
-            /*font-family: 'Nytimes', serif; */
-        }
-
-
-        .image {
-            width: 300px; /* Set a fixed width for the images */
-            height: 300px; /* Set a fixed height for the images */
-            margin: 20px; /* Reduce the margin around each image */
-            overflow: hidden; /* Hide any overflow */
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add a box shadow */
-            transition: 0.3s; /* Add a transition effect on hover */
-            cursor: pointer; /* Change the cursor to a pointer on hover */
-            border-radius: 10px;
-            float: left;
-            padding: 0px;
-            
-            
-        }
-
-        .image:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Increase the shadow on hover */
-            transform: scale(1.1); /* Scale up the image on hover */
-        }
-
-        .image img {
-           /*  width: auto; img inside fit */
-          /*  height: 100%;  img inside fit */
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            
-        }
-
-        .image .caption {
-            display: none; /* Hide the caption by default */
-            position: absolute; /* Position the caption */
-            bottom: 0; /* Place the caption at the bottom of the image */
-            background: #292e49; /* Make the caption background semi-transparent */
-            color: #f1f1f1; /* Set the text color */
-            width: 100%; /* Make the caption the same width as the image */
-            padding: 10px; /* Add padding to the caption */
-        }
-
-        .image:hover .caption {
-            display: block; /* Show the caption on hover */
-        }
-
-        /* Modal styling */
-        .modal {
-            display: none; /* Hide the modal by default */
-            position: fixed; /* Make the modal fixed to the viewport */
-            z-index: 1; /* Make the modal appear above other elements */
-            padding-top: 50px; /* Add some space between the top margin and the image */
-            left: 0;
-            top: 0;
-            width: 100%; /* Make the modal the same width as the viewport */
-            height: 100%; /* Make the modal the same height as the viewport */
-            overflow: auto; /* Add scrollbars if necessary */
-            background-color: rgba(0, 0, 0, 0.4); /* Make the modal background semi-transparent */
-        }
-
-        /* Modal content styling */
-        .modal-content {
-            position: relative; /* Position the modal content */
-            display: block; /* Make the modal content a block-level element */
-            margin: auto; /* Center the mod
-         /* Set a maximum width for the modal content */
-            max-height: 90%; /* Set a maximum height for the modal content */
-            object-fit: contain; /* Fit the image within the viewport while preserving the aspect ratio */
-            border-radius: 10px;
-        }
-
-        .modal-caption {
-            display: none;
-            position: sticky;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Make the caption background semi-transparent */
-            color: #f3f0f0; /* Set the text color to white */
-            width: 50%;
-            padding: 10px;
-            font-family: "Open Sans", sans-serif; /* Use the Open Sans font */
-            
-        }
-
-        /* Close button styling */
-        .close {
-            color: #f3f0f0; /* Set the text color of the close button */
-            float: right; /* Float the close button to the right */
-            font-size: 70px; /* Increase the font size of the close button */
-            font-weight: bold; /* Make the close button text bold */
-            padding-right: 50px;
-        }
-
-        .close:hover,
-        .close:focus {
-        color: #000; /* Change the text color of the close button on hover */
-        text-decoration: none; /* Remove underlines from links */
-        cursor: pointer; /* Change the cursor to a pointer on hover */
-        }
-
-        body {
-            font-family: "Open Sans", sans-serif;
-            color: #f3f0f0;
-        }
-        
-        .footer-distributed {
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: auto; /* Enable scrolling when the image is larger than the viewport */
+    }
+    .modal-content {
+      max-width: 80%;
+      max-height: 80%;
+      position: relative;
+    }
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px; /* Added round corners */
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    } 
+    
+    .footer-distributed {
          /*   background-color: #292c2f; nyt colors */ 
             background-color: #292e49;
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -310,827 +255,262 @@
             }
         }
                 
-    </style>
 
+
+
+  </style>
 </head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton|Bungee|Bungee Shade|Bebas Neue ">
-    <body>
-        <header>
-            <a href="javascript:history.back()" class="back-button">
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="#555555"/>
-                </svg>
-            </a>
-            <h1 id="background"> <center> DataViz Gallery </center></h1>
-        </header>
-        
 
-        <div class="container">
-            <div class="image" onclick="openModal(1)">
-                <img src="gallery-imgs/image1.jpeg" alt="New York City flood risk projections for 2050 due to sea level rise" id="image1">
-                <div class="caption">NYC Sea Level Rise</div>
-            </div>
-            <div class="image" onclick="openModal(2)">
-                <img src="gallery-imgs/image2.jpeg" alt="Population density visualization of Morocco with raytraced map" id="image2">
-                <div class="caption">Morocco Population Density</div>
-            </div>
-            <div class="image" onclick="openModal(3)">
-                <img src="gallery-imgs/image3.jpeg" alt="Map illustrating the production of yerba mate in Argentina over 50 years" id="image3">
-                <div class="caption">Argentinian Yerba Mate Production</div>
-            </div>
-            <div class="image" onclick="openModal(4)">
-                <img src="gallery-imgs/image4.jpeg" alt="Visualization of baby name trends for Edward, Bella, and Jacob, highlighting the impact of the Twilight movie" id="image4">
-                <div class="caption">Twilight Saga Baby Names</div>
-            </div>
-            <div class="image" onclick="openModal(5)">
-                <img src="gallery-imgs/image5.jpeg" alt="Visualization of historical data on bicycle ridership in Mexico City"" id="image5">
-                <div class="caption">Mexico City Bike Paths</div>
-            </div>
-            <div class="image" onclick="openModal(6)">
-                <img src="gallery-imgs/image6.gif" alt="Animated map of Mexico City metro ridership" id="image6">
-                <div class="caption">Daily Ridership of Mexico City Metro System</div>
-            </div>
-            <div class="image" onclick="openModal(7)">
-                <img src="gallery-imgs/image7.jpeg" alt="Visualization of Barcelona's terrain using elevation data and raytracing" id="image7">
-                <div class="caption">Barcelona Raytracing with {rayshader}</div>
-            </div>
-            <div class="image" onclick="openModal(8)">
-                <img src="gallery-imgs/image8.jpeg" alt="Map of Germany showing population density of cities and regions"" id="image8">
-                <div class="caption">Population density map of Germany</div>
-            </div>
-            <div class="image" onclick="openModal(9)">
-                <img src="gallery-imgs/image9.jpeg" alt="Washington DC metro lines map inspired by Massimo Vignelli's 1968 design" id="image9">
-                <div class="caption">Washington DC metro system with Vignelli-influenced design</div>
-            </div>
-            <div class="image" onclick="openModal(10)">
-                <img src="gallery-imgs/image10.jpeg" alt="Edinburgh cycle routes map highlighting quiet and national routes for safer cycling" id="image10">
-                <div class="caption">Edinburgh Cycle Network</div>
-            </div>
-            <div class="image" onclick="openModal(11)">
-                <img src="gallery-imgs/image11.jpeg" alt="Annual giant pumpkin production compared across different countries" id="image11">
-                <div class="caption">Worldwide Giant Pumpkin Production</div>
-            </div>
-            <div class="image" onclick="openModal(12)">
-                <img src="gallery-imgs/image12.jpeg" alt="Map of Guatemala highlighting the most and least densely populated areas with topography, using rayshader visualization" id="image12">
-                <div class="caption">Guatemala Population Density and Topography</div>
-            </div>
-            <div class="image" onclick="openModal(13)">
-                <img src="gallery-imgs/image13.jpeg" alt="Visualization of peak positions of Rolling Stones songs in the Billboard chart through a ridge plot" id="image13">
-                <div class="caption">Rolling Stones Billboard Peak Position</div>
-            </div>
-            <div class="image" onclick="openModal(14)">
-                <img src="gallery-imgs/image14.jpeg" alt="Migration patterns between US states illustrated with a choropleth map and divergent bar plot" id="image14">
-                <div class="caption">Migration Between US states From 2020 to 2021</div>
-            </div>
-            <div class="image" onclick="openModal(15)">
-                <img src="gallery-imgs/image15.jpeg" alt="Map of registered nurse workforce trends in the United States from 1998 to 2020, displaying state-level changes"" id="image15">
-                <div class="caption">Registered nurse workforce changes in each US state</div>
-            </div>
-            <div class="image" onclick="openModal(16)">
-                <img src="gallery-imgs/image16.jpeg" alt="Infographic showing retail sales trends for health and personal care products in the USA, with historic area plots and national average"" id="image16">
-                <div class="caption">Retail Sales: Health Care | Area</div>
-            </div>
-            <div class="image" onclick="openModal(17)">
-                <img src="gallery-imgs/image17.jpeg" alt="USA tile map with gradient colors showing retail sales of health and personal care products. Idicating rising prices since 2021." id="image17">
-                <div class="caption">Retail Sales: Health Care | Tiles</div>
-            </div>
-
-            <div class="image" onclick="openModal(18)">
-                <img src="gallery-imgs/image18.jpeg" alt="A map of Canada that overlays topography and population density, highlighting the most and least populated areas. Using rayshader techniques, the infographic reveals that 50% of Canada's population is concentrated in Toronto, Ottawa, Montreal, and Quebec." id="image18">
-                <div class="caption">Canada Population Density and Topography</div>
-            </div>
-         
-
-            <div class="image" onclick="openModal(19)">
-                <img src="gallery-imgs/image19.jpg" alt="An infographic highlighting the bird species richness in Texas, with a map indicating the different areas where bird species sightings have been recorded and a bar plot that showcases the top 30 most commonly observed birds in the state." id="image19">
-                <div class="caption">Bird sightings in texas. Top 30 Species </div>
-            </div>
-
-            <div class="image" onclick="openModal(20)">
-                <img src="gallery-imgs/image20joy.jpg" alt="A stream plot showing the distribution of colors used by Bob Ross throughout his painting career." id="image20">
-                <div class="caption">Colors Used By Bob Ross </div>
-            </div>
-
-            <div class="image" onclick="openModal(21)">
-                <img src="gallery-imgs/image21.jpg" alt="A scatter plot displaying the Mexico City Metro system with points representing stations and size indicating ridership from 2010 to 2022." id="image21">
-                <div class="caption">México City Metro Ridership</div>
-            </div>
-
-
-            <div class="image" onclick="openModal(22)">
-                <img src="gallery-imgs/image22.jpg" alt="An infographic depicting the production of eggs in the United States for food ingredients, including shell eggs and processed eggs in liquid, frozen, or dried/powdered forms. It also mentions table egg type layers as the hens that produce eggs for consumption." id="image22">
-                <div class="caption">US Eggs Production</div>
-            </div>
-
-            <div class="image" onclick="openModal(23)">
-                <img src="gallery-imgs/image23.jpg" alt="Data visualization map of Washington, DC's street lights, showing the majority of materials used: wood, steel, and cast iron. Explore the city's illuminated landscape with over 71K street lights." id="image23">
-                <div class="caption">Washington, DC Lights</div>
-            </div>
-
-            <div class="image" onclick="openModal(24)">
-                <img src="gallery-imgs/image24.jpg" alt="This dataviz map displays the distribution of healthcare institutions in Mexico, including hospitals, clinics, dentists, and social security facilities, highlighting their concentration in urban areas. Made with rayshader." id="image24">
-                <div class="caption">México Healthcare</div>
-            </div>
-
-            <div class="image" onclick="openModal(25)">
-                <img src="gallery-imgs/image25.jpg" alt="Discover the vital role of the Nile River in Egypt's history and culture with this comprehensive map of the country's rivers and streams. Learn about the Nile's importance as the primary source of water for over 90% of the country, and explore the trade routes that have flourished along its banks for centuries." id="image25">
-                <div class="caption">Egypt Water</div>
-            </div>
-
-            <div class="image" onclick="openModal(26)">
-                <img src="gallery-imgs/image26.jpg" alt="A data visualization showcasing India's impressive railway system. The graphic highlights the country's extensive network of 68,043 km of tracks, ranking it as the 4th largest globally. In 2020, an astounding 8 billion passengers relied on these trains for their daily commute" id="image26">
-                <div class="caption">India Railway System</div>
-            </div>
-
-
-            <div class="image" onclick="openModal(27)">
-                <img src="gallery-imgs/image27.png" alt="Unveiling the Frequency and Impact of Explicit Language in Succession: A Data Visualization Analysis. Gain Insights into the Use of F-bombs and Their Significance in the Popular TV Series. Explore the Fascinating World of Succession through Data Analysis. #Succession #DataVisualization #TVSeries" id="image27">
-                <div class="caption">Every F*ck in Succession</div>
-            </div>
-
-            <div class="image" onclick="openModal(28)">
-                <img src="gallery-imgs/image28.jpg" alt="Explore the Comprehensive Traffic Volume Map of Washington, D.C. | Gain Valuable Insights on Congestion and Traffic Patterns | Visualize the Roadway Network | #DCtraffic #TrafficVolume #DataVisualization" id="image28">
-                <div class="caption">Traffic Volume Map of Washington, D.C.</div>
-            </div>
-
-            <div class="image" onclick="openModal(29)">
-                <img src="gallery-imgs/image29.jpg" alt="Google Trends bivariate analysis for the Barbie & Oppenheimer movie.  The map depicts the search interest trend across states in both Mexico and the USA" id="image29">
-                <div class="caption">Barbie & Oppenheimer movie trends in México</div>
-            </div>
-
-            <div class="image" onclick="openModal(30)">
-            <img src="gallery-imgs/image30.jpg" alt="Google Trends bivariate analysis for the Barbie & Oppenheimer movie.  The map depicts the search interest trend across states in both Mexico and the USA" id="image30">
-                <div class="caption">Barbie & Oppenheimer movie trends in the USA</div>
-            </div>
-            
-            <div class="image" onclick="openModal(31)">
-            <img src="gallery-imgs/image31.jpg" alt="Explore the map depicting Scotland's railway network. Discover how railways shaped history, linked communities, and traversed diverse landscapes. Data source: OpenStreetMap & Transport Scotland." id="image31">
-                <div class="caption">Map Of Scotland's Railway Network.</div>
-            </div>
-
-            <div class="image" onclick="openModal(32)">
-                <img src="gallery-imgs/image32.jpg" alt="Highly detailed SEPTA & PATCO rail map created in R, showcasing the Philadelphia area's extensive transit network, including SEPTA and PATCO lines, stations, and connections. Ideal for urban commuters and travelers. 🗺️🚆 #SEPTA #PATCO #PhiladelphiaTransit #RailMap #CityTransportation" id="image32">
-                    <div class="caption">Detailed SEPTA & PATCO rail map designed in R</div>
-                </div>
-            <div class="image" onclick="openModal(33)">
-                <img src="gallery-imgs/image33.jpg" alt="Understanding Worldwide Time Allocation Patterns: A Data Visualization Project" id="image33">
-                    <div class="caption">Understanding Worldwide Time Allocation Patterns: A Data Visualization Project</div>
-                </div>
-
-            <div class="image" onclick="openModal(34)">
-                <img src="gallery-imgs/image34.jpg" alt="Choropleth map using data from the most haunted places in the united states" id="image34">
-                    <div class="caption">Most Haunted States in the USA</div>
-                </div>
-
-            <!-- Add more images here -->
-        
-        </div>
-
-        <!-- Modal 1 -->
-        <div id="modal1" class="modal">
-            <span class="close" onclick="closeModal(1)">&times;</span>
-            <img class="modal-content" src="image1-full.png" alt="Image 1" id="img1">
-            <div id="caption1" class="caption"></div>
-        </div>
-
-        <!-- Modal 2 -->
-        <div id="modal2" class="modal">
-            <span class="close" onclick="closeModal(2)">&times;</span>
-            <img class="modal-content" src="image2-full.png" alt="Image 2" id="img2">
-            <div id="caption2" class="caption"></div>
-        </div>
-
-        <!-- Modal 3 -->
-        <div id="modal3" class="modal">
-            <span class="close" onclick="closeModal(3)">&times;</span>
-            <img class="modal-content" src="image3-full.png" alt="Image 3" id="img3">
-            <div id="caption3" class="caption"></div>
-        </div>
-
-        <!-- Modal 4 -->
-        <div id="modal4" class="modal">
-            <span class="close" onclick="closeModal(4)">&times;</span>
-            <img class="modal-content" src="image4-full.png" alt="Image 4" id="img4">
-            <div id="caption4" class="caption"></div>
-        </div>
-
-        <!-- Modal 5 -->
-        <div id="modal5" class="modal">
-            <span class="close" onclick="closeModal(5)">&times;</span>
-            <img class="modal-content" src="image5-full.png" alt="Image 5" id="img5">
-            <div id="caption5" class="caption"></div>
-        </div>
-
-        <!-- Modal 6 -->
-        <div id="modal6" class="modal">
-            <span class="close" onclick="closeModal(6)">&times;</span>
-            <img class="modal-content" src="image6-full.png" alt="Image 6" id="img6">
-            <div id="caption6" class="caption"></div>
-        </div>
-
-         <!-- Modal 7 -->
-         <div id="modal7" class="modal">
-            <span class="close" onclick="closeModal(7)">&times;</span>
-            <img class="modal-content" src="image7-full.png" alt="Image 7" id="img7">
-            <div id="caption7" class="caption"></div>
-        </div>
-
-        <!-- Modal 8 -->
-        <div id="modal8" class="modal">
-            <span class="close" onclick="closeModal(8)">&times;</span>
-            <img class="modal-content" src="image8-full.png" alt="Image 8" id="img8">
-            <div id="caption8" class="caption"></div>
-        </div>
-
-        <!-- Modal 9 -->
-        <div id="modal9" class="modal">
-            <span class="close" onclick="closeModal(9)">&times;</span>
-            <img class="modal-content" src="image9-full.png" alt="Image 9" id="img9">
-            <div id="caption9" class="caption"></div>
-        </div>
-        
-         <!-- Modal 10 -->
-         <div id="modal10" class="modal">
-            <span class="close" onclick="closeModal(10)">&times;</span>
-            <img class="modal-content" src="image10-full.png" alt="Image 10" id="img10">
-            <div id="caption10" class="caption"></div>
-        </div>
-
-        <!-- Modal 11 -->
-        <div id="modal11" class="modal">
-            <span class="close" onclick="closeModal(11)">&times;</span>
-            <img class="modal-content" src="image11-full.png" alt="Image 11" id="img11">
-            <div id="caption11" class="caption"></div>
-        </div>
-
-        <!-- Modal 12 -->
-        <div id="modal12" class="modal">
-            <span class="close" onclick="closeModal(12)">&times;</span>
-            <img class="modal-content" src="image12-full.png" alt="Image 12" id="img12">
-            <div id="caption12" class="caption"></div>
-        </div>
-       
-        <!-- Modal 13 -->
-        <div id="modal13" class="modal">
-            <span class="close" onclick="closeModal(13)">&times;</span>
-            <img class="modal-content" src="image1-full.png" alt="Image 13" id="img13">
-            <div id="caption13" class="caption"></div>
-        </div>
-
-        <!-- Modal 14 -->
-        <div id="modal14" class="modal">
-            <span class="close" onclick="closeModal(14)">&times;</span>
-            <img class="modal-content" src="image14-full.png" alt="Image 14" id="img14">
-            <div id="caption14" class="caption"></div>
-        </div>
-
-        <!-- Modal 15 -->
-        <div id="modal15" class="modal">
-            <span class="close" onclick="closeModal(15)">&times;</span>
-            <img class="modal-content" src="image15-full.png" alt="Image 15" id="img15">
-            <div id="caption15" class="caption"></div>
-        </div>        
-        
-        <!-- Modal 16 -->
-        <div id="modal16" class="modal">
-            <span class="close" onclick="closeModal(16)">&times;</span>
-            <img class="modal-content" src="image16-full.png" alt="Image 16" id="img16">
-            <div id="caption16" class="caption"></div>
-        </div>
-
-        <!-- Modal 17 -->
-        <div id="modal17" class="modal">
-            <span class="close" onclick="closeModal(17)">&times;</span>
-            <img class="modal-content" src="image17-full.png" alt="Image 17" id="img17">
-            <div id="caption17" class="caption"></div>
-        </div>  
-        <!-- Modal 18 -->
-      <div id="modal18" class="modal">
-        <span class="close" onclick="closeModal(18)">&times;</span>
-        <img class="modal-content" src="image18-full.png" alt="Image 18" id="img18">
-        <div id="caption18" class="caption"></div>
-    </div>  
-        <!-- Modal 19 -->
-        <div id="modal19" class="modal">
-            <span class="close" onclick="closeModal(19)">&times;</span>
-            <img class="modal-content" src="image19-full.png" alt="Image 19" id="img19">
-            <div id="caption19" class="caption"></div>
-        </div>  
-        
-        <!-- Modal 20 -->
-        <div id="modal20" class="modal">
-            <span class="close" onclick="closeModal(20)">&times;</span>
-            <img class="modal-content" src="image20-full.png" alt="Image 20" id="img20">
-            <div id="caption20" class="caption"></div>
-        </div>  
- 
-        <!-- Modal 21 -->
-        <div id="modal21" class="modal">
-            <span class="close" onclick="closeModal(21)">&times;</span>
-            <img class="modal-content" src="image21-full.png" alt="Image 21" id="img21">
-            <div id="caption21" class="caption"></div>
-        </div>  
-                
-        
-         <!-- Modal 22 -->
-         <div id="modal22" class="modal">
-            <span class="close" onclick="closeModal(22)">&times;</span>
-            <img class="modal-content" src="image22-full.png" alt="Image 22" id="img22">
-            <div id="caption22" class="caption"></div>
-        </div>  
-            
-
-        <!-- Modal 23 -->
-        <div id="modal23" class="modal">
-            <span class="close" onclick="closeModal(23)">&times;</span>
-            <img class="modal-content" src="image23-full.png" alt="Image 23" id="img23">
-            <div id="caption23" class="caption"></div>
-        </div>  
-                       
-        <!-- Modal 24 -->
-        <div id="modal24" class="modal">
-            <span class="close" onclick="closeModal(24)">&times;</span>
-            <img class="modal-content" src="image24-full.png" alt="Image 24" id="img24">
-            <div id="caption24" class="caption"></div>
-        </div>  
-                       
-        <!-- Modal 25 -->
-        <div id="modal25" class="modal">
-            <span class="close" onclick="closeModal(25)">&times;</span>
-            <img class="modal-content" src="image25-full.png" alt="Image 25" id="img25">
-            <div id="caption25" class="caption"></div>
-        </div>  
-        
-          <!-- Modal 26 -->
-          <div id="modal26" class="modal">
-            <span class="close" onclick="closeModal(26)">&times;</span>
-            <img class="modal-content" src="image26-full.png" alt="Image 26" id="img26">
-            <div id="caption26" class="caption"></div>
-        </div> 
-        
-        <!-- Modal 27 -->
-        <div id="modal27" class="modal">
-            <span class="close" onclick="closeModal(27)">&times;</span>
-            <img class="modal-content" src="image27-full.png" alt="Image 27" id="img27">
-            <div id="caption27" class="caption"></div>
-        </div> 
-         
-        <!-- Modal 28 -->
-        <div id="modal28" class="modal">
-            <span class="close" onclick="closeModal(28)">&times;</span>
-            <img class="modal-content" src="image28-full.png" alt="Image 28" id="img28">
-            <div id="caption28" class="caption"></div>
-        </div> 
-        
-        <!-- Modal 29 -->
-        <div id="modal29" class="modal">
-            <span class="close" onclick="closeModal(29)">&times;</span>
-            <img class="modal-content" src="image29-full.png" alt="Image 29" id="img29">
-            <div id="caption29" class="caption"></div>
-        </div> 
-         
-        <!-- Modal 30 -->
-        <div id="modal30" class="modal">
-            <span class="close" onclick="closeModal(30)">&times;</span>
-            <img class="modal-content" src="image30-full.png" alt="Image 30" id="img30">
-            <div id="caption30" class="caption"></div>
-        </div> 
-        
-        <!-- Modal 31 -->
-        <div id="modal31" class="modal">
-            <span class="close" onclick="closeModal(31)">&times;</span>
-            <img class="modal-content" src="image31-full.png" alt="Image 31" id="img31">
-            <div id="caption31" class="caption"></div>
-        </div> 
-
-        <!-- Modal 32 -->
-        <div id="modal32" class="modal">
-            <span class="close" onclick="closeModal(32)">&times;</span>
-            <img class="modal-content" src="image32-full.png" alt="Image 32" id="img32">
-            <div id="caption32" class="caption"></div>
-        </div> 
-        
-        <!-- Modal 33 -->
-        <div id="modal33" class="modal">
-            <span class="close" onclick="closeModal(33)">&times;</span>
-            <img class="modal-content" src="image33-full.png" alt="Image 33" id="img33">
-            <div id="caption33" class="caption"></div>
-        </div> 
-        <!-- Modal 34 -->
-        <div id="modal34" class="modal">
-            <span class="close" onclick="closeModal(34)">&times;</span>
-            <img class="modal-content" src="image34-full.png" alt="Image 34" id="img34">
-            <div id="caption34" class="caption"></div>
-        </div> 
-
-
-
-        <!-- Add more modals here -->
-
-
-
-        <!-- Footer -->
+<body>
+  <div class="gallery">
+    <!-- Back button -->
+    <div class="back-button" onclick="goBack()"> 
+      &lt; 
+  </div>
+    <div class="title">
+      <h1>Gallery Showcase</h1>
+      <h2>Some of my latest visualizations</h2>
+    </div>
+    <div class="grid">
+      <!-- Updated image elements with captions -->
+     
+      <div>
+        <img src="gallery-imgs/image41.jpg" alt="" onclick="openModal('gallery-imgs/image41.jpg')">
+      <div class="caption">National Park Iztaccíhuatl-Popocatépetl</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image40.jpg" alt="" onclick="openModal('gallery-imgs/image40.jpg')">
+      <div class="caption">México Commuting Zones.</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image39.jpg" alt="" onclick="openModal('gallery-imgs/image39.jpg')">
+      <div class="caption">Baja California: Dental Clinics Along The Border</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image38.jpg" alt="" onclick="openModal('gallery-imgs/image38.jpg')">
+      <div class="caption">Attack on titan: What if Paradis Island Were Real?</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image37.jpg" alt="" onclick="openModal('gallery-imgs/image37.jpg')">
+      <div class="caption">Trees in Buenos Aires Ciudad</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image36.jpg" alt="" onclick="openModal('gallery-imgs/image36.jpg')">
+      <div class="caption">Ridership on the Glasgow Subway Line</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image35.jpg" alt="" onclick="openModal('gallery-imgs/image35.jpg')">
+      <div class="caption">México City Wireless Access Points</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image34.jpg" alt="" onclick="openModal('gallery-imgs/image34.jpg')">
+      <div class="caption">Most Haunted States in the USA</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image33.jpg" alt="" onclick="openModal('gallery-imgs/image33.jpg')">
+      <div class="caption">Understanding Worldwide Time Allocation Patterns: A Data Visualization Project</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image32.jpg" alt="" onclick="openModal('gallery-imgs/image32.jpg')">
+      <div class="caption">Detailed SEPTA & PATCO rail map designed in R</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image31.jpg" alt="" onclick="openModal('gallery-imgs/image31.jpg')">
+      <div class="caption">Map Of Scotland's Railway Network</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image30.jpg" alt="" onclick="openModal('gallery-imgs/image30.jpg')">
+      <div class="caption">Barbie & Oppenheimer movie trends in the USA</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image29.jpg" alt="" onclick="openModal('gallery-imgs/image29.jpg')">
+      <div class="caption">Barbie & Oppenheimer movie trends in México</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image28.jpg" alt="" onclick="openModal('gallery-imgs/image28.jpg')">
+      <div class="caption">Traffic Volume Map of Washington, D.C</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image27.png" alt="" onclick="openModal('gallery-imgs/image27.jpg')">
+      <div class="caption">Every F*ck in Succession</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image26.jpg" alt="" onclick="openModal('gallery-imgs/image26.jpg')">
+      <div class="caption">India Railway System</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image25.jpg" alt="" onclick="openModal('gallery-imgs/image25.jpg')">
+      <div class="caption">Egypt Water</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image24.jpg" alt="" onclick="openModal('gallery-imgs/image24.jpg')">
+      <div class="caption">México Healthcare</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image23.jpg" alt="" onclick="openModal('gallery-imgs/image23.jpg')">
+      <div class="caption">Washington, DC Lights</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image22.jpg" alt="" onclick="openModal('gallery-imgs/image22.jpg')">
+      <div class="caption">US Eggs Production</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image21.jpg" alt="" onclick="openModal('gallery-imgs/image21.jpg')">
+      <div class="caption">México City Metro Ridership</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image20joy.jpg" alt="" onclick="openModal('gallery-imgs/image20joy.jpg')">
+      <div class="caption">Colors Used By Bob Ross</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image19.jpg" alt="" onclick="openModal('gallery-imgs/image19.jpg')">
+      <div class="caption">Bird sightings in texas. Top 30 Species</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image18.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image18.jpeg')">
+        <div class="caption">Canada Population Density and Topography</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image17.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image17.jpeg')">
+        <div class="caption">Retail Sales: Health Care | Tiles</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image16.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image16.jpeg')">
+        <div class="caption">Retail Sales: Health Care | Area</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image15.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image15.jpeg')">
+        <div class="caption">Registered nurse workforce changes in each US state</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image14.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image14.jpeg')">
+        <div class="caption">Migration Between US states From 2020 to 2021</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image13.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image13.jpeg')">
+        <div class="caption">Rolling Stones Billboard Peak Position</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image12.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image12.jpeg')">
+        <div class="caption">Guatemala Population Density and Topography</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image11.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image11.jpeg')">
+        <div class="caption">Worldwide Giant Pumpkin Production</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image10.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image10.jpeg')">
+        <div class="caption">Edinburgh Cycle Network</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image9.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image9.jpeg')">
+        <div class="caption">Washington DC metro system with Vignelli-influenced design</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image8.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image8.jpeg')">
+        <div class="caption">Population density map of Germany</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image7.jpeg" alt="DataViz 6" onclick="openModal('gallery-imgs/image7.jpeg')">
+        <div class="caption">Barcelona Raytracing with {rayshader}</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image6.gif" alt="DataViz 6" onclick="openModal('gallery-imgs/image.gif')">
+        <div class="caption">Daily Ridership of Mexico City Metro System</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image5.jpeg" alt="DataViz 5" onclick="openModal('gallery-imgs/image5.jpeg')">
+        <div class="caption">Mexico City Bike Paths</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image4.jpeg" alt="DataViz 4" onclick="openModal('gallery-imgs/image4.jpeg')">
+        <div class="caption">Twilight Saga Baby Names</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image3.jpeg" alt="DataViz 3" onclick="openModal('gallery-imgs/image3.jpeg')">
+        <div class="caption">Argentinian Yerba Mate Production</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image2.jpeg" alt="DataViz 2" onclick="openModal('gallery-imgs/image2.jpeg')">
+        <div class="caption">Morocco Population Density</div>
+      </div>
+      <div>
+        <img src="gallery-imgs/image1.jpeg" 
+        alt="New York City flood risk projections for 2050 due to sea level rise" 
+        onclick="openModal('gallery-imgs/image1.jpeg')">
+        <div class="caption">NYC Sea Level Rise</div>
+      </div>
+      <!-- Add more <div><img></div> elements as needed -->
+    </div>
+  </div>
+  
+          <!-- Footer -->
         
     
-        <footer class="footer-distributed">
+          <footer class="footer-distributed">
 
-			<div class="footer-right">
-
-				<a href="http://bit.ly/3vlii3V"><i class="fab fa-facebook"></i></a>
-				<a href="http://bit.ly/3VoZifn"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-pinterest"></i></a>
-				<a href="http://bit.ly/3PUmXDs"><i class="fab fa-github"></i></a>
-
-			</div>
-
-			<div class="footer-left">
-
-				<p class="footer-links">
-					<a class="link-1" href="https://antonioalegria.io/">Home</a>
-
-					<a href="https://antonioalegria.io/posts/">Blog</a>
-
-					<a href="https://antonioalegria.io/projects/">Projects</a>
-
-					<a href="https://antonioalegria.io/about/">About</a>
-
-					<a href="mailto:antonioalegriah@gmail.com">Pricing</a>
-				</p>
-
-				<p>Antonio Alegría &copy; 2022</p>
-            
-			</div>
-
-		</footer>
-     
-
-        <script>
-            // Get the modal elements
-            
-            var modal1 = document.getElementById("modal1");
-            var modal2 = document.getElementById("modal2");
-            var modal3 = document.getElementById("modal3");
-            var modal4 = document.getElementById("modal4");
-            var modal5 = document.getElementById("modal5");
-            var modal6 = document.getElementById("modal6");
-            var modal7 = document.getElementById("modal7");
-            var modal8 = document.getElementById("modal8");
-            var modal9 = document.getElementById("modal9");
-            var modal10 = document.getElementById("modal10");
-            var modal11 = document.getElementById("modal11");
-            var modal12 = document.getElementById("modal12");
-            var modal13 = document.getElementById("modal13");
-            var modal14 = document.getElementById("modal14");
-            var modal15 = document.getElementById("modal15");
-            var modal16 = document.getElementById("modal16");
-            var modal17 = document.getElementById("modal17");
-            var modal18 = document.getElementById("modal18");
-            var modal19 = document.getElementById("modal19");
-            var modal20 = document.getElementById("modal20");
-            var modal21 = document.getElementById("modal21");
-            var modal22 = document.getElementById("modal22");
-            var modal23 = document.getElementById("modal23");
-            var modal24 = document.getElementById("modal24");
-            var modal25 = document.getElementById("modal25");
-            var modal26 = document.getElementById("modal26");
-            var modal27 = document.getElementById("modal27");
-            var modal28 = document.getElementById("modal28");
-            var modal29 = document.getElementById("modal29");
-            var modal30 = document.getElementById("modal30");
-            var modal31 = document.getElementById("modal31");
-            var modal32 = document.getElementById("modal32");
-            var modal33 = document.getElementById("modal33");
-            var modal34 = document.getElementById("modal34");
-
-            // Get the caption elements
-            var caption1 = document.getElementById("caption1");
-            var caption2 = document.getElementById("caption2");
-            var caption3 = document.getElementById("caption3");
-            var caption4 = document.getElementById("caption4");
-            var caption5 = document.getElementById("caption5");
-            var caption6 = document.getElementById("caption6");
-            var caption7 = document.getElementById("caption7");
-            var caption8 = document.getElementById("caption8");
-            var caption9 = document.getElementById("caption9");
-            var caption10 = document.getElementById("caption10");
-            var caption11 = document.getElementById("caption11");
-            var caption12 = document.getElementById("caption12");
-            var caption13 = document.getElementById("caption13");
-            var caption14 = document.getElementById("caption14");
-            var caption15 = document.getElementById("caption15");
-            var caption16 = document.getElementById("caption16");
-            var caption17 = document.getElementById("caption17");
-            var caption18 = document.getElementById("caption18");
-            var caption19 = document.getElementById("caption19");
-            var caption20 = document.getElementById("caption20");
-            var caption21 = document.getElementById("caption21");
-            var caption22 = document.getElementById("caption22");
-            var caption23 = document.getElementById("caption23");
-            var caption24 = document.getElementById("caption24");
-            var caption25 = document.getElementById("caption25");
-            var caption26 = document.getElementById("caption26");
-            var caption27 = document.getElementById("caption27");
-            var caption28 = document.getElementById("caption28");
-            var caption29 = document.getElementById("caption29");
-            var caption30 = document.getElementById("caption30");
-            var caption31 = document.getElementById("caption31");
-            var caption32 = document.getElementById("caption32");
-            var caption33 = document.getElementById("caption33");
-            var caption34 = document.getElementById("caption34");
-
-
-            // Get the image elements
-            var img1 = document.getElementById("image1");
-            var img2 = document.getElementById("image2");
-            var img3 = document.getElementById("image3");
-            var img4 = document.getElementById("image4");
-            var img5 = document.getElementById("image5");
-            var img6 = document.getElementById("image6");
-            var img7 = document.getElementById("image7");
-            var img8 = document.getElementById("image8");
-            var img9 = document.getElementById("image9");
-            var img10 = document.getElementById("image10");
-            var img11 = document.getElementById("image11");
-            var img12 = document.getElementById("image12");
-            var img13 = document.getElementById("image13");
-            var img14 = document.getElementById("image14");
-            var img15 = document.getElementById("image15");
-            var img16 = document.getElementById("image16");
-            var img17 = document.getElementById("image17");
-            var img18 = document.getElementById("image18");
-            var img19 = document.getElementById("image19");
-            var img20 = document.getElementById("image20");
-            var img21 = document.getElementById("image21");
-            var img22 = document.getElementById("image22");
-            var img23 = document.getElementById("image23");
-            var img24 = document.getElementById("image24");
-            var img25 = document.getElementById("image25");
-            var img26 = document.getElementById("image26");
-            var img27 = document.getElementById("image27");
-            var img28 = document.getElementById("image28");
-            var img29 = document.getElementById("image29");
-            var img30 = document.getElementById("image30");
-            var img31 = document.getElementById("image31");
-            var img32 = document.getElementById("image32");
-            var img33 = document.getElementById("image33");
-            var img34 = document.getElementById("image34");
+            <div class="footer-right">
+      
+              <a href="http://bit.ly/3vlii3V"><i class="fab fa-facebook"></i></a>
+              <a href="http://bit.ly/3VoZifn"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+              <a href="http://bit.ly/3PUmXDs"><i class="fab fa-github"></i></a>
+      
+            </div>
+      
+            <div class="footer-left">
+      
+              <p class="footer-links">
+                <a class="link-1" href="https://antonioalegria.io/">Home</a>
+      
+                <a href="https://antonioalegria.io/posts/">Blog</a>
+      
+                <a href="https://antonioalegria.io/projects/">Projects</a>
+      
+                <a href="https://antonioalegria.io/about/">About</a>
+      
+                <a href="mailto:antonioalegriah@gmail.com">Pricing</a>
+              </p>
+      
+              <p>Antonio Alegría &copy; 2022</p>
+                  
+            </div>
+      
+          </footer>
 
 
 
-        // Get the modal images
-            var modalImg1 = document.getElementById("img1");
-            var modalImg2 = document.getElementById("img2");
-            var modalImg3 = document.getElementById("img3");
-            var modalImg4 = document.getElementById("img4");
-            var modalImg5 = document.getElementById("img5");
-            var modalImg6 = document.getElementById("img6");
-            var modalImg7 = document.getElementById("img7");
-            var modalImg8 = document.getElementById("img8");
-            var modalImg9 = document.getElementById("img9");
-            var modalImg10 = document.getElementById("img10");
-            var modalImg11 = document.getElementById("img11");
-            var modalImg12 = document.getElementById("img12");
-            var modalImg13 = document.getElementById("img13");
-            var modalImg14 = document.getElementById("img14");
-            var modalImg15 = document.getElementById("img15");
-            var modalImg16 = document.getElementById("img16");
-            var modalImg17 = document.getElementById("img17");
-            var modalImg18 = document.getElementById("img18");
-            var modalImg19 = document.getElementById("img19");
-            var modalImg20 = document.getElementById("img20");
-            var modalImg21 = document.getElementById("img21");
-            var modalImg22 = document.getElementById("img22");
-            var modalImg23 = document.getElementById("img23");
-            var modalImg24 = document.getElementById("img24");
-            var modalImg25 = document.getElementById("img25");
-            var modalImg26 = document.getElementById("img26");
-            var modalImg27 = document.getElementById("img27");
-            var modalImg28 = document.getElementById("img28");
-            var modalImg29 = document.getElementById("img29");
-            var modalImg30 = document.getElementById("img30");
-            var modalImg31 = document.getElementById("img31");
-            var modalImg32 = document.getElementById("img32");
-            var modalImg33 = document.getElementById("img33");
-            var modalImg34 = document.getElementById("img34");
+
+<!-- Modal -->
+<div id="myModal" class="modal" onclick="closeModal()">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="" alt="Modal Image">
+  </div>
+</div>
+
+<script>
+  // Ensure the modal is hidden initially
+  document.getElementById('myModal').style.display = 'none';
 
 
-            // When the user clicks on an image, open the modal
-            function openModal(modalNumber) {
-                if (modalNumber == 1) {
-                modal1.style.display = "block";
-                modalImg1.src = img1.src;
-                caption1.innerHTML = img1.alt;
-                } else if (modalNumber == 2) {
-                modal2.style.display = "block";
-                modalImg2.src = img2.src;
-                caption2.innerHTML = img2.alt;
-                } else if (modalNumber == 3) {
-                modal3.style.display = "block";
-                modalImg3.src = img3.src;
-                caption3.innerHTML = img3.alt;
-                } else if (modalNumber == 4) {
-                modal4.style.display = "block";
-                modalImg4.src = img4.src;
-                caption4.innerHTML = img4.alt;
-                } else if (modalNumber == 5) {
-                modal5.style.display = "block";
-                modalImg5.src = img5.src;
-                caption5.innerHTML = img5.alt;
-                } else if (modalNumber == 6) {
-                modal6.style.display = "block";
-                modalImg6.src = img6.src;
-                caption6.innerHTML = img6.alt;
-                } else if (modalNumber == 7) {
-                modal7.style.display = "block";
-                modalImg7.src = img7.src;
-                caption7.innerHTML = img7.alt;
-                } else if (modalNumber == 8) {
-                modal8.style.display = "block";
-                modalImg8.src = img8.src;
-                caption8.innerHTML = img8.alt;
-                } else if (modalNumber == 9) {
-                modal9.style.display = "block";
-                modalImg9.src = img9.src;
-                caption9.innerHTML = img9.alt;
-                } else if (modalNumber == 10) {
-                modal10.style.display = "block";
-                modalImg10.src = img10.src;
-                caption10.innerHTML = img10.alt;
-                } else if (modalNumber == 11) {
-                modal11.style.display = "block";
-                modalImg11.src = img11.src;
-                caption11.innerHTML = img11.alt;
-                } else if (modalNumber == 12) {
-                modal12.style.display = "block";
-                modalImg12.src = img12.src;
-                caption12.innerHTML = img12.alt;
-                } else if (modalNumber == 13) {
-                modal13.style.display = "block";
-                modalImg13.src = img13.src;
-                caption13.innerHTML = img13.alt;
-                } else if (modalNumber == 14) {
-                modal14.style.display = "block";
-                modalImg14.src = img14.src;
-                caption14.innerHTML = img14.alt;
-                } else if (modalNumber == 15) {
-                modal15.style.display = "block";
-                modalImg15.src = img15.src;
-                caption15.innerHTML = img15.alt;
-                } else if (modalNumber == 16) {
-                modal16.style.display = "block";
-                modalImg16.src = img16.src;
-                caption16.innerHTML = img16.alt;
-                } else if (modalNumber == 17) {
-                modal17.style.display = "block";
-                modalImg17.src = img17.src;
-                caption17.innerHTML = img17.alt;
-                } else if (modalNumber == 18) {
-                modal18.style.display = "block";
-                modalImg18.src = img18.src;
-                caption18.innerHTML = img18.alt;
-                } else if (modalNumber == 19) {
-                modal19.style.display = "block";
-                modalImg19.src = img19.src;
-                caption19.innerHTML = img19.alt;
-                } else if (modalNumber == 20) {
-                modal20.style.display = "block";
-                modalImg20.src = img20.src;
-                caption20.innerHTML = img20.alt;
-                } else if (modalNumber == 21) {
-                modal21.style.display = "block";
-                modalImg21.src = img21.src;
-                caption21.innerHTML = img21.alt;
-                } else if (modalNumber == 22) {
-                modal22.style.display = "block";
-                modalImg22.src = img22.src;
-                caption22.innerHTML = img22.alt;
-                } else if (modalNumber == 23) {
-                modal23.style.display = "block";
-                modalImg23.src = img23.src;
-                caption23.innerHTML = img23.alt;
-                } else if (modalNumber == 24) {
-                modal24.style.display = "block";
-                modalImg24.src = img24.src;
-                caption24.innerHTML = img24.alt;
-                } else if (modalNumber == 25) {
-                modal25.style.display = "block";
-                modalImg25.src = img25.src;
-                caption25.innerHTML = img25.alt;
-                } else if (modalNumber == 26) {
-                modal26.style.display = "block";
-                modalImg26.src = img26.src;
-                caption26.innerHTML = img26.alt;
-                } else if (modalNumber == 27) {
-                modal27.style.display = "block";
-                modalImg27.src = img27.src;
-                caption27.innerHTML = img27.alt;
-                } else if (modalNumber == 28) {
-                modal28.style.display = "block";
-                modalImg28.src = img28.src;
-                caption28.innerHTML = img28.alt;
-                } else if (modalNumber == 29) {
-                modal29.style.display = "block";
-                modalImg29.src = img29.src;
-                caption29.innerHTML = img29.alt;
-                } else if (modalNumber == 30) {
-                modal30.style.display = "block";
-                modalImg30.src = img30.src;
-                caption30.innerHTML = img30.alt;
-                } else if (modalNumber == 31) {
-                modal31.style.display = "block";
-                modalImg31.src = img31.src;
-                caption31.innerHTML = img31.alt;
-                } else if (modalNumber == 32) {
-                modal32.style.display = "block";
-                modalImg32.src = img32.src;
-                caption32.innerHTML = img32.alt;
-                } else if (modalNumber == 33) {
-                modal33.style.display = "block";
-                modalImg33.src = img33.src;
-                caption33.innerHTML = img33.alt;
-                } else if (modalNumber == 34) {
-                modal34.style.display = "block";
-                modalImg34.src = img34.src;
-                caption34.innerHTML = img34.alt;
-                }
+  function openModal(imageSrc) {
+      var modal = document.getElementById('myModal');
+      var modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = imageSrc;
+    }
 
-                // Add code to handle additional modals here
-            }
+    function closeModal() {
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'none';
+    }
+    
+    function goBack() {
+      window.history.back();
+    }
 
-            // When the user clicks on the close button, close the modal
-            function closeModal(modalNumber) {
-                if (modalNumber == 1) {
-                modal1.style.display = "none";
-                } else if (modalNumber == 2) {
-                modal2.style.display = "none";
-                } else if (modalNumber == 3) {
-                modal3.style.display = "none";
-                } else if (modalNumber == 4) {
-                modal4.style.display = "none";
-                } else if (modalNumber == 5) {
-                modal5.style.display = "none";
-                } else if (modalNumber == 6) {
-                modal6.style.display = "none";
-                } else if (modalNumber == 7) {
-                modal7.style.display = "none";
-                } else if (modalNumber == 8) {
-                modal8.style.display = "none";
-                } else if (modalNumber == 9) {
-                modal9.style.display = "none";
-                } else if (modalNumber == 10) {
-                modal10.style.display = "none";
-                } else if (modalNumber == 11) {
-                modal11.style.display = "none";
-                } else if (modalNumber == 12) {
-                modal12.style.display = "none";
-                } else if (modalNumber == 13) {
-                modal13.style.display = "none";
-                } else if (modalNumber == 14) {
-                modal14.style.display = "none";
-                } else if (modalNumber == 15) {
-                modal15.style.display = "none";
-                } else if (modalNumber == 16) {
-                modal16.style.display = "none";
-                } else if (modalNumber == 17) {
-                modal17.style.display = "none";
-                } else if (modalNumber == 18) {
-                modal18.style.display = "none";
-                } else if (modalNumber == 19) {
-                modal19.style.display = "none";
-                } else if (modalNumber == 20) {
-                modal20.style.display = "none";
-                } else if (modalNumber == 21) {
-                modal21.style.display = "none";
-                } else if (modalNumber == 22) {
-                modal22.style.display = "none";
-                } else if (modalNumber == 23) {
-                modal23.style.display = "none";
-                } else if (modalNumber == 24) {
-                modal24.style.display = "none";
-                } else if (modalNumber == 25) {
-                modal25.style.display = "none";
-                }  else if (modalNumber == 26) {
-                modal26.style.display = "none";
-                } else if (modalNumber == 27) {
-                modal27.style.display = "none";
-                } else if (modalNumber == 28) {
-                modal28.style.display = "none";
-                } else if (modalNumber == 29) {
-                modal29.style.display = "none";
-                } else if (modalNumber == 30) {
-                modal30.style.display = "none";
-                } else if (modalNumber == 31) {
-                modal31.style.display = "none";
-                } else if (modalNumber == 32) {
-                modal32.style.display = "none";
-                } else if (modalNumber == 33) {
-                modal33.style.display = "none";
-                } else if (modalNumber == 34) {
-                modal34.style.display = "none";
-                } 
-                // Add code to handle additional modals here
-            }
-        </script>
-    </body>
+</script>
+
+</body>
 </html>
