@@ -30,14 +30,14 @@
      border-radius: 5px;
    }
    .title h1 {
-     font-size: 64px;
+     font-size: 2.625rem;
      margin: 10px 0;
      font-family: 'Helvetica Neue', Helvetica;
      font-weight: bold;
      text-transform: uppercase;
    }
    .title h2 {
-     font-size: 24px;
+     font-size: 1rem;
      margin: 10px 0;
      font-style: normal;
      font-weight: 400;
@@ -89,10 +89,11 @@
     }
     /* Back button styles */
     .back-button {
+      font-family: monospace, monospace;
       position: static;
       top: 40px;
       left: 20px;
-      font-size: 24px;
+      font-size: 1.125rem;
       color: #f1f1f1;
       cursor: pointer;
       z-index: 9999;   
@@ -102,7 +103,24 @@
       padding: 3px 10px;
       border-radius: 3px;
       vertical-align: initial;
+      animation: cursor 2s infinite;
     }
+
+    @keyframes cursor {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+
+    
+    
     /* Caption styles */
     .caption {
       position: relative;
@@ -272,7 +290,7 @@
   <div class="gallery">
     <!-- Back button -->
     <div class="back-button" onclick="goBack()"> 
-      &lt; 
+      &lt; back
   </div>
     <div class="title">
       <h1>Gallery Showcase</h1>
