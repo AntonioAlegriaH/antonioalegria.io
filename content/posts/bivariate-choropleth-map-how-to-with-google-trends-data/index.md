@@ -17,6 +17,7 @@ editor_options:
 ---
 
 ## Bivariate map turorial: How-to with Google trends data
+
 ![](figures/bivariate-thumbnail.png)
 
 <br>
