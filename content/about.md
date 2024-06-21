@@ -15,7 +15,7 @@ Specializing in optimizing messages and multimedia content to effectively commun
 
 My work and research have earned me various awards and recognitions due to the implementation of behavioral technology as one of the most accurate methods for winning an election.
 
-*Personal Blog*
+**Personal Blog**
 
 Welcome to my personal blog. Here, I enjoy sharing some of the tools I use daily and the process I follow to implement solutions to problems that don't exist. Essentially, this is an experimental and collaborative space open to any project that includes open-source code, data, and behavior.
 
