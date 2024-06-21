@@ -6,7 +6,7 @@ aliases:
 author:
   name: Antonio Alegría
 date: "2014-04-09"
-title: About
+title: About Me
 ---
 
 I am an experimental psychologist and behavior analyst, having led behavioral and neurophysiological research for presidential and government campaigns in Spain, Argentina, Guatemala, Bolivia, the United States, and Mexico.
@@ -21,10 +21,11 @@ Welcome to my personal blog. Here, I enjoy sharing some of the tools I use daily
 
 Mostly, you will find:
 
-* Infographics and DataViz
-* Tutorials
-* Maps
-* Sustainable Mobility
-* Metro/Subway/Trains
+* Infographics and DataViz 📊 📈
+* Tutorials 🧑‍💻
+* Maps 🗺️
+* Sustainable Mobility 🚲
+* Metro/Subway/Trains 🚇
 
-Siempre disponible, excepto cuando no, [por este medio](mailto:antonioalegriah@gmail.com).
+I am always available, except when I'm not.
+[You can contact me via email 📧](mailto:antonioalegriah@gmail.com).
