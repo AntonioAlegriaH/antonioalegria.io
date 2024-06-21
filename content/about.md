@@ -9,7 +9,7 @@ date: "2014-04-09"
 title: About Me
 ---
 
-I am an experimental psychologist and behavior analyst, having led behavioral and neurophysiological research for presidential and government campaigns in Spain, Argentina, Guatemala, Bolivia, the United States, and Mexico.
+I am an experimental psychologist and behavior analyst, having led behavioral and neurophysiological research for presidential and government campaigns in Spain 🇪🇸, Argentina 🇦🇷, Guatemala 🇬🇹, Bolivia 🇧🇴, the United States 🇺🇸, and México 🇲🇽.
 
 Specializing in optimizing messages and multimedia content to effectively communicate with target audiences, I have also developed statistical techniques for predicting voting behavior based on baseline surveys and daily tracking.
 
